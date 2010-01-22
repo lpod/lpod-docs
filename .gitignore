@@ -1,2 +1,10 @@
+.build/
+autodocs/
+figures/
+images/
+lpod.pdf
+cookbook/*.odt
+cookbook/*.ods
+cookbook/*.odp
+lpod-docs-*.tgz
 *.swp
-lpod-v*.tar.gz
