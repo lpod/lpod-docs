@@ -7,10 +7,10 @@
 # ---------------
 
 # Git repository
-GIT_VERSION = $(shell ../python/release.py)
+GIT_VERSION = $(shell ../lpod-python/release.py)
 
 # Python path
-PYTHON = $(shell cat ../python/python_path.txt)
+PYTHON = $(shell cat ../lpod-python/python_path.txt)
 
 # You can set these variables from the command line.
 SPHINXOPTS    =
