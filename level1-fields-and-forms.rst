@@ -271,7 +271,7 @@ display a given value provided using the ``text`` optional parameter.
 Chapter and sheet name fields
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Content key: ``chapter`` or ``sheet`.
+Content key: ``chapter`` or ``sheet``.
 
 A chapter field displays the name and/or the number of the current heading in
 a document where chapters make sense, while sheet name fields, in spreadsheet

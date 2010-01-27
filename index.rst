@@ -46,7 +46,7 @@ In order to illustrate some typical features of the API, we provide a :doc:`Cook
 .. [1] At the opposite of implementations based on a code generation from the ODF RelaxNG schema.
 .. [2] Jean-Marie Gouarné is the author of the `Perl ODF Connector`_ toolkit which got an "OpenOffice.org Community Innovation Program award in 2008"
 
-.. _`Perl ODF Connector`: http://search.cpan.org/dist/OpenOffice-OODoc 
+.. _`Perl ODF Connector`: http://search.cpan.org/dist/OpenOffice-OODoc
 
 
 lpOD Cookbooks
@@ -89,6 +89,7 @@ lpOD Architecture level 1
    level1-notes.rst
    level1-tables.rst
    level1-structured-containers.rst
+   level1-fields-and-forms.rst
    level1-graphic-content.rst
    level1-metadata.rst
    level1-styles.rst
