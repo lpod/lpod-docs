@@ -81,7 +81,7 @@ for id, filename in enumerate(glob('./files/*.csv')):
     table.append_column(odf_create_column())
 
     # Add an image in the document
-    image_uri = document.add_file('../../doc/.static/banner-lpod_en.png')
+    image_uri = document.add_file('../.static/banner-lpod_en.png')
 
     # Images are in frame
     frame = odf_create_image_frame(image_uri, size=('11.87cm', '1.75cm'),
