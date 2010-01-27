@@ -195,6 +195,12 @@ the font name, the font size, the font style (ex: normal, oblique, etc),
 the text color, the text background color (which may differ from the
 common background color of the paragraph).
 
+A text style may apply to any text span in any text paragraph. However some ODF
+editing or viewing applications don't fully support them in some situations. For
+example, OpenOffice.org doesn't currently allow the use of *common* text styles
+with spreadsheets, while it allows *common* and *automatic* text styles in text
+documents.
+
 A text style can apply to one or more text spans; see the "Text spans"
 section. It can be used as the default text style of a document. In addition,
 an existing text style may be reused to set the text properties of a paragraph
