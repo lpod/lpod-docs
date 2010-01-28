@@ -35,38 +35,43 @@ to set some text content out of the main document body but to structurally
 associate this content to a specific location in the document body. The content
 of a note is stored in a sequence of one or more paragraphs and/or item lists.
 
-The lpOD API supports three kinds of notes, so-called footnotes, endnotes and
-annotations. Footnotes and endnotes have the same structure and differ only by
-their display location in the document body, while annotations are specific
-objects.
+The lpOD API supports four kinds of notes, so-called footnotes, endnotes,
+annotations and change marks. Footnotes and endnotes have the same structure
+and differ only by their display location in the document body. Annotations are
+specific objects, that don't apparently belong to the document content but that
+allow the users to associate persistent information to the content.
 
 Footnote and endnote creation
 -----------------------------
 
-Footnotes and endnotes are created through the same method. The user must
-provide a note identifier, i.e. an arbitrary code name (not visible in the
-document), unique in the scope of the document, and a class option, knowing that
-a note class is either 'footnote' or 'endnote'.
+These notes are created in place using the element-based ``set_note()`` method,
+that requires a note identifier (unique for the document) as its first argument,
+and the following note-specific parameters:
 
-These notes are created as free elements, so they can be inserted later in place
-(and replicated for reuse in several locations one or more documents). As a
-consequence, creation and insertion are done through two distinct functions,
-i.e. ``odf_create_note()`` and ``insert_note()``, the second one being a
-context-related method.
+- ``note_class`` or ``class``: the class option (default=footnote);
+- ``citation``: the citation mark (i.e. the text string that should be displayed
+  by editing/viewing applications at the place where the note is referred to);
+- ``body``: the content of the note, provided as a list of paragraphs previously
+  created;
+- ``text``: the content of the note, provided as a flat character string;
+- ``style``: the name of the paragraph style for the content of the note.
 
-While the identifier and the class are mandatory as soon as a note is inserted
-in a document, these parameters are not required at the creation time. They can
-be provided (or changed) through the insert_note() method.
+The ``text`` and ``style`` parameters are ignored if ``body`` is provided,
+because ``body`` is supposed to be a list of one or more paragraphs, each one
+with its own style and content. The ``body`` option allows the applications to
+reuse an existing content for one or more notes in one or more documents.
 
-The ``insert_note()`` method allows the user to insert the note in the same way
-as a position bookmark (see above). As a consequence, its first arguments are
-the same as those of the create bookmark method.  However, ``insert_note()``
-requires additional arguments providing the identifier and the citation mark
-(if not previously set), and the citation mark, i.e. the symbol which will be
-displayed in the document body as a reference to the note. Remember that the
-note citation is not an identifier; it's a designed to be displayed according
-to a context-related logic, while the identifier is unique for the whole
-document.
+It's possible to create a note as a free element, so it can be later inserted
+in place (and replicated for reuse in several locations in one or more
+documents), using general purpose insertion methods such as
+``insert_element()``.
+
+By default, ``set_note()`` inserts the new note at the beginning (i.e. as the
+first child element) of the calling element. However, it's possible to specify
+another position within the text content of the element, using the same
+positioning options as the ``set_bookmark()`` method, namely ``position``,
+``before``, ``after``, and so on (see ``set_bookmark()`` in the "Text bookmarks"
+section of "Text marks and indices").
 
 Regarding the identifier, the user can provide either an explicit value, or an
 function that is supposed to return an automatically generated unique value. If
