@@ -48,11 +48,13 @@ These notes are created in place using the element-based ``set_note()`` method,
 that requires a note identifier (unique for the document) as its first argument,
 and the following note-specific parameters:
 
-- ``note_class`` or ``class``: the class option (default=footnote);
+- ``class`` or ``note_class``: the class option, whose default is ``footnote``
+  (``note_class`` is used with programming languages that don't allow ``class``
+  as a parameter name);
 - ``citation``: the citation mark (i.e. the text string that should be displayed
   by editing/viewing applications at the place where the note is referred to);
-- ``body``: the content of the note, provided as a list of paragraphs previously
-  created;
+- ``body``: the content of the note, provided as a list of one or more ODF
+  elements (preferently paragraphs) previously created;
 - ``text``: the content of the note, provided as a flat character string;
 - ``style``: the name of the paragraph style for the content of the note.
 
@@ -60,6 +62,14 @@ The ``text`` and ``style`` parameters are ignored if ``body`` is provided,
 because ``body`` is supposed to be a list of one or more paragraphs, each one
 with its own style and content. The ``body`` option allows the applications to
 reuse an existing content for one or more notes in one or more documents.
+Without the ``body`` parameter, a paragraph is automatically created and filled
+with the value of ``text``. If neither ``body`` nor ``text`` is provided, the
+note is created with an empty paragraph.
+
+The list of ODF elements provided through the ``body`` parameter may contain
+almost any content object; neither the OpenDocument schema nor the lpOD level 1
+API prevents the user from including notes into a note body; however the lpOD
+team doesn't recommend such a practice.
 
 It's possible to create a note as a free element, so it can be later inserted
 in place (and replicated for reuse in several locations in one or more
@@ -73,21 +83,64 @@ positioning options as the ``set_bookmark()`` method, namely ``position``,
 ``before``, ``after``, and so on (see ``set_bookmark()`` in the "Text bookmarks"
 section of "Text marks and indices").
 
-Regarding the identifier, the user can provide either an explicit value, or an
-function that is supposed to return an automatically generated unique value. If
-the class option is missing, the API automatically selects 'footnote'.
+As an example, the following instruction inserts a footnote whose citation mark
+is an asterisk, with a given text content, immediately after the "xyz" substring
+in a paragraph::
 
-Footnote and endnote content
+  $paragraph.set_note(
+    "note0004",
+    note_class = "footnote",
+    after = "xyz",
+    citation = "*",
+    text = "The footnote content",
+    style = "Note body"
+    )
+    
+The method returns the newly created object, that is available for later use.
+
+Footnote and endnote retrieval
+------------------------------
+
+Once set somewhere in a document, a note may be retrieved the context-based
+``get_note()`` method, with the note identifier as argument.
+
+It's possible to extract a list of notes using the context-based
+``get_note_list()``. Without argument, this method returns all the notes of the
+context. However, it's possible to provide the ``note_class`` and/or
+``citation`` parameter in order to select the notes that match them. The
+following example extract the endnotes whose citation mark is "5" in a given
+section::
+
+  end_notes = $section->get_note_list(
+    note_class = "endnote",
+    citation = "1"
+    )
+
+This method may allow the users to retrieve a note without knowledge of its
+identifier.
+
+Footnote and endnote methods
 -----------------------------
 
-A note is a container whose body can be filled with one or more paragraphs or
-item lists at any time, before or after the insertion in the document. As a
-consequence, a note can be used as a regular context for paragraph or list
-appending or retrieval operations.
+Read accessors
+~~~~~~~~~~~~~~
 
-Note that neither the OpenDocument schema nor the lpOD level 1 API prevents the
-user from including notes into a note body; however the lpOD team doesn't
-recommend such a practice.
+get_id()
+    the note identifier
+
+get_class()
+    the note class
+
+get_citation()
+    the note citation
+
+get_body()
+    the root of the note body, as a single container; this object may be used
+    as a context element for appending or removing any object in the note body
+
+Write accessors [tbc]
+~~~~~~~~~~~~~~~~~~~~~
+
 
 Annotation creation [tbc]
 -------------------------
