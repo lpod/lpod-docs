@@ -318,11 +318,28 @@ set_text_content(text)
     previous child element is deleted.
 
 insert_element(element, {FIRST_CHILD, LAST_CHILD, NEXT_SIBLING, PREV_SIBLING})
-    Insert the given odf_element at the given position.
+insert_element(element, <position_flag> [, offset])
+    Insert the given odf_element at a given position, that is defined according
+    to the <position_flag> argument, whose possible values are:
+    
     FIRST_CHILD: the odf_element will be the first child.
     LAST_CHILD: the odf_element will be the last child.
     NEXT_SIBLING: the odf_element will be inserted just after.
     PREV_SIBLING: the odf_element will be inserted just before.
+    WITHIN: the odf_element will be inserted as a child within the text content.
+    
+    The WITHIN option splits the text content of the container in two parts
+    and inserts the elements between them, at a given offset.
+    By default, if no offset argument is provided, or if the calling element
+    doesn't contain any text, WITHIN produces the same result as FIRST_CHILD.
+    The offset argument must be an integer; it specifies the position of the
+    inserted child element within the text content of the calling element.
+    A zero offset means that the element must be inserted before the 1st
+    character. A negative offset value means that the insert position must be
+    counted down from the end of the text, knowing that -1 is the position just
+    before the last character. Of course, if the insertion must be done after
+    the end of the text, the simplest way is to select LAST_CHILD instead of
+    WITHIN.
 
 clear()
     Removes all children and text from the element.
