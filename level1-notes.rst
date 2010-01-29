@@ -53,8 +53,10 @@ and the following note-specific parameters:
   as a parameter name);
 - ``citation``: the citation mark (i.e. the text string that should be displayed
   by editing/viewing applications at the place where the note is referred to);
-- ``body``: the content of the note, provided as a list of one or more ODF
-  elements (preferently paragraphs) previously created;
+- ``body``: the content of the note, provided either as a list of one or more
+  previously created ODF content elements (preferently paragraphs), or as an
+  already available note body element (produced, for example, by cloning the
+  body of another note);
 - ``text``: the content of the note, provided as a flat character string;
 - ``style``: the name of the paragraph style for the content of the note.
 
@@ -126,20 +128,37 @@ Read accessors
 ~~~~~~~~~~~~~~
 
 get_id()
-    the note identifier
+    the note identifier (generic element method).
 
 get_class()
-    the note class
+    the note class.
 
 get_citation()
-    the note citation
+    the note citation.
 
 get_body()
     the root of the note body, as a single container; this object may be used
-    as a context element for appending or removing any object in the note body
+    as a context element for appending or removing any object in the note body;
+    the real content is made of the children elements of the body; it may be
+    cloned in order to be reused as the body of another note in the same
+    document or elsewhere.
 
 Write accessors [tbc]
 ~~~~~~~~~~~~~~~~~~~~~
+
+set_id(new_id)
+    changes the identifier (generic element method); be careful, ``set_id()``
+    with a null value erases the identifier (but, with a defined value, allows
+    to restore it at any time).
+
+set_class(footnote|endnote)
+    allows to turn a footnote into a endnote or vice versa.
+
+set_body()
+    takes the same kinds of content as the ``body`` parameter of ``set_note()``;
+    provides the note with a new body; any previous content is deleted and
+    replaced; if ``set_body()`` is used without argument or with a null value,
+    the previous content is replaced by a single empty paragraph.
 
 
 Annotation creation [tbc]
