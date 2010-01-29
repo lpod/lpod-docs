@@ -171,6 +171,21 @@ place, through context-based methods whose name is ``set_xxx()``. Beware, every
 ``set_xxx()`` method creates or replaces something in the calling element, but
 some of them don't create new elements.
 
+According to the ODF 1.1 specification, some elements may own an identifier
+attribute (whose XML name is "text:id"). The lpOD API provides a generic
+``get_id()`` element accessor, that returns the value of the identifier, if any,
+or a null value otherwise. A ``set_id(attribute=value)`` method allows the
+applications to arbitrarily set or change this identifier with any ODF element.
+If ``set_id()`` is used with a given attribute name but with a null value, the
+attribute is deleted if it exists (and nothing is done otherwise). 
+There is no automatic compliance check associated with ``set_id()``, so the user
+is allowed to set non standard identifiers and/or identifiers that will not be
+supported or preserved by ODF-compliant applications. On the other hand,
+identifiers may prove useful in order to retrieve elements whose XML position
+is unknown or changing. Anyway, it's always possible to set a non-standard
+identifier for a given processing session and remove it before writing the
+changed document in a persistent storage. 
+
 Any element is able to be serialized and exported as an XML, UTF8-encoded
 string. Symmetrically, an element can be created from an application- provided
 XML string. As a consequence, lpOD-based applications can remotely transmit or
