@@ -98,7 +98,8 @@ in a paragraph::
     style = "Note body"
     )
     
-The method returns the newly created object, that is available for later use.
+``set_note()`` returns the newly created object, that is available for later
+use.
 
 Footnote and endnote retrieval
 ------------------------------
@@ -143,8 +144,8 @@ get_body()
     cloned in order to be reused as the body of another note in the same
     document or elsewhere.
 
-Write accessors [tbc]
-~~~~~~~~~~~~~~~~~~~~~
+Write accessors
+~~~~~~~~~~~~~~~
 
 set_id(new_id)
     changes the identifier (generic element method); be careful, ``set_id()``
@@ -154,6 +155,9 @@ set_id(new_id)
 set_class(footnote|endnote)
     allows to turn a footnote into a endnote or vice versa.
 
+set_citation()
+    changes the note citation mark.
+
 set_body()
     takes the same kinds of content as the ``body`` parameter of ``set_note()``;
     provides the note with a new body; any previous content is deleted and
@@ -161,11 +165,86 @@ set_body()
     the previous content is replaced by a single empty paragraph.
 
 
-Annotation creation [tbc]
--------------------------
+Annotation creation
+-------------------
 
-Annotations don't have identifiers and are directly linked to a given offset in
-a given text container.
+An annotation is particular note that has neither identifier nor citation
+mark, but which may be put like a footnote or e endnote at a given offset in a
+given text container. On the other hand, it stores a date and an author's name.
+
+Annotations are created using ``set_annotation()``, that takes the same
+positioning parameters as ``set_note()`` and ``set_bookmark()``, and the
+following other parameters:
+
+- ``date``: the date/time of the annotation (ISO-8601 format); if this
+  parameter is omitted, the current system date applies by default;
+
+- ``author``: the name of the author of the annotation (which may be an
+  arbitrary application-provided string); if this parameter is omitted, lpOD
+  tries to set it to the user name of the process owner and, if such an
+  information is not available in the runtime environment, the annotation
+  is created with an empty string as the author name (not recommended);
+
+- ``body``: a list of one or more regular text paragraphs that will become the
+  content of the annotation (beware, unlike ``set_note()``, ``set_annotation()``
+  requires a list of paragraphs and doesn't accept a previously existing note
+  body or other non-paragraphs ODF objects);
+
+- ``text``: like with ``set_note()`` (ignored if ``body`` is provided);
+
+- ``style``: like with ``set_note()`` (ignored if ``body`` is provided).
+
+``set_annotation()`` returns the newly created object, that is available for
+later use.
+
+
+Annotation retrieval
+--------------------
+
+Annotations may be selected is through the context-based ``get_annotations()``
+method that takes ``date`` and ``author`` as optional parameters.
+
+Without parameter, this method returns the full list of the annotations that
+appear in the context. The use of one or two of the optional parameters allows
+to restrict the list according to the given ``date`` and/or ``author``.
+
+While a typical human writer using an interactive editing application should
+never be able to put two annotations in the same time in the same document,
+an automatic document processing application can do that. So the date/author
+combination should not be regarded as an absolute identifier; as a
+consequence, ``get_annotations()`` always returns a list (possibly containing
+a single paragraph or nothing).
+
+Annotation methods
+------------------
+
+Read accessors
+~~~~~~~~~~~~~~
+
+get_date()
+    returns the stored date.
+
+get_author()
+    returns the stored author's name.
+
+get_content()
+    returns the content as a list of paragraph(s).
+
+Write accessors
+~~~~~~~~~~~~~~~
+
+set_date(new_date)
+    changes the stored date; without arguments, the current date applies.
+
+set_author()
+    changes the stored author's name; without argument, the process owner
+    applies.
+
+An annotation object may be used as a regular context element in order to
+change its content through generic context-based element insertion, deletion of
+updating methods. No particular check is done, so the user should ensure that
+inserted elements are always paragraphs.
+
 
 Change tracking [todo]
 ----------------------
