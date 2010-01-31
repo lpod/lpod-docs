@@ -246,7 +246,71 @@ updating methods. No particular check is done, so the user should ensure that
 inserted elements are always paragraphs.
 
 
-Change tracking [todo]
+Tracked change retrieval
+------------------------
+
+lpOD applications can retrieve all the change tracking data which may have been
+stored in the documents by ODF-compliant editors. On the other hand, lpOD
+doesn't provide any automatic tracking of the changes made by lpOD-based
+applications.
+
+The retrieval is made through the document-based ``get_change()`` and
+``get_changes()`` methods.
+
+Every tracked change is stored as a ODF change object that owns the following
+attributes:
+
+- ``id``: the identifier of the tracked change (unique for the document);
+- ``date``: the date/time of the change (ISO-8601 format);
+- ``author``: the name of the user who made the change.
+
+An change may be individually retrieved using ``get_change()`` with a change
+identifier as argument.
+
+The ``get_changes()`` method, without argument, returns the full list of
+tracked changes. The list may be filtered using the ``date`` and/or ``author``
+optional parameters.
+
+Tracked change methods
 ----------------------
+
+Each individual tracked change object, previously selected, own the following
+methods:
+
+delete()
+    deletes the tracked change, i.e. removes any persistent information about
+    the tracked change object from the document.
+
+get_id()
+    returns the identifier.
+
+get_date()
+    returns the date.
+
+get_author()
+    returns the author's name.
+  
+get_type()
+    returns the type of change, that is either ``insertion`` or ``deletion``.
+
+get_deleted_content()
+    returns the content of the deleted content as a list of ODF elements, if
+    the change type is ``deletion`` (and returns a null value otherwise).
+
+get_change_mark()
+    returns the position mark of the change; if the change type is ``deletion``,
+    this object is located at the place of the deleted content; if the change
+    type is ``insertion``, it's located at the beginning of the inserted
+    content.
+
+get_insertion_marks()
+    if the change type is ``insertion``, returns a pair of position mark
+    elements, respectively located at the beginning and at the end of the
+    inserted content (this pair of elements may be used in a similar way as
+    the start and end elements of a range bookmark, in order to determine the
+    limits of the inserted content); it returns nothing if the change type is
+    ``deletion``.
+
+
 
 
