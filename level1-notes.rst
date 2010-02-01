@@ -254,7 +254,7 @@ stored in the documents by ODF-compliant editors. On the other hand, lpOD
 doesn't provide any automatic tracking of the changes made by lpOD-based
 applications.
 
-The retrieval is made through the document-based ``get_change()`` and
+The retrieval is made through the context-based ``get_change()`` and
 ``get_changes()`` methods.
 
 Every tracked change is stored as a ODF change object that owns the following
@@ -270,6 +270,15 @@ identifier as argument.
 The ``get_changes()`` method, without argument, returns the full list of
 tracked changes. The list may be filtered using the ``date`` and/or ``author``
 optional parameters.
+
+In the ODF data structure, any tracked change object is stored at the document
+level. The lpOD API provides ``get_change()`` and ``get_changes()`` as context
+methods, allowing the applications to restrict the search to a particular
+container. If the calling object is a restricted context instead of the
+document, the returned elements (if any) are either deletion tracked changes, or
+insertion tracked changes that begin and/or end in the context. An insertion
+tracked change can't be retrieved from a context that is fully included in the
+inserted region. 
 
 Tracked change methods
 ----------------------
