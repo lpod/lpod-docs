@@ -265,7 +265,7 @@ Updating Table of Content (TOC)
 We added a TOC at first but it's empty. Now the titles are known, we can
 generate its structure::
 
-    >>> toc.fill()
+    >>> toc.toc_fill()
 
 As the document is passed to find the titles, the TOC doesn't need to be
 attached to the document to be generated. It could even be attached to another

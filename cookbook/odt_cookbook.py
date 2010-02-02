@@ -119,7 +119,7 @@ paragraph.set_span(highlight, u"highlight")
 body.append_element(paragraph)
 
 # Fill the TOC
-toc.fill()
+toc.toc_fill()
 
 
 # Save
