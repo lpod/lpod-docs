@@ -1,0 +1,26 @@
+# Maintainer: Hervé Cauwelier <herve ¤ itaapy.com>
+# Published at http://aur.archlinux.org/packages.php?ID=34297
+
+pkgname=lpod-docs-html
+pkgver=0.8
+pkgrel=1
+pkgdesc="Languages & Platforms OpenDocument: HTML Documentation"
+arch=('any')
+license=('GPL3' 'APACHE2')
+url="http://www.lpod-project.org/"
+depends=('python-lxml')
+source=("http://download.lpod-project.org/lpod-v$pkgver.tar.gz")
+md5sums=('6403301561fbf71971e1497b6ec0be14')
+
+build() {
+  cd "${srcdir}/lpod-v${pkgver}/doc"
+  target="${pkgdir}/usr/share/doc/lpod/"
+  install -d "$target"
+  install -d "$target/autodocs"
+  install -d "$target/_images"
+  install -d "$target/_static"
+  install -m 0644 *.html "$target" || return 1
+  install -m 0644 autodocs/* "$target/autodocs" || return 1
+  install -m 0644 _images/* "$target/_images" || return 1
+  install -m 0644 _static/* "$target/_static" || return 1
+}
