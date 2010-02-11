@@ -50,6 +50,16 @@
 
 
 {% block footer %}
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-11253496-2']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+    })();
+  </script>
   <div class="footer">
   {% trans copyright=copyright|e %}&copy; Copyright {{ copyright }}.{% endtrans %}
   Hosted by <a href="http://www.itaapy.com/" title="e-Procurement, ECM, ERP, Mailing-lists, Websites, e-Commerce, e-Learning, e-Gouvernment, CRM">Itaapy</a>.
