@@ -82,11 +82,11 @@ linkcheck:
 
 release: pdf html
 	cd .build; \
-	mv html lpod-docs-html-$(GIT_VERSION); \
-	tar czf ../lpod-docs-html-$(GIT_VERSION).tgz lpod-docs-html-$(GIT_VERSION); \
-	mv lpod-docs-html-$(GIT_VERSION) html
+	mv html lpod-docs-$(GIT_VERSION); \
+	tar czf ../lpod-docs-$(GIT_VERSION).tgz lpod-docs-$(GIT_VERSION); \
+	mv lpod-docs-$(GIT_VERSION) html
 	@echo
-	@echo "doc is available ./lpod-docs-html-$(GIT_VERSION).tgz"
+	@echo "doc is available ./lpod-docs-$(GIT_VERSION).tgz"
 
 
 # Figures conversion
