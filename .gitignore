@@ -2,9 +2,9 @@
 autodocs/
 figures/
 images/
-lpod.pdf
+*.swp
+*.pdf
 cookbook/*.odt
 cookbook/*.ods
 cookbook/*.odp
 lpod-docs-*.tgz
-*.swp

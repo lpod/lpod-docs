@@ -1,0 +1,40 @@
+# Maintainer: Hervé Cauwelier <herve ¤ itaapy.com>
+# Published at http://aur.archlinux.org/packages.php?ID=34297
+
+pkgbase=lpod-docs
+pkgname=(lpod-docs-html lpod-docs-pdf)
+pkgver=0.9
+pkgrel=1
+arch=('any')
+license=('GPL3' 'APACHE2')
+url="http://www.lpod-project.org/"
+source=("http://download.lpod-project.org/lpod-docs/lpod-docs-v$pkgver.tgz")
+md5sums=('58c139e10c4743cc5996f4b816966d43')
+
+build() {
+    true
+}
+
+package_lpod-docs-html() {
+    pkgdesc="Languages & Platforms OpenDocument: HTML Documentation"
+
+    cd "${srcdir}/lpod-docs-v${pkgver}"
+    target="${pkgdir}/usr/share/doc/lpod/"
+    install -d "$target"
+    install -d "$target/autodocs"
+    install -d "$target/_images"
+    install -d "$target/_static"
+    install -m 0644 *.html "$target" || return 1
+    install -m 0644 autodocs/* "$target/autodocs" || return 1
+    install -m 0644 _images/* "$target/_images" || return 1
+    install -m 0644 _static/* "$target/_static" || return 1
+}
+
+package_lpod-docs-pdf() {
+    pkgdesc="Languages & Platforms OpenDocument: PDF Documentation"
+
+    cd "${srcdir}/lpod-docs-v${pkgver}"
+    target="${pkgdir}/usr/share/doc/lpod/"
+    install -d "$target"
+    install -m 0644 _downloads/lpod.pdf "$target" || return 1
+}
