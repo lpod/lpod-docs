@@ -633,8 +633,8 @@ addition, any *master page* may own a property that tells what should be the
 may de defined in order to ensure that any page using it will be followed by
 a page that will use a "Left page" style and vice-versa).
 
-   .. figure:: figures/lpod_page_style.*
-      :align: center
+  .. figure:: figures/lpod_page_style.*
+     :align: center
 
 *Master page* objects (and the corresponding *page layouts*) apply to
 presentation and drawing documents, too. However, the page style model is very
