@@ -124,13 +124,13 @@ Draw pages
 Draw pages are structured containers belonging to presentation or drawing
 documents. They shouldn't appear in text or spreadsheet documents.
 
-A draw page can contain forms, drawings, frames, presentation animations, and/or
-presentation notes (§9.1.4 in the ODF specification).
+A draw page can contain forms, drawing shapes, frames, presentation animations,
+and/or presentation notes (§9.1.4 in the ODF specification). The present version
+of lpOD (level 1) supports frames and drawing shapes, as introduced in the
+"Graphic Content" chapter.
 
   .. figure:: figures/lpod_drawpage.*
      :align: center
-
-*[Unfinished diagram]*
 
 A draw page is created using ``odf_create_draw_page()`` and integrated through
 ``insert_element()``. Note that a draw page should be inserted at the document
