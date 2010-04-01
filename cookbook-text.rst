@@ -228,8 +228,8 @@ We know the `lpod_styles.odt` document contains an interesting style.
 So let's first fetch the style::
 
     >>> lpod_styles = odf_get_document('lpod_styles.odt')
-    >>> highlight = lpod_styles.get_style('text', u"Yellow Highlight",
-            display_name=True)
+    >>> highlight = lpod_styles.get_style('text',
+            display_name=u"Yellow Highlight")
 
 We made some assumptions here:
 
