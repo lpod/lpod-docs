@@ -107,9 +107,9 @@ body.append_element(table)
 body.append_element(odf_create_heading(1, u"Applying Styles"))
 
 # Copying a style from another document
-lpod_styles = odf_get_document('../../python/templates/lpod_styles.odt')
-highlight = lpod_styles.get_style('text', u"Yellow Highlight",
-                                  display_name=True)
+lpod_styles = odf_get_document('../../lpod-python/templates/lpod_styles.odt')
+print "lpod_styles", lpod_styles
+highlight = lpod_styles.get_style('text', display_name=u"Yellow Highlight")
 assert highlight is not None
 document.insert_style(highlight)
 
