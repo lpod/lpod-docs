@@ -230,20 +230,32 @@ individual instances according to given XPath expressions.
 Methods
 ~~~~~~~
 
-get_element_list(xpath_expr)
-  Returns the list of odf_element matching the given XPath expression in the
-  whole part. An empty list is returned if no element matches.
+append_element(element)
+  Append the given element as the last child of the root element.
+  If the argument is an existing element, it's appended as is. If it's an
+  XML string, it's parsed as a new element then appended. If it's a non-XML
+  flat string, a new element is created with the given string as its name (tag)
+  then appended. The appended element is returned.
+
+delete(element)
+  Deletes the given odf_element from the part.
 
 get_element(xpath_expr)
   Returns the first odf_element matching the given XPath expression in the
   whole part. Null is returned if no element matches.
 
-serialize(pretty)
+get_element_list(xpath_expr)
+  Returns the list of odf_element matching the given XPath expression in the
+  whole part. An empty list is returned if no element matches.
+
+insert_element(element, position=pos_flag [, offset=pos_offset])
+  Like append_element(), but the element is inserted at a position that depends
+  on the optional parameters. This method just calls the insert_element() method
+  of the odf_element class, with the root element as the context.
+
+serialize(pretty={true, false})
   Returns the part as an XML document string. If pretty is true, the XML is
   pretty printed.
-
-delete(child)
-    Deletes a child odf_element from the part.
 
 odf_element
 -----------
@@ -279,15 +291,22 @@ get_attributes()
     An empty mapping is returned if the element has no attribute.
 
 get_attribute(name)
-    Returns the string value of the attribute having this name. The name must
-    be prefixed.
+    Returns the string value of the attribute having this name. The name should
+    be prefixed. However, if a name without namespace prefix is provided, the
+    prefix is automatically supposed to be the same as the prefix of the context
+    element.
 
 set_attribute(name, value)
-    Creates the attribute or updates its string value. The name must be
-    prefixed.
+    Creates the attribute or updates its string value. The name should be
+    prefixed. However, if a name without namespace prefix is provided, the
+    prefix is automatically supposed to be the same as the prefix of the context
+    element.
 
 del_attribute(name)
-    Deletes the attribute having this name. The name must be prefixed.
+    Deletes the attribute having this name. The name should be prefixed.
+    However, if a name without namespace prefix is provided, the prefix is
+    automatically supposed to be the same as the prefix of the context element.
+    Nothing is done if the attribute doesn't exist.
 
 get_text()
     Returns the text contents of the element in the most appropriate type for
@@ -317,10 +336,10 @@ set_text_content(text)
     text is typed in the most appropriate type for text, e.g. unicode. Any
     previous child element is deleted.
 
-insert_element(element, {FIRST_CHILD, LAST_CHILD, NEXT_SIBLING, PREV_SIBLING})
-insert_element(element, <position_flag> [, offset])
+insert_element(element, position=pos_flag)
+insert_element(element, position=WITHIN, offset=value)
     Insert the given odf_element at a given position, that is defined according
-    to the <position_flag> argument, whose possible values are:
+    to the position parameter, whose possible values are:
     
     FIRST_CHILD: the odf_element will be the first child.
     LAST_CHILD: the odf_element will be the last child.
@@ -329,7 +348,8 @@ insert_element(element, <position_flag> [, offset])
     WITHIN: the odf_element will be inserted as a child within the text content.
     
     The WITHIN option splits the text content of the container in two parts
-    and inserts the elements between them, at a given offset.
+    and inserts the elements between them, at a given offset. So if position is
+    WITHIN, the offset optional parameter is used.
     By default, if no offset argument is provided, or if the calling element
     doesn't contain any text, WITHIN produces the same result as FIRST_CHILD.
     The offset argument must be an integer; it specifies the position of the
@@ -347,8 +367,9 @@ clear()
 copy()
     Returns another instance of the element with the same properties.
 
-serialize()
-    Returned an XML fragment string of the element.
+serialize(pretty={true, false})
+    Returned the element serialized as an XML string. The resulting string is
+    indented if the pretty parameter is true.
 
 delete(child)
     Removes the odf_element child.
