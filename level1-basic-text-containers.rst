@@ -84,7 +84,7 @@ The traditional string editing methods (i.e. regex-based search & replace
 functions) are available against the text content of a paragraph.
 
 ``search()`` in a element-based method which takes a search string (or a
-regular expression) as argument a,d returns the position of the first substring
+regular expression) as argument and returns the position of the first substring
 matching the argument in the text content of the element. A null return value
 means no match. This method works with the direct text content of the calling
 element, not with the children, so it makes sense with paragraphs, headings and
