@@ -86,9 +86,12 @@ functions) are available against the text content of a paragraph.
 ``search()`` in a element-based method which takes a search string (or a
 regular expression) as argument and returns the position of the first substring
 matching the argument in the text content of the element. A null return value
-means no match. This method works with the direct text content of the calling
-element, not with the children, so it makes sense with paragraphs, headings and
-text spans only.
+means no match. In case of success, the method returns a list whose items are
+the text node containing the matching substring, the position of the match
+(relatively to the text node) and the matching substring itself.
+
+The search space includes all the text children and descendants
+of the calling context.
 
 ``replace()`` is a context-based method. It takes two arguments, the first one
 being a search string like with ``search()``, the second one a text which will
