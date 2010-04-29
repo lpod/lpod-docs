@@ -195,12 +195,15 @@ compliance (the API doesn't automatically prevent the applications from
 inserting an element at the wrong place or to set non-ODF elements).
 
 Any element can be retrieved according to its sequential position in a given
-context or its text content (if defined), through methods like
-``get_xxx_by_position()`` and ``get_xxx_by_content()`` where "xxx" is the
-element type (i.e. "paragraph", "heading", etc). For example::
+context or its text content (if defined), through methods like get_xxx()
+where "xxx" is the element type (i.e. "paragraph", "heading", etc).
+The get_xxx() methods allows a ``content`` and a ``position`` parameters.
+For example::
 
-  element = context.get_xxx_by_position(p)
-  element = context.get_xxx_by_content(regex)
+  element = context.get_xxx(position = p, content='xyz')
+
+When both ``content`` and ``position`` are set, ``position`` specifies the
+selected element within the result set that matches the given ``content``.
 
 It's possible to get the list of elements of a known type in the context, using
 ``get_xxx_list()``.

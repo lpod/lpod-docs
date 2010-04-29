@@ -86,9 +86,9 @@ functions) are available against the text content of a paragraph.
 ``search()`` in a element-based method which takes a search string (or a
 regular expression) as argument and returns the position of the first substring
 matching the argument in the text content of the element. A null return value
-means no match. In case of success, the method returns a list whose items are
-the text node containing the matching substring, the position of the match
-(relatively to the text node) and the matching substring itself.
+means no match. In case of success, the method returns a data structure whose
+attributes are the text node (segment), the position in the segment (position),
+and the matching sunstring itself (match).
 
 The search space includes all the text children and descendants
 of the calling context.
