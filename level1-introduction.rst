@@ -204,9 +204,24 @@ For example::
 
 When both ``content`` and ``position`` are set, ``position`` specifies the
 selected element within the result set that matches the given ``content``.
+If ``position`` is not set, the selected element is the first element that
+matches the given ``content``. Without parameter, the first ``xxx`` element
+is selected. Of course, a null value is returned (without error) if the context
+doesn't contain any element matching the conditions.
 
 It's possible to get the list of elements of a known type in the context, using
 ``get_xxx_list()``.
+
+Of course, the API doesn't provide a distinct ``get_xxx()`` method for any
+possible element in an ODF-compliant document. On the other hand the list of
+these specialized methods is growing. However, there is a generic level 1
+``get_element()`` that requires the ODF element type as a mandatory argument,
+and allows the ``content`` and ``position`` optional parameters. Example::
+
+  element = context.get_element('text:user-field-get', content='xyz');
+
+The example above returns the first "user field get" element whose text content
+includes a "xyz" substring.
 
 The two lines above retrieve an element among the children of context element.
 The first one selects the child element at the given ``p`` position.

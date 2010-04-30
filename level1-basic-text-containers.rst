@@ -72,11 +72,12 @@ attached later through the standard ``append_element()`` or
 Retrieval
 ~~~~~~~~~
 Like any element, a paragraph can be retrieved in a given context using
-``get_paragraph_by_position()`` or ``get_paragraph_by_content()``, and
-``get_paragraph_list()`` returns all the paragraphs in the context.
+``get_paragraph()`` with the appropriate ``content`` and/or ``position``
+parameters, while ``get_paragraph_list()`` returns all the paragraphs
+in the context.
 
-The ``get_paragraph_list()`` with a ``style`` named parameter restricts the
-search in order to get the paragraphs which use a given style.
+``get_paragraph_list()`` with a ``style`` named parameter restricts the
+search in order to get the paragraphs using a given style.
 
 Text processing
 ~~~~~~~~~~~~~~~
@@ -90,8 +91,8 @@ means no match. In case of success, the method returns a data structure whose
 attributes are the text node (segment), the position in the segment (position),
 and the matching sunstring itself (match).
 
-The search space includes all the text children and descendants
-of the calling context.
+The search space includes all the text children and descendants of the calling
+context.
 
 ``replace()`` is a context-based method. It takes two arguments, the first one
 being a search string like with ``search()``, the second one a text which will
@@ -102,7 +103,8 @@ second argument is missing, then nothing is changed, and the method just counts
 the number of matches. This method is context-based, so it recursively works on
 all the paragraphs, headers and spans below the calling element; the calling
 element may be any ODF element, including the elements that can't directly own a
-text content. It may be called at the document level.
+text content. It may be called at the document level. The return value is the
+number of replacements done.
 
 Multiple spaces and intra-paragraph breaks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
