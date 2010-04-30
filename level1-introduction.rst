@@ -105,7 +105,7 @@ In the present specification, some element properties or attributes may be
 named using multiple-word designations (ex: ``display name``, ``page layout``)
 that include spaces or dashes. Knowing that such designations are not easy to
 use as variable names in every programming language, spaces and dashes should
-be replaces by underscore ("_") characters in the lpOD executable
+be replaced by underscore ("_") characters in the lpOD executable.
 implementations.
 
 Method scopes
