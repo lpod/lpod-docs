@@ -51,7 +51,7 @@ standard.set_style_properties({'draw:fill-color': '#ffffff'})
 # Work on pages and add textframes
 #
 page1 = odf_create_draw_page('page1', name=u"Page 1")
-body.append_element(page1)
+body.append(page1)
 
 #
 # Text Frame
@@ -74,7 +74,7 @@ document.insert_style(big, automatic=True)
 text_frame = odf_create_text_frame([u"lpOD", u"Presentation", u"Cookbook"],
         size=('7cm', '5cm'), position=('11cm', '8cm'), style=u"colored",
         text_style=u"big")
-page1.append_element(text_frame)
+page1.append(text_frame)
 
 # Add a transition for this page
 page1.set_transition("fade", "fadeOverColor")
@@ -85,7 +85,7 @@ page1.set_transition("fade", "fadeOverColor")
 
 # Start a new page
 page2 = odf_create_draw_page(u"page2")
-body.append_element(page2)
+body.append(page2)
 
 # Embed an image from a file name
 local_uri = document.add_file(u'images/zoé.jpg')
@@ -93,14 +93,14 @@ local_uri = document.add_file(u'images/zoé.jpg')
 # Add image frame
 image_frame = odf_create_image_frame(local_uri, size=('60mm', '45mm'),
                                      position=('4.5cm', '7cm'))
-page2.append_element(image_frame)
+page2.append(image_frame)
 
 # Some text side by side
 list = odf_create_list([u"Item 1", u"Item 2", u"Item 3"])
 text_frame = odf_create_text_frame(list, size=('7cm', '2.5cm'),
                                    position=('12.5cm', '7cm'),
                                    style=u"colored")
-page2.append_element(text_frame)
+page2.append(text_frame)
 
 # Add a transition for this frame
 page2.set_transition("fade", "fadeOverColor")
@@ -111,22 +111,22 @@ page2.set_transition("fade", "fadeOverColor")
 
 # Last page
 page3 = odf_create_draw_page(u"page3")
-body.append_element(page3)
+body.append(page3)
 
 # Square
 square = odf_create_rectangle(shape_id=u"square", size=('8cm', '8cm'),
                               position=('17cm', '2.5cm'),
                               style=u"colored")
-page3.append_element(square)
+page3.append(square)
 
 # Circle
 circle = odf_create_ellipse(shape_id=u"circle", size=('8cm', '8cm'),
                             position=('2cm', '10cm'), style=u"colored")
-page3.append_element(circle)
+page3.append(circle)
 
 # Line
 line = odf_create_line(p1=('8cm', '5cm'), p2=('20cm', '17.5cm'))
-page3.append_element(line)
+page3.append(line)
 
 # Connector
 connector = odf_create_connector(connected_shapes=(square, circle),

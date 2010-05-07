@@ -71,7 +71,7 @@ for id, filename in enumerate(glob('./files/*.csv')):
 
     # Cells are XML elements
     second_cell.clear()
-    second_cell.append_element(odf_create_paragraph(u"World"))
+    second_cell.append(odf_create_paragraph(u"World"))
 
     # Modified cells must be pushed back
     # Could be pushed to another position
@@ -92,7 +92,7 @@ for id, filename in enumerate(glob('./files/*.csv')):
     table.set_cell_image((-1, 0), frame, type=document.get_type())
 
     # The table is a regular element
-    body.append_element(table)
+    body.append(table)
 
 # Save
 filename = 'spreadsheet.ods'
