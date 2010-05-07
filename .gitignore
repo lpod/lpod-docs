@@ -6,5 +6,6 @@ lpod.pdf
 cookbook/*.odt
 cookbook/*.ods
 cookbook/*.odp
+cookbook/python
 lpod-docs-*.tgz
 *.swp
