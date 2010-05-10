@@ -69,6 +69,10 @@ attached later through the standard ``append_element()`` or
    p = odf_create_paragraph(text='My first paragraph', style='TextBody')
    document.append_element(p)
 
+The text content may be get or set later using the generic ``set_text()``
+method, while the style may be processed at any time through ``get_style()``
+and ``set_style()``.
+
 Retrieval
 ~~~~~~~~~
 Like any element, a paragraph can be retrieved in a given context using
@@ -140,6 +144,10 @@ optional parameters:
 
 - ``suppress numbering``, a boolean which, if true, indicates that the heading
   must not be numbered (default false).
+
+Each of these properties may be retrieved or changed later using ``get_xxx()``
+or ``set_xxx()`` accessors, where ``xxx`` is the name of the optional parameter
+(and where any space is replaced by a "_").
 
 See below for explanations about level and numbering.
 
