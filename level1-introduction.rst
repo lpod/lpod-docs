@@ -113,14 +113,19 @@ Some ODF elements own boolean attributes whose legal values are the "true" and
 are not the same as the ``true`` and ``false`` boolean values, lpOD provides
 specialized methods for such attributes. The ``set_boolean_attribute()`` method
 makes sure that, if the provided attribute value is ``false`` according to the
-rules of the host language, the target attribute will be set with the "false"
+rules of the host language, the target attribute will be set to the "false"
 string. In addition, whatever the rules of the host language, any  "false",
-"off" or "no" string value, and the 0 numeric value, are regarded as ``false``.
-On the other hand, if the value is null (i.e. not defined), the attribute
-is deleted and not set to "false", following the common rule. There is a
-symmetric ``get_boolean_attribute()`` that returns a regular ``true`` or
-``false`` programmatic value (depending on the host language) according to the
-ODF "true" or "false" boolean value.
+"off" or "no" string value, and the 0 numeric value, are regarded as ``false``,
+as well as an empty (but defined) string. On the other hand, if the value is
+null (i.e. not defined), the attribute  is deleted and not set to "false",
+following the common rule. There is a symmetric ``get_boolean_attribute()``
+that returns a regular ``true`` or ``false`` programmatic value (depending on
+the host language) according to the ODF "true" or "false" boolean value.
+
+The following example, assuming ``p`` is a paragraph or heading, sets to "false"
+the ``text:restart-numbering`` attribute::
+
+  p.set_boolean_attribute('restart numbering', 0);
 
 Method scopes
 -------------
