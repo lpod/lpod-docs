@@ -300,7 +300,8 @@ set_attribute(name, value)
     Creates the attribute or updates its string value. The name should be
     prefixed. However, if a name without namespace prefix is provided, the
     prefix is automatically supposed to be the same as the prefix of the context
-    element.
+    element. If the value is null or note defined, then this method produces
+    the same effect as del_attribute().
 
 del_attribute(name)
     Deletes the attribute having this name. The name should be prefixed.
