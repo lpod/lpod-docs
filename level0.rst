@@ -309,10 +309,12 @@ del_attribute(name)
     automatically supposed to be the same as the prefix of the context element.
     Nothing is done if the attribute doesn't exist.
 
-get_text()
+get_text(recursive=false)
     Returns the text contents of the element in the most appropriate type for
-    text, e.g. unicode. It is not recursive. Null is returned if the element
-    contains no text.
+    text, e.g. unicode. It is not recursive by default. If the optional
+    ``recursive`` parameter is set to ``true``, then the method returns the
+    concatenated contents of all the children of the given element.
+    Null is returned if the element contains no text.
 
 set_text(text, after)
     Sets the text content of the element. The text is typed in the most
