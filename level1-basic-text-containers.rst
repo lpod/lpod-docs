@@ -149,6 +149,9 @@ Each of these properties may be retrieved or changed later using ``get_xxx()``
 or ``set_xxx()`` accessors, where ``xxx`` is the name of the optional parameter
 (and where any space is replaced by a "_").
 
+If a start value is set using the ``set_start_value()`` accessor, then the
+``restart numbering`` boolean is silently set to ``true``.
+
 See below for explanations about level and numbering.
 
 In addition, the layout of the headings depends partly on the paragraph style
