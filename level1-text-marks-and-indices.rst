@@ -147,9 +147,7 @@ of a single paragraph::
   paragraph.set_bookmark("AnotherBookmark", role="end", position=-1)
 
 The balance of ``start`` and ``end`` marks for a given range bookmark is not
-automatically checked. However, any ``set_bookmark()`` call with the same name
-and the same ``role`` value as a previous one fails, so the user can't
-incidentally create redundant ``start`` or ``end`` marks.
+automatically checked.
 
 If the created object is a range bookmark, ``set_bookmark()`` returns an ODF
 elements, representing the start point or the end point, according to the
