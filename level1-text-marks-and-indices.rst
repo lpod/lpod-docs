@@ -200,14 +200,17 @@ When ``set_bookmark()`` creates a range bookmark in a single instruction, it
 returns a pair of elements according to the same logic as ``get_bookmark()``
 (see below).
 
-The consistency of a range bookmark may be verified using the
+If the start position is not before the end position, a warning is issued and
+nothing is done.
+
+The consistency of an existing range bookmark may be verified using the
 ``check_bookmark()`` context- or document-based method, whose mandatory argument
 is the name of the bookmark, and that returns ``true`` if and only if the
 corresponding range bookmark exists, has defined start and end points AND if the
 end point is located after the start point. This method returns ``false``
 if anyone of these conditions is not met (as a consequence, ``get_bookmark()``
 may succeed while ``check_bookmark()`` fails for the same bookmark name). Of
-course, ``check_bookmark()`` always succeed with a regular position bookmark,
+course, ``check_bookmark()`` always succeeds with a regular position bookmark,
 so, with a position bookmark, this method is just en existence check.
 
 A range bookmark is not a single object; it's a pair of distinct ODF elements
