@@ -175,32 +175,26 @@ paragraph remains the same between the two instructions)::
   paragraph.set_bookmark("MyRange", before="xyz", role="start")
   paragraph.set_bookmark("MyRange", after="xyz", role="end")
 
-Another way to create a range bookmark in a single instruction is the use of
-a ``limits`` parameter instead of ``content``. The value of ``limits`` must be
-a pair of non-negative integer values specifying the start and end offsets
-of the bookmark relatively to the text content of the calling element. Knowing
-that 0 is the first position and -1 the last, a (0,-1) ``limits`` value means
-that the whole text of the element will become the content of the bookmark. The
-code hereafter creates a bookmark running between two given positions in a
-single paragraph::
+Another way to create a range bookmark in a single instruction is to provide
+a list of two positions through the ``position`` optional parameter. These two
+positions will be processed as the respective ``position`` parameters of the
+start en end elements, respectively.
 
-  paragraph.set_bookmark("MyRange", limits=(3,15))
+  paragraph.set_bookmark("MyRange", position=(3,15))
 
-When ``limits`` is provided, the second position can't before the first one and
-the method fails if one of the given positions is off limits, so the consistency
-of the bookmark is secured as soon as ``set_bookmark()`` returns an non-null
-value with this parameter.
+When two positions are provided, the second position can't be before the first
+one and the method fails if one of the given positions is off limits, so the
+consistency of the bookmark is secured as soon as ``set_bookmark()`` returns a
+non-null value with this parameter.
 
-The ``limits`` and ``content`` parameters may be combined in order to create a
+The ``position`` and ``content`` parameters may be combined in order to create a
 range bookmark whose content matches a given filter string AND is located
 in a delimited substring in the calling element. The next example creates a
-range bookmark whose content is the first substring that matches a "xyz"
-expression in search space that excludes the 5 first and the 5 last characters::
+range bookmark whose content will begin before the first substring that matches
+a "xyz" expression after the 5 first characters and will end after the first
+substring that matches the same expression within the 5 last characters::
 
-  paragraph.set_bookmark("MyRange", content="xyz", limits=(5, -6))
-
-...provided that the calling paragraph contains at least 13 characters and that
-a "xyz" string appear in the delimited area.
+  paragraph.set_bookmark("MyRange", content="xyz", position=(5, -6))
 
 When ``set_bookmark()`` creates a range bookmark in a single instruction, it
 returns a pair of elements according to the same logic as ``get_bookmark()``
