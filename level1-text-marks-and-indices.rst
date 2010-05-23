@@ -154,7 +154,7 @@ elements, representing the start point or the end point, according to the
 ``role`` parameter. In case of failure it returns a null value.
 
 A range bookmark may be entirely contained in the same paragraph. As a
-consequence, it's possible to create with a single call of ``set_bookmark()``,
+consequence, it's possible to create it with a single call of ``set_bookmark()``,
 with parameters that make sense for such a situation. If a ``content``
 parameter, whose value is a regexp, is provided instead of the ``before`` or
 ``after`` options, the given expression is regarded as covering the whole text
