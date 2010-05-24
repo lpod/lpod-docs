@@ -99,14 +99,22 @@ text, use the ``get_bookmark_position()`` method from the host element.
 
 A bookmark can be retrieved by its unique name using ``get_bookmark()``.
 The ODF element that contains the bookmark then can be obtained as the parent of
-the bookmark element. However, if the bookmark is located inside a span, its
-parent is the span element instead of a regular paragraph. So another method is
-provided, that returns the main text container of the bookmark. In the following
-example, the two lines return the text container (whatever its type, paragraph,
-heading or text span) where the bookmark is located::
+the bookmark element, using the ``get_parent`` method. Alternatively,
+``get_element_by_bookmark()``, whose argument is a bookmark name, directly
+returns the element that contains the bookmark. However, a bookmark may belong
+to a text span, that in turn may belong to another text span, and so on. In
+order to directly get the real paragraph or heading element that contains the
+bookmark (whatever the possible intermediate hierarchy of sub-containers), an
+additional ``get_paragraph_by_bookmark()`` method is available.
 
-  element = context.get_bookmark("BM1").parent
+In the following example, the first instruction returns the text container
+(whatever its type, paragraph, heading or text span) where the bookmark is
+located, while the second one returns the paragraph or the heading that
+ultimately contains the bookmark (note that in many situations both will return
+the same element)::
+
   element = context.get_element_by_bookmark("BM1")
+  element = context.get_paragraph_by_bookmark("BM1")
 
 The ``remove_bookmark()`` method may be used from any context above the
 container or the target bookmark, including the whole document, in order to
