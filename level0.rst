@@ -275,8 +275,12 @@ odf_create_element(data)
 Methods
 ~~~~~~~
 
-get_name()
-    Get the tag name with its prefix.
+get_tag()
+    Get the tag with its namespace prefix.
+
+set_tag(new_tag)
+    Changes the XML tag according to the given string (which must include the
+    namespace prefix).
 
 get_element_list(xpath_query)
     Get a list of odf_element children matching the given query. An empty list
