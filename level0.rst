@@ -376,3 +376,7 @@ serialize(pretty={true, false})
 
 delete(child)
     Removes the odf_element child.
+
+get_root()
+    Returns the root element (i.e. the top ancestor) of the document that
+    contains the calling element.
