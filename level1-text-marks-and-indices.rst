@@ -255,10 +255,14 @@ start or a bookmark end but not both.  In addition, a bookmark spreading across
 several elements gets corrupt if the element containing its start point or its
 end point is later removed.
 
-The ``remove_bookmark()`` method (which can be uses at any level, including the
+The ``remove_bookmark()`` method (which can be used at any level, including the
 whole document) allows the applications to safely remove balanced and
-non-balanced range bookmarks. In addition, a ``clean_marks()`` automatically
-removes non-balanced range bookmarks (as well as non-balanced index marks).
+non-balanced range bookmarks. Nothing is done if the given bookmark is not
+entirely contained in the calling context element. The return value is true if
+a bookmark has really been removed, or false otherwise.
+
+In addition, a ``clean_marks()`` automatically removes non-balanced range
+bookmarks (as well as non-balanced index marks).
 
 However, the present version of lpOD doesn't check the relative positions of
 the start and end points of a range bookmark when it's spread across two or
