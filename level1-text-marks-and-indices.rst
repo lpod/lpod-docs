@@ -270,7 +270,11 @@ entirely contained in the calling context element. The return value is true if
 a bookmark has really been removed, or false otherwise.
 
 In addition, a ``clean_marks()`` automatically removes non-balanced range
-bookmarks (as well as non-balanced index marks).
+bookmarks (as well as non-balanced index marks). Caution: this method is
+potentially harmful, knowing that a bookmark may be non-balanced in a given
+element while it's consistent at a higher level, knowing that its start and end
+points may belong to different paragraphs. On the other hand, it's always safe
+from the document root or body element.
 
 However, the present version of lpOD doesn't check the relative positions of
 the start and end points of a range bookmark when it's spread across two or
