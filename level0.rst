@@ -257,6 +257,11 @@ serialize(pretty={true, false})
   Returns the part as an XML document string. If pretty is true, the XML is
   pretty printed.
 
+store(pretty={true, false})
+  Serializes the part and stores it in the associated odf_container, if any.
+  A warning is issued and nothing is stored if the part is not associated to
+  a container.
+
 odf_element
 -----------
 
