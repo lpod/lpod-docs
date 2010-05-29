@@ -338,7 +338,7 @@ mark, two range index marks associated to the same user-defined index, and a
 lexical position index mark at the default position (i.e. before the first
 character of the paragraph)::
 
-  paragraph.set_index_mark("id1", type="toc", range=(3,5))
+  paragraph.set_index_mark("id1", type="toc", position=(3,5))
   paragraph.set_index_mark("id2", index_name="OpenStandards", content="XML")
   paragraph.set_index_mark("id3", index_name="OpenStandards", content="ODF")
   paragraph.set_index_mark("Go There" type="lexical")
