@@ -69,9 +69,8 @@ illustrates these possibilities::
   paragraph.set_bookmark("BM1", before="xyz")
   paragraph.set_bookmark("BM2", position=4)
 
-This method returns something in case of success (the returned value is just
-the ``odf_element`` corresponding to the new bookmark), or a null value
-otherwise.
+This method returns the new bookmark element (that is an ``odf_element``) in
+case of success, or a null value otherwise.
 
 When the bookmark must be put at the very end of the calling element, the
 ``position`` parameter may be set to ``end`` instead of a numeric value.
@@ -99,6 +98,12 @@ expression after a given position::
 
 In order to retrieve the position of a bookmark relatively to the containing
 text, use the ``get_bookmark_position()`` method from the host element.
+
+Thanks to the generic ``set_attribute()`` and ``set_attributes()`` methods,
+the user can set or unset any arbitrary attribute later, without automatic
+compliance check. In addition, arbitrary attributes may be set at the creation
+time (without check) using an optional ``attributes`` parameter, whose content
+is a table of name/value pairs.
 
 A bookmark can be retrieved by its unique name using ``get_bookmark()``.
 The ODF element that contains the bookmark then can be obtained as the parent of
@@ -277,8 +282,8 @@ point.
 Index marks
 -----------
 
-Index marks are bookmarks with particular roles. There are three kind of index
-marks, namely:
+Index marks may be handled like bookmarks but they functionality differ. There
+are three kinds of index marks, namely:
 
 - ``lexical`` marks, whose role is to designate text positions or ranges in
   order to use them as entries for a lexical (or alphabetical) index;
@@ -321,6 +326,12 @@ important differences:
   be associated to the current index entry; this name could be regarded as the
   arbitrary name of an arbitrary collection of text marks;
 
+- According to the ODF 1.1 specification (§7.1.3), lexical bookmarks may have
+  additional keys, so-called ``key1`` and ``key2``, and a boolean ``main entry``
+  attribute; these optional properties may be set (without automatic check)
+  using the optional ``attributes`` parameter that allows the applications to
+  add any arbitrary property to a bookmark or an index mark;
+
 - if the ``index name`` argument is provided, the mandatory value of ``type``
   is ``user``; as a consequence, if ``index name`` is set, the default ``type``
   becomes ``user`` and the ``type`` parameter is not required;
@@ -328,7 +339,7 @@ important differences:
 - every ``toc`` or ``user`` index mark owns a ``level`` property that specifies
   its hierarchical level in the table(s) of contents that may use it; this
   property may be provides using a ``level`` optional parameter; its default
-  value is 1; 
+  value is 1;
 
 - according to the ODF 1.1 specification, the range of an index mark can't
   spread across paragraph boundaries, i.e. the start en end points must be
