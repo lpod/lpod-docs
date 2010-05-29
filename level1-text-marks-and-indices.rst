@@ -73,6 +73,9 @@ This method returns something in case of success (the returned value is just
 the ``odf_element`` corresponding to the new bookmark), or a null value
 otherwise.
 
+When the bookmark must be put at the very end of the calling element, the
+``position`` parameter may be set to ``end`` instead of a numeric value.
+
 For performance reasons, the uniqueness of the given name is not checked. If
 needed, this check should be done by the applications, by calling
 ``get_bookmark()`` (with the same name and from the document context) just
@@ -321,6 +324,11 @@ important differences:
 - if the ``index name`` argument is provided, the mandatory value of ``type``
   is ``user``; as a consequence, if ``index name`` is set, the default ``type``
   becomes ``user`` and the ``type`` parameter is not required;
+
+- every ``toc`` or ``user`` index mark owns a ``level`` property that specifies
+  its hierarchical level in the table(s) of contents that may use it; this
+  property may be provides using a ``level`` optional parameter; its default
+  value is 1; 
 
 - according to the ODF 1.1 specification, the range of an index mark can't
   spread across paragraph boundaries, i.e. the start en end points must be
