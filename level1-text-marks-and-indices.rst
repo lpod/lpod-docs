@@ -142,7 +142,7 @@ The API allows the user to create a range bookmark within an existing content,
 as well as to retrieve and extract it according to its name. Range bookmarks
 share some common functionality with position bookmarks
 
-A range bookmark is inserted using the ``set_bookmark()`` like a position
+A range bookmark may be inserted using the ``set_bookmark()`` like a position
 bookmark. However, this method must be sometimes called twice knowing that the
 start and end points aren't always in the same context). In such a situation,
 an additional ``role`` parameter is required. The value of ``role`` is either
@@ -155,31 +155,27 @@ same bookmark name but with the two different values of ``role``. Example::
 The sequence above creates a range bookmark starting at a given position in a
 paragraph and ending at another position in another paragraph.
 
-Knowing that the default position is 0, and the last position in a string is -1,
-the following example creates a range bookmark that just covers the full content
-of a single paragraph::
+Knowing that the default position is 0, and the last position in a string is
+``end``, the following example creates a range bookmark that just covers the
+full content of a single paragraph::
 
   paragraph.set_bookmark("AnotherBookmark", role="start")
-  paragraph.set_bookmark("AnotherBookmark", role="end", position=-1)
+  paragraph.set_bookmark("AnotherBookmark", role="end", position="end")
 
 The balance of ``start`` and ``end`` marks for a given range bookmark is not
 automatically checked.
 
-If the created object is a range bookmark, ``set_bookmark()`` returns an ODF
-elements, representing the start point or the end point, according to the
-``role`` parameter. In case of failure it returns a null value.
-
 A range bookmark may be entirely contained in the same paragraph. As a
-consequence, it's possible to create it with a single call of ``set_bookmark()``,
-with parameters that make sense for such a situation. If a ``content``
-parameter, whose value is a regexp, is provided instead of the ``before`` or
-``after`` options, the given expression is regarded as covering the whole text
-content of to be enclosed by the bookmark, and this content is supposed to be
-entirely included in the calling paragraph. So the range bookmark is immediately
-created and automatically balanced. As soon as ``content`` is present, ``role``
-is not needed (and is ignored). Like ``before`` and ``after``, ``content`` may
-be combined with ``position``. In addition, the range bookmark is automatically
-complete and consistent.
+consequence, it's possible to create it with a single call of
+``set_bookmark()``, with parameters that make sense for such a situation. If a
+``content`` parameter, whose value is a regexp, is provided instead of the
+``before`` or ``after`` options, the given expression is regarded as covering
+the whole text content of to be enclosed by the bookmark, and this content is
+supposed to be entirely included in the calling paragraph. So the range bookmark
+is immediately created and automatically balanced. As soon as ``content`` is
+present, ``role`` is not needed (and is ignored). Like ``before`` and ``after``,
+``content`` may be combined with ``position``. In addition, the range bookmark
+is automatically complete and consistent.
 
 Note that the following instruction::
 
@@ -204,11 +200,11 @@ consistency of the bookmark is secured as soon as ``set_bookmark()`` returns a
 non-null value with this parameter.
 
 The ``position`` and ``content`` parameters may be combined in order to create a
-range bookmark whose content matches a given filter string AND is located
-in a delimited substring in the calling element. The next example creates a
-range bookmark whose content will begin before the first substring that matches
-a "xyz" expression after the 5 first characters and will end after the first
-substring that matches the same expression within the 5 last characters::
+range bookmark whose content matches a given filter string in a delimited
+substring in the calling element. The next example creates a range bookmark
+whose content will begin before the first substring that matches a "xyz"
+expression contained in a range whose the 5 first characters and the 6 last
+characters are excluded::
 
   paragraph.set_bookmark("MyRange", content="xyz", position=(5, -6))
 
