@@ -383,8 +383,11 @@ serialize(pretty={true, false})
     Returned the element serialized as an XML string. The resulting string is
     indented if the pretty parameter is true.
 
-delete(child)
-    Removes the odf_element child.
+delete()
+    Removes the calling odf_element.
+
+delete_element(child)
+    Removes the given child element.
 
 get_parent()
     Returns the parent of the calling element, or null if the calling element
