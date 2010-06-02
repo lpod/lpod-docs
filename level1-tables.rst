@@ -229,7 +229,7 @@ it produces a similar result, but the new rows are inserted *after* the
 reference row. Note that the two following instructions produce the same
 result::
 
-   .add_row(number=1, after=-1)
+   t.add_row(number=1, after=-1)
    t.add_row()
 
 The ``add_column()`` does the same thing with columns as ``add_rows()`` for
