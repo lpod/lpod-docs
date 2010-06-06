@@ -203,29 +203,7 @@ odf_xmlpart(part_name, container)
   must correspond to an existing ODF XML part name. The given name is
   just the functional name of the part, not the real storage name which
   depends on the packaging type of the container. The return value is
-  an odf_xmlpart instance, or null if case of failure for any reason.
-
-General I/O Method
-~~~~~~~~~~~~~~~~~~~
-
-container()
-  Returns the odf_container object from which the current instance has
-  been extracted.
-
-odf_xmlpart
------------
-
-The odf_xmlpart object represents one of the XML components of an ODF document,
-i.e. content, styles, meta, settings.
-
-Constructors
-~~~~~~~~~~~~
-
-odf_xmlpart(part_name, container)
-    Extracts the part from the container and load it as an XML part.
-
-The main interface allows the application to retrieve odf_element lists or
-individual instances according to given XPath expressions.
+  an odf_xmlpart instance, or null in case of failure for any reason.
 
 Methods
 ~~~~~~~
@@ -236,6 +214,10 @@ append_element(element)
   XML string, it's parsed as a new element then appended. If it's a non-XML
   flat string, a new element is created with the given string as its name (tag)
   then appended. The appended element is returned.
+
+container()
+  Returns the odf_container object from which the current instance has
+  been extracted.
 
 delete(element)
   Deletes the given odf_element from the part.
@@ -270,7 +252,7 @@ of the XML library used behind so they offer a basic XML API.
 
 The main interface is sending XPath queries to get odf_element's.
 
-Constructors
+Constructor
 ~~~~~~~~~~~~~
 
 odf_create_element(data)
