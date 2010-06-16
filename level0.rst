@@ -361,7 +361,7 @@ insert_element(element, position=WITHIN, offset=value)
 clear()
     Removes all children and text from the element.
 
-copy()
+clone()
     Returns another instance of the element with the same properties.
 
 serialize(pretty={true, false})
