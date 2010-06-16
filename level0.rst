@@ -256,8 +256,11 @@ Constructor
 ~~~~~~~~~~~~~
 
 odf_create_element(data)
-    Creates an odf_element from a fragment of XML data. XML prefixes common to
-    ODF are allowed.
+    Creates an odf_element from a fragment of XML data or an arbitrary tag.
+    If the given argument is valid XML, its parsed and the new element is
+    created accordingly, possibly with a complex structure. If the argument
+    is a non-XML string, its regarded as a tag (possibly with a namespace
+    prefix), and the new element is created internally without XML parsing. 
 
 Methods
 ~~~~~~~
