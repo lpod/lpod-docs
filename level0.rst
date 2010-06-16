@@ -316,14 +316,6 @@ set_text(text, after)
     after the closing tag (useful for inserting an element in the middle of
     text content).
 
-get_creator()
-    Shortcut to get the creator value of odf_element's containing a
-    "dc:creator" element. Null is returned if no creator is set.
-
-get_date()
-    Shortcut to get the date value of odf_element's containing a
-    "dc:date" element. Null is returned if no creator is set.
-
 get_text_content()
     Shortcut to get the text of paragraphs inside the element. An empty string
     is returned by default.
