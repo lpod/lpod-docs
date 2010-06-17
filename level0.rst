@@ -78,9 +78,6 @@ odf_new_container_from_template(uri)
 Methods
 ~~~~~~~
 
-clone()
-  Returns a new odf_container that is a copy of the current instance.
-
 del_part(part_name)
   Deletes a part in the container. The target part is selected
   according to the same rules as with get_part().
@@ -111,6 +108,12 @@ get_part(part_name)
 
   The return value is null if the given part_name doesn't match an
   existing part.
+
+get_mimetype()
+  Returns the MIME type of the container.
+
+set_mimetype(mimetype)
+  Changes or creates a MIME type information in the container.
 
 save()
   Commits every change previously done through other odf_container
