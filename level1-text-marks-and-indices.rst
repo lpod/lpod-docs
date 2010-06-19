@@ -62,9 +62,9 @@ the API offers more sophisticated functionality.
 
 The position can be explicitly provided by the user with a ``position``
 parameter. Alternatively, the user can provide a regular expression using a
-``before`` or ``after`` parameter, so the bookmark is set immediately before or
-after the first substring that matches the expression. The code below
-illustrates these possibilities::
+``before`` or ``after`` parameter, whose value is a search string (or a regex)
+so the bookmark is set immediately before or after the first substring that
+matches the expression. The code below illustrates these possibilities::
 
   paragraph.set_bookmark("BM1", before="xyz")
   paragraph.set_bookmark("BM2", position=4)
