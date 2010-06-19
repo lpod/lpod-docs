@@ -349,6 +349,10 @@ methods, where ``xxx`` stands for one of the following:
 - ``protect``: boolean (default false), tells the applications that the cell
    can't be edited.
 
+If ``set_currency`` is used with a non-null value, then the ``type`` of the
+cell is automatically set to ``currency``. If ``set_type`` forces a type that
+is not ``currency``, then the cell currency is set to none.
+
 Cell span extension
 -------------------
 
