@@ -105,7 +105,8 @@ compliance check. In addition, arbitrary attributes may be set at the creation
 time (without check) using an optional ``attributes`` parameter, whose content
 is a table of name/value pairs.
 
-A bookmark can be retrieved by its unique name using ``get_bookmark()``.
+A bookmark can be retrieved by its unique name using ``get_bookmark()`` from
+any element (including the root context).
 The ODF element that contains the bookmark then can be obtained as the parent of
 the bookmark element, using the ``get_parent`` method. Alternatively,
 ``get_element_by_bookmark()``, whose argument is a bookmark name, directly
