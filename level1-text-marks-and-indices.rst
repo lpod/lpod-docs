@@ -127,7 +127,7 @@ the same element)::
   element = context.get_paragraph_by_bookmark("BM1")
 
 The ``remove_bookmark()`` method may be used from any context above the
-container or the target bookmark, including the whole document, in order to
+container or the target bookmark, including the document root, in order to
 delete a bookmark whatever its container. The only required parameter is the
 bookmark name.
 
