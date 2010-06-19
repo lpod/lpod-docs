@@ -108,13 +108,14 @@ is a table of name/value pairs.
 A bookmark can be retrieved by its unique name using ``get_bookmark()`` from
 any element (including the root context).
 The ODF element that contains the bookmark then can be obtained as the parent of
-the bookmark element, using the ``get_parent`` method. Alternatively,
-``get_element_by_bookmark()``, whose argument is a bookmark name, directly
-returns the element that contains the bookmark. However, a bookmark may belong
-to a text span, that in turn may belong to another text span, and so on. In
-order to directly get the real paragraph or heading element that contains the
-bookmark (whatever the possible intermediate hierarchy of sub-containers), an
-additional ``get_paragraph_by_bookmark()`` method is available.
+the bookmark element, using the ``get_parent`` method from the retrieved
+bookmark. Alternatively,  ``get_element_by_bookmark()``, whose argument is a
+bookmark name, directly returns the element that contains the bookmark. However,
+a bookmark may belong to a text span, that in turn may belong to another text
+span, and so on. In order to directly get the real paragraph or heading element
+that contains the bookmark (whatever the possible intermediate hierarchy of
+sub-containers), an additional ``get_paragraph_by_bookmark()`` method is
+available.
 
 In the following example, the first instruction returns the text container
 (whatever its type, paragraph, heading or text span) where the bookmark is
