@@ -118,6 +118,14 @@ as the first argument and the following optional parameters:
 - ``display``: boolean, tells that the section should be visible (default is 
   true).
 
+A new section may be inserted or appended somewhere using ``insert_element()``
+or ``append_element()``. (Of course, an existing section may be copied and
+pasted thanks to the common ``clone()`` method.)
+
+A section may be retrieved using ``get_section()`` with the unique name of the
+needed section as argument, while ``get_section_list()`` returns all the
+sections (if any) of the context.
+
 Draw pages
 ----------
 
