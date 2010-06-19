@@ -332,11 +332,10 @@ For the simplest cases, the cell-based ``get_text()`` method directly returns
 the text content as a flat string, without any structural information and
 whatever the number and the type of the content elements.
 
-The properties may be accessed using ``set_properties()`` and
-``get_properties()``; ``set_properties()`` works with the following optional
-named parameters:
+The cell properties may be read or changes using ``get_xxx()`` and ``set_xxx()``
+methods, where ``xxx`` may be replaced by one of the following:
 
-- ``style``: the name of a cell style;
+- ``style``: the name of the cell style;
 - ``type``: the cell value type, which may be one of the ODF supported data
    types, used when the cell have to contain a computable value (omitted with
    text cells);
@@ -347,11 +346,8 @@ named parameters:
 - ``formula``: a calculation formula whose result is a computable value (the
    grammar and syntax of the formula is application-specific and not ckecked
    by the lpOD API (it's stored as flat text and not interpreted);
-- ``protected``: boolean (default false), tells the applications that the cell
+- ``protect``: boolean (default false), tells the applications that the cell
    can't be edited.
-
-All the existing properties may be retrieved using the cell ``get_properties()``
-which returns a list of named parameters.
 
 Cell span extension
 -------------------
