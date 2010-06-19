@@ -333,7 +333,7 @@ the text content as a flat string, without any structural information and
 whatever the number and the type of the content elements.
 
 The cell properties may be read or changes using ``get_xxx()`` and ``set_xxx()``
-methods, where ``xxx`` may be replaced by one of the following:
+methods, where ``xxx`` stands for one of the following:
 
 - ``style``: the name of the cell style;
 - ``type``: the cell value type, which may be one of the ODF supported data
