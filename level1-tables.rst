@@ -204,8 +204,8 @@ attributes are:
 
 - ``style``: the name of the applicable style (which should be at display time
   a valid row or column style);
-- ``cell style``: the default style which apply to each cell in the column or
-  row unless this cell has no defined style attribute;
+- ``default cell style name``: the default style which apply to each cell in
+  the column or row unless this cell has no defined style attribute;
 - ``visibility``: specifies the visibility of the row or column; legal values
   are ``visible``, ``collapse`` and ``filter``.
 
