@@ -232,7 +232,12 @@ result::
    t.add_row(number=1, after=-1)
    t.add_row()
 
-The ``add_column()`` does the same thing with columns as ``add_rows()`` for
+The inserted rows are initialized as clones of the row used as the reference
+through the ``after`` or ``before`` or of the last existing row if the new
+row in appended at the end. So the new rows (and their cells) inherit the same
+style and content as an existing one.
+
+The ``add_column()`` does the same thing with columns as ``add_row()`` for
 rows. However, because the cells belong to rows, it works according to a very
 different logic. ``add_column()`` inserts new column objects (clones of an
 existing column), then it goes through all the rows and inserts new cells
