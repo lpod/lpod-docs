@@ -235,7 +235,7 @@ result::
 The ``add_column()`` does the same thing with columns as ``add_rows()`` for
 rows. However, because the cells belong to rows, it works according to a very
 different logic. ``add_column()`` inserts new column objects (clones of an
-existing column), the it goes through all the rows and inserts new cells
+existing column), then it goes through all the rows and inserts new cells
 (cloning the cell located at the reference position) in each one.
 
 Of course, it's possible to use ``insert_element()`` in order to insert a row,
