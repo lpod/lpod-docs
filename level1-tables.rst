@@ -289,7 +289,9 @@ and ``set_column_header()`` table-based methods, and retrieved using
 ``get_row_header()`` and ``get_column_header()``. A row header object brings its
 own ``add_row()`` method, which works like the table-based ``add_row()`` but
 appends the new rows in the space of the row header. The same logic applies to
-column headers which have a ``add_column()`` method.
+column headers which have a ``add_column()`` method. An optional positive
+integer argument may specify the number or rows or columns to include in the
+header (default=1).
 
 A table can't directly contain more than one row header and one column header.
 However, a column group can contain a column header, while a row group can
