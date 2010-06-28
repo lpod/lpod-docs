@@ -285,7 +285,7 @@ Table headers
 
 One or more rows or columns in the beginning of a table may be organized as
 a *header*. Row and columns headers are created using the ``set_row_header()``
-and ``set_columns_header()`` table-based methods, and retrieved using
+and ``set_column_header()`` table-based methods, and retrieved using
 ``get_row_header()`` and ``get_column_header()``. A row header object brings its
 own ``add_row()`` method, which works like the table-based ``add_row()`` but
 appends the new rows in the space of the row header. The same logic applies to
