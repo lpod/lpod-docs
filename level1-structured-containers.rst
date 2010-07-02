@@ -148,7 +148,9 @@ A draw page must have an identifier (unique for the document) and may have the
 following parameters, to be set at creation time or later:
 
 - ``name``: an optional, but unique if provided, name (which may be made visible
-   for the end-users);
+   for the end-users); this parameter is strongly recommended knowing that some
+   ODF applications don't preserve the draw page identifier, so the name remains
+   the only stable identifier;
 
 - ``style``: the name of a drawing page style (existing or to be defined);
 
@@ -174,11 +176,16 @@ integrates it as the last page of a presentation document::
                            )
    document.append_element(dp)
 
-All these parameters may retrieved or changed later using ``get_properties()``
-and ``set_properties()`` with draw page objects.
+All these parameters may retrieved or changed later using ``get_attributes()``
+and ``set_attributes()`` with draw page objects.
 
-An existing draw page may be retrieved in the document through
-``get_draw_page()`` with the identifier as argument.
+An existing draw page may be retrieved in a given context (that should be the
+document body or root) through ``get_draw_page()`` with the identifier as
+argument. This methods attempts to retrieve a draw page whose identifier matches
+the argument, then, in case of failure, it looks for a draw page whose name
+matches. Alternatively, the user can explicitly select a draw page by name
+using ``get_draw_page_by_name()``. The whole list of draw pages may be returned
+by ``get_draw_page_list()``.
 
 Populating a draw page doesn't require element-specific methods, knowing that:
 
