@@ -190,8 +190,9 @@ document body or root) through ``get_draw_page()`` with the identifier as
 argument. This methods attempts to retrieve a draw page whose identifier matches
 the argument, then, in case of failure, it looks for a draw page whose name
 matches. Alternatively, the user can explicitly select a draw page by name
-using ``get_draw_page_by_name()``. The whole list of draw pages may be returned
-by ``get_draw_page_list()``.
+using ``get_draw_page_by_name()`` or according to its zero-based position in
+the document using ``get_draw_page_by_position()``. The whole list of draw
+pages may be returned by ``get_draw_page_list()``.
 
 Populating a draw page doesn't require element-specific methods, knowing that:
 
