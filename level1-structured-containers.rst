@@ -89,6 +89,12 @@ All the items in an ODF list have the same level. Knowing that a list may be
 inside an item belonging to another list, the hierarchy is represented by the
 structural list imbrication, not by item attributes.
 
+A list may be retrieved using the context-based ``get_list()`` method, whose
+optional parameters are the same as ``get_element()``. A ``get_list_by_id()``
+method selects a list according to its (optional) identifier. In addition,
+``get_list_list()`` selects the item lists contained in the context according
+to the same rules as ``get_element_list()``.
+
 
 Sections
 --------
