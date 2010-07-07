@@ -147,8 +147,9 @@ of lpOD (level 1) supports frames and drawing shapes, as introduced in the
      :align: center
 
 A draw page is created using ``odf_create_draw_page()`` and integrated through
-``insert_element()``. Note that a draw page should be inserted at the document
-body level, knowing that it's a top level content element.
+``insert_element()`` or ``append_element()``. Note that a draw page should be
+inserted at the document body level, knowing that it's a top level content
+element.
 
 A draw page must have an identifier (unique for the document) and may have the
 following parameters, to be set at creation time or later:
