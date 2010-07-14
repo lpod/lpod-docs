@@ -88,17 +88,16 @@ del_part(part_name)
   regarding an odf_container.
 
 get_part(part_name)
-  Extracts and returns a part, i.e. either a member file of the package,
-  if the physical container is a regular ODF zip archive, or a subset of
-  the XML content, if the package is a flat XML file. The extracted part
-  is returned as raw data; it's not parsed or interpreted in any way.
+  Extracts and returns a part, i.e. a member file of the package. The extracted
+  part is returned as raw data; it's not parsed or interpreted in any way.
 
   The part to be extracted depends on the given part_name and is selected
   according to the following rules:
 
-  If part_name is "content", "styles", "meta" or "settings", then the
-  selected part is the "part_name.xml" member file in case of zip archive
-  or the "office:document-part_name" in case of flat XML file.
+  If ``part_name`` is one of the ``CONTENT``, ``STYLES``, ``META`` or
+  ``SETTINGS`` symbolic constants, then the selected part is the corresponding
+  "part_name.xml" member file of the ODF package. or the
+  "office:document-part_name" in case of flat XML file.
 
   For any other part, the given part_name must be either the explicit
   path/name of the needed resource in the zip package, or the full name
