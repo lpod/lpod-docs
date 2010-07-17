@@ -185,3 +185,142 @@ the last matching element, -1 being the position of the last one).
 So a large part of the lpOD functionality is described with the ``odf_element``
 class.
 
+How to persistently update a document
+--------------------------------------
+
+Every part may be updated using specific methods that creates, change or remove
+elements, but this methods don't produce any persistent effect.
+
+The updates done in a given part may be either exported as an XML string, or
+returned to the ``odf_document`` instance from which the part depends. With the
+first option, the user is responsible of the management of the exported XML
+(that can't be used as is through a typical office application), and the
+original document is not persistently changed. The second option instructs the
+``odf_document`` that the part has been changed and that this change should be
+reflected as soon as the physical resource is wrote back. However, a part-based
+method can't directly update the resource. The changes may be made persistent
+through a ``save()`` method of the ``odf_document`` object.
+
+serialize
+~~~~~~~~~~
+
+This part-based method returns a full XML export of the part. The returned XML
+string may be stored somewhere and used later in order to create or replace a
+part in another document, or to feed another application.
+
+A ``pretty`` named option may be provided. If set to ``TRUE``, this option
+specifies that the XML export should be as human-readable as possible.
+
+The example below returns a conveniently indented XML representation of the
+content part of a document::
+
+   doc = odf_get_document("C:\MyDocuments\test.odt")
+   part = doc.get_part(CONTENT)
+   xml = part.serialize(pretty=TRUE)
+
+store
+~~~~~~
+
+This part-based method stores the present state (possibly changed) of the part
+in a temporary, non-persistent space, waiting for the execution of the next
+call of the document-based ``save()`` method.
+
+The following example selects the ``CONTENT`` part of a document, removes the
+last paragraph of this content, then sends back the changed content to the
+document, that in turn is made persistent::
+
+   content = document.get_part(CONTENT)
+   p = content.get_body.get_paragraph(-1)
+   p.delete
+   content.store
+   document.save
+
+Like ``serialize()``, ``store()`` allows the ``pretty`` option.
+
+add_file
+~~~~~~~~~
+
+This document-based method stores an external file "as is" in the document
+container, without interpretation. The first argument is the path of the
+source file. The second one is the destination path within the ODF package.
+As an example, the instruction below inserts a binary image file available
+in the current directory in the "Thumbnails" folder of the document package::
+
+   document.add_file("logo.png", "Thumbnails/thumbnail.png")
+
+The second argument may be omitted. In such as case, the destination folder
+in the package is either ``Pictures`` if the source is identified as an
+image file (caution: such a recognition may not work with any image type in
+any environment) or the root folder.
+
+This method may be used in order to import an external XML file as a replacement
+of a conventional ODF XML part without interpretation. As an example, the
+following instruction replaces the ``STYLES`` part of a document by an arbitrary
+file::
+
+   document.add_file("custom_styles.xml", STYLES);
+
+Note that the physical effet of ``add_file()`` is not immediate; the file is
+really added (and the source is really required) only when the ``save()``
+method, introduced below, is called. As a consequence, any update that could be
+done in a document part loaded using ``add_file()`` is lost. According to the
+same logic, a document part loaded using ``add_file()`` is never available in
+the current document instance; it becomes available if the current instance
+is made persistent through a ``save()`` call then a new instance is created
+using the saved package with ``odf_get_document``.
+
+set_part
+~~~~~~~~~
+
+Allows the user to create or replace a document part using data in memory.
+The first argument is the target ODF part, while the second one is the source
+string.
+
+del_part
+~~~~~~~~~
+
+Deletes a part in the document package. The deletion is physically done through
+the subsequent call of ``save()``. The argument may be either the symbolic
+constant standing for a conventional ODF XML part or the real path of
+the part in the package.
+
+The following sequence replaces (without interpretation) the current document
+content part by an external content::
+
+   document.del_part(CONTENT);
+   document.add_file("/somewhere/stuff.xml", CONTENT);
+
+Note that the order of these instructions is not significant; when ``save()``
+is called, it executes all the deletions then all the part insertions and/or
+updates.
+
+save
+~~~~~
+
+This method is provided by the ``odf_document``. If the document instance is
+associated with a regular ODF resource available for update (meaning that it
+has been created using ``odf_get_container`` and that the user has a write
+access to the resource), the resource is wrote back and reflects all the
+changes previously committed by one or more document parts using their
+respective ``store()`` methods.
+
+As an example, the sequence below updates a ODF file according to changes made
+in the ``META`` and ``CONTENT`` parts::
+
+   doc = odf_get_document("/home/users/jmg/report.odt")
+   meta = doc.get_part(META)
+   content = doc.get_part(CONTENT)
+   # meta updates are made here
+   meta.store
+   # content updates are made here
+   content.store
+   document.save
+
+An optional ``target`` parameter may be provided to ``save()``. If set, this
+parameter specifies an alternative destination for the file (it produces the
+same effect as the "File/Save As" feature of a typical office software).
+The ``target`` option is always allowed, but it's mandatory with
+``odf_document`` instances created using a ``odf_new_document_from...``
+constructor.
+
+
