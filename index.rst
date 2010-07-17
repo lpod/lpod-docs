@@ -83,6 +83,7 @@ lpOD Architecture level 1
    :maxdepth: 2
 
    level1-introduction.rst
+   level1-document.rst
    level1-basic-text-containers.rst
    level1-text-marks-and-indices.rst
    level1-tables-of-content.rst
