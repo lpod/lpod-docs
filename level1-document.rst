@@ -153,6 +153,12 @@ bytes.
 
 Returns ``null`` if case of failure.
 
+get_parts
+~~~~~~~~~~
+
+Returns the list of the document parts.
+
+
 Accessing data inside a part
 -----------------------------
 
