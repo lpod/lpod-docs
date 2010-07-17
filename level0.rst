@@ -108,6 +108,10 @@ get_part(part_name)
   The return value is null if the given part_name doesn't match an
   existing part.
 
+get_parts()
+
+  Returns the list of the parts included in the container.
+
 get_mimetype()
   Returns the MIME type of the container.
 
