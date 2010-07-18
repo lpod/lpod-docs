@@ -118,11 +118,8 @@ This constructor requires only one named parameter, that is either ``url`` or
 ``content``. The first one is a link to an external graphic resource, while the
 second one is the binary content of an image in BASE64 encoding.
 
-An image may be used as a text container. It's possible to incorporate text
-containers (typically paragraphs or item lists) in an image object (in order
-to display the text in the foreground). To do so, the user can use the generic
-``insert_element()`` or ``append_element()`` method from the image object,
-with the needed text container as argument.
+These properties may be retrieved or changed later using ``get_uri()``,
+``set_uri()``, ``get_content()``, ``set_content()``.
 
 An image should be incorporated in a document through a *frame* (see above).
 
