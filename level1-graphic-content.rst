@@ -45,14 +45,17 @@ A frame is created using ``odf_create_frame()`` with the following properties:
 
 - ``style``: the name of a graphic style for the frame;
 
-- ``position``, the coordinates of the frame, as a list of 2 strings
-   containing the X and Y positions (each string specifies the number
-   and the unit, ex. "1cm", "2pt"), knowing that the default values are 0;
+- ``position``, the coordinates of the frame, as a list of 2 strings or as 2
+   comma-separated fields in a single string, containing the X and Y positions,
+   each string specifying the number and the unit (ex. "1cm", "2pt"), knowing
+   that the default value is 0 and the default length unit is "cm"
+   (centimeter);
 
-- ``size``: the size, provided either in absolute values as the position, as
+- ``size``: the size, provided either in absolute values like the position, as
    percentages, or using the special keywords ``scale`` or ``scale-min`` (see
    ODF §9.3 for details); both absolute and relative values may be provided as
-   a string, separated by a space, if needed, like "10cm 12%";
+   a string, separated by a comma, if needed, like "10cm, 12%" or as a list of
+   2 strings;
 
 - ``z index``: an optional sequence number that allows the user to assign a
    particular order of rendering, knowing that frames are rendered by default
@@ -60,6 +63,14 @@ A frame is created using ``odf_create_frame()`` with the following properties:
 
 - ``class``: an optional presentation class (see the "Class" subsection in
    ODF §9.6.1).
+
+For an existing frame, the properties above may be read or changed using
+``get_xxx()`` or ``set_xxx()`` methods where "xxx" designates the appropriate
+property.
+
+A frame may have a title and/or a description, that may be get or set using
+``get_title()``, ``set_title()``, ``get_description()``, or 
+``set_description()``.
 
 A frame may be inserted in place through the standard ``insert_element()``
 method, but the behavior depends on the context.
