@@ -80,7 +80,7 @@ odf_new_document_from_template(uri)
 Same as ``odf_get_document``, but the ODF resource is used in read only mode,
 i.e. it's used as a template in order to generate other ODF physical documents.
 
-odf_new_document_from_type(doc_type)
+odf_new_document(doc_type)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Unlike other constructors, this one generates a ``odf_document`` instance from
@@ -93,7 +93,7 @@ instance is not persistent; no file is created before an explicit use of the
 
 The following example creates a spreadsheet document instance::
 
-   doc = odf_new_document_from_type('spreadsheet')
+   doc = odf_new_document('spreadsheet')
 
 The real content of the instance depends on the default template.
 
