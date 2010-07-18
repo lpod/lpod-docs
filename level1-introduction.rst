@@ -162,7 +162,9 @@ An element-specific method works with specific ODF elements only, according to
 their particular role. For example ``set_header()`` is provided with ODF master
 pages, because a header is an extension of a page style element, while
 ``set_background()`` is available with objects where a background definition
-makes sense (such as page layouts or paragraph styles).
+makes sense (such as page layouts or paragraph styles). Remember that all the
+generic methods available for any element are introduced in the lpOD "level0"
+documentation chapter.
 
 
 Common element-specific functions and methods
