@@ -336,7 +336,7 @@ insert_element(element, position=WITHIN, offset=value)
     Insert the given odf_element at a given position, that is defined according
     to the position parameter, whose possible values are:
     
-    FIRST_CHILD: the odf_element will be the first child.
+    FIRST_CHILD: the odf_element will be the first child (default).
     LAST_CHILD: the odf_element will be the last child.
     NEXT_SIBLING: the odf_element will be inserted just after.
     PREV_SIBLING: the odf_element will be inserted just before.
