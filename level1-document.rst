@@ -42,8 +42,7 @@ XML schema. The common lpOD class for these parts is ``odf_xmlpart``.
 
 lpOD provides specialized classes for the conventional ODF XML parts, namely
 ``odf_meta``, ``odf_content``, ``odf_styles``, ``odf_settings``,
-``odf_manifest``; some of them provide methods dedicated to get or set the
-document metadata.
+``odf_manifest``.
 
 In order to process particular pieces of content in the most complex parts,
 i.e. ``odf_content`` and ``odf_style``, the ``odf_element`` class and its
