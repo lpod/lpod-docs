@@ -31,7 +31,8 @@ Manifest
    :local:
 
 The manifest part of a document holds the list of the files included in the
-associated ``odf_container``. It's represented by a ``odf_manifest`` object.
+container associated to the ``odf_document``. It's represented by a
+``odf_manifest`` object.
 
 Each included file is represented by a ``odf_file_entry`` object, whose
 properties are
