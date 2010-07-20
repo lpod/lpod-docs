@@ -1,7 +1,6 @@
-.. Copyright (c) 2009 Ars Aperta, Itaapy, Pierlis, Talend.
+.. Copyright (c) 2010 Ars Aperta, Itaapy, Pierlis, Talend.
 
-   Authors: David Versmisse <david.versmisse@itaapy.com>
-            Hervé Cauwelier <herve@itaapy.com>
+   Authors: Hervé Cauwelier <herve@itaapy.com>
             Jean-Marie Gouarné <jean-marie.gouarne@arsaperta.com>
             Luis Belmar-Letelier <luis@itaapy.com>
 
