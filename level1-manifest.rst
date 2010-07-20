@@ -87,6 +87,9 @@ file::
 
    manifest.set_entry('Pictures/xyz.jpg', type = 'image/jpeg')
 
+If the entry path is a folder, i.e. if its last character is "/", then the
+media type is automatically set to an empty value.
+
 Beware: adding or removing a manifest entry doesn't automatically add or remove
 the corresponding file in the container, and there is no automatic consistency
 check between the real content of the part and the manifest.
@@ -105,4 +108,9 @@ given type and the real content of the corresponding file. On the other hand,
 but there is no other check regarding this property, so the user must check the
 consistency between the given path and the real path of the corresponding
 resource.
+
+If ``set_path()`` puts a path whose last character is "/", the media type of
+the entry is automatically set to an empty string. However, for users who know
+exactly what they do, ``set_type()`` allows to force a non-empty type with
+*after* ``set_path()``.
 
