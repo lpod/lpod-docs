@@ -111,6 +111,6 @@ resource.
 
 If ``set_path()`` puts a path whose last character is "/", the media type of
 the entry is automatically set to an empty string. However, for users who know
-exactly what they do, ``set_type()`` allows to force a non-empty type with
-*after* ``set_path()``.
+exactly what they do, ``set_type()`` allows to force a non-empty type *after*
+``set_path()``.
 
