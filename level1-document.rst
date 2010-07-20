@@ -27,6 +27,9 @@
 Documents
 ==========
 
+.. contents::
+   :local:
+
 This manual page describes the ``odf_document``, and the common features of any
 ``odf_part`` of a ``odf_document``.
 
