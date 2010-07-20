@@ -310,11 +310,11 @@ del_attribute(name)
     Nothing is done if the attribute doesn't exist.
 
 get_text(recursive=false)
-    Returns the text contents of the element in the most appropriate type for
-    text, e.g. unicode. It is not recursive by default. If the optional
-    ``recursive`` parameter is set to ``true``, then the method returns the
-    concatenated contents of all the children of the given element.
-    Null is returned if the element contains no text.
+    Returns the text content of the element as a character string.
+    If the optional ``recursive`` parameter is set to ``true``, then the method
+    returns the concatenated text contents of all the children of the given
+    element. Otherwise, returns the text of the calling element only and ignores
+    the chidren elements. Null is returned if the element contains no text.
 
 set_text(text, after)
     Sets the text content of the element. The text is typed in the most
