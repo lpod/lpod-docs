@@ -316,19 +316,16 @@ get_text(recursive=false)
     element. Otherwise, returns the text of the calling element only and ignores
     the chidren elements. Null is returned if the element contains no text.
 
-set_text(text, after)
-    Sets the text content of the element. The text is typed in the most
-    appropriate type for text, e.g. unicode. If after is true, the text is set
-    after the closing tag (useful for inserting an element in the middle of
-    text content).
+set_text(text)
+    Sets the text content of the element. The text is provided as a character
+    string. Any previous content is deleted and replaced by the given text.
 
 get_text_content()
     Shortcut to get the text of paragraphs inside the element. An empty string
     is returned by default.
 
 set_text_content(text)
-    Shortcut to set text content inside a paragraph inside the element. The
-    text is typed in the most appropriate type for text, e.g. unicode. Any
+    Shortcut to set text content inside a paragraph inside the element. Any
     previous child element is deleted.
 
 insert_element(element, position=pos_flag)
