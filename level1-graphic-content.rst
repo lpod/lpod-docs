@@ -123,6 +123,22 @@ These properties may be retrieved or changed later using ``get_uri()``,
 
 An image should be incorporated in a document through a *frame* (see above).
 
+Frames including text boxes or images
+-------------------------------------
+
+Knowing that a frame is in most situations created as a text box or image
+container, the ``odf_create_text_frame()`` and ``odf_create_image_frame()``
+constructors allow the user to directly create a frame with the appropriate
+content. Each one requires a mandatory argument in first position (before the
+usual frame parameters).
+
+For ``odf_create_text_frame()`` the first argument is either a text string or
+an ODF text element. In the first case the string is used as the content of
+the text box. In the second case the text element is used as is as the content
+of the text box.
+
+For ``odf_create_image_frame()`` the first argument is the link to the internal
+or external image resource.
 
 Drawing Shapes
 --------------
