@@ -88,7 +88,9 @@ file::
    manifest.set_entry('Pictures/xyz.jpg', type = 'image/jpeg')
 
 If the entry path is a folder, i.e. if its last character is "/", then the
-media type is automatically set to an empty value.
+media type is automatically set to an empty value. However, this rule doesn't
+apply to the root folder, i.e. "/", whose type should be the MIME type of the
+document.
 
 Beware: adding or removing a manifest entry doesn't automatically add or remove
 the corresponding file in the container, and there is no automatic consistency
