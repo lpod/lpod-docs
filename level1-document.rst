@@ -261,6 +261,8 @@ in the package is either ``Pictures`` if the source is identified as an
 image file (caution: such a recognition may not work with any image type in
 any environment) or the root folder.
 
+The return value is the destination path.
+
 This method may be used in order to import an external XML file as a replacement
 of a conventional ODF XML part without interpretation. As an example, the
 following instruction replaces the ``STYLES`` part of a document by an arbitrary
