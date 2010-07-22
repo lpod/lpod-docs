@@ -87,6 +87,9 @@ file::
 
    manifest.set_entry('Pictures/xyz.jpg', type = 'image/jpeg')
 
+If ``set_entry()`` is called with the same path as an existing entry, the old
+entry is removed and replaced by the new one.
+
 If the entry path is a folder, i.e. if its last character is "/", then the
 media type is automatically set to an empty value. However, this rule doesn't
 apply to the root folder, i.e. "/", whose type should be the MIME type of the
