@@ -249,22 +249,29 @@ add_file
 ~~~~~~~~~
 
 This document-based method stores an external file "as is" in the document
-container, without interpretation. The first argument is the path of the
-source file. The second one is the destination path within the ODF package.
+container, without interpretation. The mandatory argument is the path of the
+source file.
+
+Optional named parameters ``path`` and ``type`` are allowed; ``path`` specifies
+the destination path in the ODF package, while ``type`` is the MIME type of the
+added resource.
+
 As an example, the instruction below inserts a binary image file available
 in the current directory in the "Thumbnails" folder of the document package::
 
-   document.add_file("logo.png", "Thumbnails/thumbnail.png")
+   document.add_file("logo.png", path="Thumbnails/thumbnail.png")
 
-The second argument may be omitted. In such as case, the destination folder
-in the package is either ``Pictures`` if the source is identified as an
-image file (caution: such a recognition may not work with any image type in
-any environment) or the root folder.
+If the ``path`` parameter is omitted, the destination folder in the package is
+either ``Pictures`` if the source is identified as an image file (caution: such
+a recognition may not work with any image type in any environment) or the root
+folder.
 
-The MIME type of the added file may be provided as the third argument.
-Example::
+The following example creates an entry whose every property is specified::
 
-  document.add_file("portrait.jpg", "Pictures/portrait.jpg", "image/jpeg");
+  document.add_file(
+    "portrait.jpg",
+    path="Pictures/portrait.jpg", type="image/jpeg"
+    )
 
 The return value is the destination path.
 
@@ -273,7 +280,7 @@ of a conventional ODF XML part without interpretation. As an example, the
 following instruction replaces the ``STYLES`` part of a document by an arbitrary
 file::
 
-   document.add_file("custom_styles.xml", STYLES);
+   document.add_file("custom_styles.xml", path=STYLES);
 
 Note that the physical effet of ``add_file()`` is not immediate; the file is
 really added (and the source is really required) only when the ``save()``
