@@ -67,7 +67,7 @@ odf_get_container(uri)
   an existing ODF package corresponding to the given URI. The package may
   be an ODF-compliant zip or an ODF-compliant flat XML file.
 
-odf_new_container_from_type(document_type)
+odf_new_container(document_type)
   Returns a new odf_container corresponding to the given ODF document type
   (i.e. presently text, spreadsheet, presentation, or drawing).
 
