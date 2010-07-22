@@ -268,10 +268,8 @@ folder.
 
 The following example creates an entry whose every property is specified::
 
-  document.add_file(
-    "portrait.jpg",
-    path="Pictures/portrait.jpg", type="image/jpeg"
-    )
+  document.add_file
+    ("portrait.jpg", path="Pictures/portrait.jpg", type="image/jpeg")
 
 The return value is the destination path.
 
@@ -280,7 +278,7 @@ of a conventional ODF XML part without interpretation. As an example, the
 following instruction replaces the ``STYLES`` part of a document by an arbitrary
 file::
 
-   document.add_file("custom_styles.xml", path=STYLES);
+   document.add_file("custom_styles.xml", path=STYLES)
 
 Note that the physical effet of ``add_file()`` is not immediate; the file is
 really added (and the source is really required) only when the ``save()``
@@ -309,8 +307,8 @@ the part in the package.
 The following sequence replaces (without interpretation) the current document
 content part by an external content::
 
-   document.del_part(CONTENT);
-   document.add_file("/somewhere/stuff.xml", CONTENT);
+   document.del_part(CONTENT)
+   document.add_file("/somewhere/stuff.xml", path=CONTENT)
 
 Note that the order of these instructions is not significant; when ``save()``
 is called, it executes all the deletions then all the part insertions and/or
