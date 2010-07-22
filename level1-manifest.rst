@@ -77,6 +77,9 @@ Entry creation and removal
 --------------------------
 
 Once selected, an entry may be deleted using the generic ``delete`` method.
+The ``del_entry()`` method, whose mandatory argument is an entry path, deletes
+the corresponding entry, if any. If the given entry doesn't exist, nothing is
+done. The return value is the removed entry, or null.
 
 A new entry may be added using the ``set_entry()`` method. This method requires
 a unique path as its mandatory argument. A ``type`` optional named parameter
