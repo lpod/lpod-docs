@@ -261,6 +261,11 @@ in the package is either ``Pictures`` if the source is identified as an
 image file (caution: such a recognition may not work with any image type in
 any environment) or the root folder.
 
+The MIME type of the added file may be provided as the third argument.
+Example::
+
+  document.add_file("portrait.jpg", "Pictures/portrait.jpg", "image/jpeg");
+
 The return value is the destination path.
 
 This method may be used in order to import an external XML file as a replacement
