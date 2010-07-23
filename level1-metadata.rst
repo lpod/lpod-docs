@@ -71,9 +71,11 @@ When used without argument, some ``set`` accessors may automatically set default
 values, according to the capabilities of the runtime environment.
 For ``set_creation_date()`` and ``set_modification_date()``, the default
 is the current system date. For ``set_creator()`` and ``set_initial_creator()``,
-the default is the current system user. For ``set_generator()`` the default is
-the current process identifier. If the execution environment can't provide such
-informations, no default value is provided.
+the default is the identifier of the current system user. For
+``set_generator()`` the default is the system name of the current program (as
+it would appear in a command line) or, if not available, the current process
+identifier. If the execution environment can't provide such informations, no
+default value is provided.
 
 Complex pre-defined metadata
 ----------------------------
