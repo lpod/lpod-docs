@@ -75,7 +75,8 @@ the default is the identifier of the current system user. For
 ``set_generator()`` the default is the system name of the current program (as
 it would appear in a command line) or, if not available, the current process
 identifier. If the execution environment can't provide such informations, no
-default value is provided.
+default value is provided. ``set_editing_cycles()``, without argument,
+increments the ``editing_cycles`` indicator by 1.
 
 Complex pre-defined metadata
 ----------------------------
