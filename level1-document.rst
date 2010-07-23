@@ -82,6 +82,20 @@ odf_new_document_from_template(uri)
 Same as ``odf_get_document``, but the ODF resource is used in read only mode,
 i.e. it's used as a template in order to generate other ODF physical documents.
 
+Some metadata of the new document are intialized to the following values:
+
+- the creation and modification dates are set to the current date;
+
+- the creator and initial creator are set to the owner of the current process
+as reported by the operating system (if this information is available);
+
+- the number of editing cycles is set to 1;
+
+- the idenfication string of the current lpOD distribution is used as the
+generator identifier string.
+
+Each piece of metadata may be changed later by the application.
+
 odf_new_document(doc_type)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -103,6 +117,9 @@ A set of valid template ODF files (created using OpenOffice.org) is
 transparently installed with the standard lpOD distribution. Advanced users may
 use their own template files. To do so, they have to replace the ODF files
 present in the ``templates`` subdirectory of the lpOD installation.
+
+Some metadata are initialized in the same may as with
+``odf_new_document_from_template``.
 
 Document MIME type check and control
 -------------------------------------
