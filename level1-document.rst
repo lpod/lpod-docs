@@ -196,7 +196,7 @@ class.
 How to persistently update a document
 --------------------------------------
 
-Every part may be updated using specific methods that creates, change or remove
+Every part may be updated using specific methods that create, change or remove
 elements, but this methods don't produce any persistent effect.
 
 The updates done in a given part may be either exported as an XML string, or
@@ -239,11 +239,46 @@ document, that in turn is made persistent::
 
    content = document.get_part(CONTENT)
    p = content.get_body.get_paragraph(-1)
-   p.delete
-   content.store
-   document.save
+   p.delete()
+   content.store()
+   document.save()
 
 Like ``serialize()``, ``store()`` allows the ``pretty`` option.
+
+Note that ``store()`` doesn't write anything on a persistent storage support;
+it just instructs the ``odf_document`` that this part needs to be updated.
+
+The explicit use of ``store()`` to commit the changes made in an individual
+part is not mandatory. When the whole document is made persistent through the
+document-based ``save()``, each part is automatically stored by default.
+However, this automatic storage may be deactivated using ``needs_update()``.
+
+needs_update(true/false)
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+This part-based method allows the user to prevent the automatic storage of
+the part when the ``save()`` method of the corresponding ``odf_document`` is
+executed.
+
+As soon as a document part is used, either explicitly through the ``get_part()``
+document method or indirectly, it may be modified. By default, the document-
+based ``save()`` method stores back in the container every part that may have
+been used. The user may change this default behaviour using the part-based
+``needs_update()`` method, whose argument is ``TRUE`` or ``FALSE``.
+
+In the example below, the application uses the ``CONTENT`` and ``META`` parts,
+but the ``META`` part only is really updated, whatever the changes made in
+the ``CONTENT``::
+
+   doc = odf_get_document('source.odt')
+   content = doc.get_part(CONTENT)
+   meta = doc.get_part(META)
+   #...
+   content.needs_update(FALSE)
+   doc.save()
+
+Note that ``needs_update(FALSE)`` deactivates the automatic update only; the
+explicit use of the ``store()`` part-based method remains always effective. 
 
 add_file
 ~~~~~~~~~
