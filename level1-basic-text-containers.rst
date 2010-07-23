@@ -89,11 +89,11 @@ The traditional string editing methods (i.e. regex-based search & replace
 functions) are available against the text content of a paragraph.
 
 ``search()`` in a element-based method which takes a search string (or a
-regular expression) as argument and returns the position of the first substring
+regular expression) as argument and returns the offset of the first substring
 matching the argument in the text content of the element. A null return value
 means no match. In case of success, the method returns a data structure whose
-attributes are the text node (segment), the position in the segment (position),
-and the matching substring itself (match).
+attributes are the text node (``segment``), the offset in the segment
+(``offset``), and the matching substring itself (``match``).
 
 The search space includes all the text children and descendants of the calling
 context.
@@ -212,23 +212,23 @@ be created in the same document). ``set_span()`` may uses a string or a regular
 expression, which may match zero, one or several times to the text content of
 the calling object, so the spans can apply repeatedly to every substring that
 matches. The string is provided through a ``filter`` parameter. Alternatively,
-``set_span()`` may be called with given ``position`` and ``length`` parameters,
-in order to apply the span once whatever the content. Note that ``position`` is
+``set_span()`` may be called with given ``offset`` and ``length`` parameters,
+in order to apply the span once whatever the content. Note that ``offset`` is
 an offset that may be a positive integer (starting to 0 for the 1st position),
 or a negative integer (starting to -1 for the last position) if the user prefers
 to count back from the end of the target. If the ``length`` parameter is omitted
-or set to 0 the span runs up to the end of the target content. If ``position``
-is out of range, nothing is done; if ``position`` is OK, extra length (if any)
+or set to 0 the span runs up to the end of the target content. If ``offset``
+is out of range, nothing is done; if ``offset`` is OK, extra length (if any)
 is ignored. The following instructions create two text spans with a so-called
 "HighLight" style; the first one applies the given style to any "The lpOD
 Project" substring while the second one does it once on fixed length substring
-at a given position, ``p`` being the target paragraph::
+at a given offset, ``p`` being the target paragraph::
 
    p.set_span(filter='The lpOD Project', style='HighLight')
-   p.set_span(position=3, length=5, style='HighLight')
+   p.set_span(offset=3, length=5, style='HighLight')
 
 A hyperlink span is created through ``set_hyperlink()``, which waits for the
-same positioning parameters (by regex or by position and length). However,
+same positioning parameters (by regex or by offset and length). However,
 there is no style, and a ``url`` parameter (whose value is any kind of path
 specification that is supported by the application) is required instead.
 A hyperlink span can't contain any other span, while a style span can contain
@@ -256,12 +256,12 @@ The following example associates an hyperlink in the last 5 characters of the
 ``p`` container (note that the ``length`` parameter is omitted, meaning that
 the hyperlink will run up to the end)::
 
-   p.set_hyperlink(position=-5, url='http://here.org')
+   p.set_hyperlink(offset=-5, url='http://here.org')
 
 The sequence hereafter show the way to set a style span and a hyperlink for
 the same text run. The style span is created first, then it's used as the
 context to create a hyperlink span that spreads over its whole content::
 
    s = p.set_span(filter='The lpOD Project', style='Outstanding')
-   s.set_hyperlink(position=0, url='http://www.lpod-project.org')
+   s.set_hyperlink(offset=0, url='http://www.lpod-project.org')
 
