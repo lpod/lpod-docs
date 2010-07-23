@@ -34,7 +34,7 @@ Text Bookmarks
 --------------
 
 A text bookmark can either mark a text position or a text range. It's either a
-mark associated to a position in a text, or a pair of location marks that
+mark associated to an offset in a text, or a pair of location marks that
 defines a delimited range of text. Both are created "in place" using a
 ``set_bookmark()`` context-based method, whose first argument is the unique name
 of the bookmark, and which takes named parameters that depend on the type of
@@ -60,20 +60,20 @@ retrieve it later (with an interactive text processor or by program with lpOD or
 another ODF toolkit). It's probably the most frequent use of bookmarks. However,
 the API offers more sophisticated functionality.
 
-The position can be explicitly provided by the user with a ``position``
+The position can be explicitly provided by the user with a ``offset``
 parameter. Alternatively, the user can provide a regular expression using a
 ``before`` or ``after`` parameter, whose value is a search string (or a regex)
 so the bookmark is set immediately before or after the first substring that
 matches the expression. The code below illustrates these possibilities::
 
   paragraph.set_bookmark("BM1", before="xyz")
-  paragraph.set_bookmark("BM2", position=4)
+  paragraph.set_bookmark("BM2", offset=4)
 
 This method returns the new bookmark element (that is an ``odf_element``) in
 case of success, or a null value otherwise.
 
 When the bookmark must be put at the very end of the calling element, the
-``position`` parameter may be set to ``end`` instead of a numeric value.
+``offset`` parameter may be set to ``end`` instead of a numeric value.
 
 For performance reasons, the uniqueness of the given name is not checked. If
 needed, this check should be done by the applications, by calling
@@ -86,18 +86,20 @@ There is no need to specify the creation of a position bookmark;
 ``role`` parameter is required for range bookmarks only, as introduced later.
 
 The first instruction above sets a bookmark before the first substring matching
-the given expression (here ``xyz``), which is processed as a regular expression. The second instruction sets a bookmark in the same paragraph at a given (zero-based), so before the 5th character.
+the given expression (here ``xyz``), which is processed as a regular expression.
+The second instruction sets a bookmark in the same paragraph at a given
+(zero-based) offset, so before the 5th character.
 
 In order to put a bookmark according to a regexp that could be matched more than
-once in the same paragraph, it's possible to combine the position and text
-options, so the search area begins at the given position. The following example
-puts a bookmark at the end of the first substring that matches a given
-expression after a given position::
+once in the same paragraph, it's possible to combine the ``offset`` and ``text``
+options, so the search area begins at the given ``offset``. The following
+example puts a bookmark at the end of the first substring that matches a given
+expression after a given offset::
 
-  paragraph.set_bookmark("BM3", position=4, after="xyz")
+  paragraph.set_bookmark("BM3", offset=4, after="xyz")
 
-In order to retrieve the position of a bookmark relatively to the containing
-text, use the ``get_bookmark_position()`` method from the host element.
+In order to retrieve the offset of a bookmark relatively to the containing
+text, use the ``get_bookmark_offset()`` method from the host element.
 
 Thanks to the generic ``set_attribute()`` and ``set_attributes()`` methods,
 the user can set or unset any arbitrary attribute later, without automatic
@@ -138,7 +140,7 @@ A range bookmark is an identified text range which can spread across paragraph
 frontiers. It's a named content area, not dependant of the document tree
 structure. It starts somewhere in a paragraph and stops somewhere in the same
 paragraph or in a following one. Technically, it's a pair of special position
-bookmarks, so called bookmark start and bookmark end, owning the same name.
+bookmarks, so called *bookmark start* and *bookmark end*, owning the same name.
 
 The API allows the user to create a range bookmark within an existing content,
 as well as to retrieve and extract it according to its name. Range bookmarks
@@ -151,18 +153,18 @@ an additional ``role`` parameter is required. The value of ``role`` is either
 ``start`` or ``end``, and the application must issue two explicit calls with the
 same bookmark name but with the two different values of ``role``. Example::
 
-  paragraph1.set_bookmark("MyRange", position=12, role="start")
-  paragraph2.set_bookmark("MyRange", position=3, role="end")
+  paragraph1.set_bookmark("MyRange", offset=12, role="start")
+  paragraph2.set_bookmark("MyRange", offset=3, role="end")
 
-The sequence above creates a range bookmark starting at a given position in a
-paragraph and ending at another position in another paragraph.
+The sequence above creates a range bookmark starting at a given offset in a
+paragraph and ending at another offset in another paragraph.
 
-Knowing that the default position is 0, and the last position in a string is
+Knowing that the default offset is 0, and the last offset in a string is
 ``end``, the following example creates a range bookmark that just covers the
 full content of a single paragraph::
 
   paragraph.set_bookmark("AnotherBookmark", role="start")
-  paragraph.set_bookmark("AnotherBookmark", role="end", position="end")
+  paragraph.set_bookmark("AnotherBookmark", role="end", offset="end")
 
 The balance of ``start`` and ``end`` marks for a given range bookmark is not
 automatically checked.
@@ -176,7 +178,7 @@ the whole text content of to be enclosed by the bookmark, and this content is
 supposed to be entirely included in the calling paragraph. So the range bookmark
 is immediately created and automatically balanced. As soon as ``content`` is
 present, ``role`` is not needed (and is ignored). Like ``before`` and ``after``,
-``content`` may be combined with ``position``. In addition, the range bookmark
+``content`` may be combined with ``offset``. In addition, the range bookmark
 is automatically complete and consistent.
 
 Note that the following instruction::
@@ -190,31 +192,31 @@ paragraph remains the same between the two instructions)::
   paragraph.set_bookmark("MyRange", after="xyz", role="end")
 
 Another way to create a range bookmark in a single instruction is to provide
-a list of two positions through the ``position`` optional parameter. These two
-positions will be processed as the respective ``position`` parameters of the
+a list of two offsets through the ``offset`` optional parameter. These two
+offsets will be processed as the respective ``offset`` parameters of the
 start en end elements, respectively.
 
-  paragraph.set_bookmark("MyRange", position=(3,15))
+  paragraph.set_bookmark("MyRange", offset=(3,15))
 
-When two positions are provided, the second position can't be before the first
-one and the method fails if one of the given positions is off limits, so the
+When two offsets are provided, the second offset can't be before the first
+one and the method fails if one of the given offsets is off limits, so the
 consistency of the bookmark is secured as soon as ``set_bookmark()`` returns a
 non-null value with this parameter.
 
-The ``position`` and ``content`` parameters may be combined in order to create a
+The ``offset`` and ``content`` parameters may be combined in order to create a
 range bookmark whose content matches a given filter string in a delimited
 substring in the calling element. The next example creates a range bookmark
 whose content will begin before the first substring that matches a "xyz"
 expression contained in a range whose the 5 first characters and the 6 last
 characters are excluded::
 
-  paragraph.set_bookmark("MyRange", content="xyz", position=(5, -6))
+  paragraph.set_bookmark("MyRange", content="xyz", offset=(5, -6))
 
 When ``set_bookmark()`` creates a range bookmark in a single instruction, it
 returns a pair of elements according to the same logic as ``get_bookmark()``
 (see below).
 
-If the start position is not before the end position, a warning is issued and
+If the start offset is not before the end offset, a warning is issued and
 nothing is done.
 
 The consistency of an existing range bookmark may be verified using the
@@ -274,7 +276,7 @@ element while it's consistent at a higher level, knowing that its start and end
 points may belong to different paragraphs. On the other hand, it's always safe
 from the document root or body element.
 
-However, the present version of lpOD doesn't check the relative positions of
+However, the present version of lpOD doesn't check the relative offsets of
 the start and end points of a range bookmark when it's spread across two or
 more ODF elements. As a consequence, due to some moves in the document structure
 or any other reason including logic errors, the applications are responsible for
@@ -300,7 +302,7 @@ position in a text, or a pair of location marks that defines a delimited range
 of text.
 
 An index mark is created in place using the ``set_index_mark()`` context-based
-method, according to the same basic logic ``set_bookmark()``, with some
+method, according to the same basic logic as ``set_bookmark()``, with some
 important differences:
 
 - because an index mark is not a named object, the first argument of
@@ -344,7 +346,7 @@ important differences:
   value is 1;
 
 - according to the ODF 1.1 specification, the range of an index mark can't
-  spread across paragraph boundaries, i.e. the start en end points must be
+  spread across paragraph boundaries, i.e. the start and end points must be
   contained in the same paragraph; as a consequence, a range index mark may
   (and should) be always created using a single ``set_index_mark()``;
 
@@ -356,10 +358,10 @@ important differences:
 
 The example hereafter successively creates, in the same paragraph, a range TOC
 mark, two range index marks associated to the same user-defined index, and a
-lexical position index mark at the default position (i.e. before the first
+lexical position index mark at the default offset (i.e. before the first
 character of the paragraph)::
 
-  paragraph.set_index_mark("id1", type="toc", position=(3,5))
+  paragraph.set_index_mark("id1", type="toc", offset=(3,5))
   paragraph.set_index_mark("id2", index_name="OpenStandards", content="XML")
   paragraph.set_index_mark("id3", index_name="OpenStandards", content="ODF")
   paragraph.set_index_mark("Go There" type="lexical")
@@ -419,7 +421,7 @@ format).
 
 A bibliography mark is created using the ``set_bibliography_mark()`` method from
 a paragraph, a heading or a text span element. Its placement is controlled with
-the same arguments as a position bookmark, i.e. ``position``, ``before`` or
+the same arguments as a position bookmark, i.e. ``offset``, ``before`` or
 ``after`` (look at the Text Bookmarks section for details). Without explicit
 placement parameters, the bibliography mark is inserted at the beginning of the
 calling container.
