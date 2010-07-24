@@ -118,7 +118,7 @@ transparently installed with the standard lpOD distribution. Advanced users may
 use their own template files. To do so, they have to replace the ODF files
 present in the ``templates`` subdirectory of the lpOD installation.
 
-Some metadata are initialized in the same may as with
+Some metadata are initialized in the same way as with
 ``odf_new_document_from_template``.
 
 Document MIME type check and control
