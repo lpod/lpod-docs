@@ -77,7 +77,17 @@ method, but the behavior depends on the context.
 
 In a text document, a frame may be attached at the document level, as long as
 it's anchored to a page; as an consequence, a ``page`` parameter must be
-provided with the page number.
+provided with the page number. In such a situation, it's recommended to attach
+the frame to the document body using ``insert_element()``.
+
+The example below puts frame anchored to the first page of a document (assuming
+that the type of the document is ``text``)::
+
+   context = document.get_body()
+   frame = odf_create_frame(
+      name="F1", size="5cm, 2cm", position="8cm, 16cm", page=1
+      ) 
+   context.insert_element(frame)
 
 Simply put, with the exception above, a frame is anchored to the calling
 context element. In a presentation or drawing document, the calling element is
@@ -192,7 +202,7 @@ provided with the page number. Without this ``page`` property, lpOD anchors the 
 Simply put, with the exception above, a shape is anchored to the calling
 context element.
 
-Optionally, regular text paragraphs may be embedded in a shape. Unlike the name, the title and the description, this paragraph will be visible. There is no shape-specific method for that; the generic ``insert_element()`` method, called from the ``odf_shape`` object, allows the user to insert a paragraph in a shape. The given paragraph may have its own style, whose properties override those of the shape
+Optionally, regular text paragraphs may be embedded in a shape. Unlike the name, the title and the description, this paragraph will be visible. There is no shape-specific method for that; the generic ``append_element()`` method, called from the ``odf_shape`` object, allows the user to insert a paragraph in a shape. The given paragraph may have its own style, whose properties override those of the shape
 ``text style``.
 
 Rectangles and Ellipses
@@ -208,7 +218,7 @@ a text paragraph is written in it::
    rectangle = odf_create_rectangle(name="Rectangle1", id="R1", page=1)
    rectangle.set_title("The rectangle"),
    rectangle.set_description("The description of the rectangle")
-   context.append_element(rectangle)
+   context.insert_element(rectangle)
    paragraph = odf_create_paragraph
       (text='The text in the shape', style='Standard')
    rectangle.append_element(paragraph)
