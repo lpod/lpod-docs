@@ -80,8 +80,8 @@ it's anchored to a page; as an consequence, a ``page`` parameter must be
 provided with the page number.
 
 Simply put, with the exception above, a frame is anchored to the calling
-context element. The ODF elements that may insert a frame in the present
-lpOD API are *draw pages*, *paragraphs*, *tables*, and *cells*.
+context element. In a presentation or drawing document, the calling element is
+typically a draw page.
 
 In a presentation or drawing document, the calling element is typically a draw
 page.
@@ -168,6 +168,10 @@ Note that, while the ``name`` property is not specified as unique in the standar
 
 A shape may be provided with a title and a description (which are non-displayed but persistent metadata), through the ``set_title()`` and ``set_description()`` methods. These informative data may be retrieved using ``get_title()`` and ``get_description()``.
 
+When ``insert_element()`` is called from a paragraph, an optional ``offset``
+parameter, specifying the position in the text where the shape will be inserted,
+may be provided (the default position is the beginning of the paragraph).
+
 For some shapes, the following properties must be provided:
 
 - ``position``, the coordinates of the frame, as a list of 2 strings
@@ -177,7 +181,7 @@ For some shapes, the following properties must be provided:
 - ``size``: the size, provided using the same format and rules as the position,
   knowing that the default values are "1cm".
 
-However, the ``position`` and ``size`` properties don't apply to some particular shapes, such as lines (see below).
+However, the ``position`` and ``size`` properties don't apply to some particular shapes, such as lines and connectors (see below).
 
 A shape becomes visible when it's inserted somewhere using the generic ``insert_element()`` method.
 
@@ -185,16 +189,29 @@ In a text document, a frame may be attached at the document level, as long as
 it's anchored to a page; as an consequence, a ``page`` parameter must be
 provided with the page number. Without this ``page`` property, lpOD anchors the shape to the first page by default.
 
-Simply put, with the exception above, a shpe is anchored to the calling
+Simply put, with the exception above, a shape is anchored to the calling
 context element.
 
-Optionally, a regular text paragraph may be embedded in a shape. Unlike the name, the title and the description, this paragraph will be visible. There is no shape-specific method for that; the generic ``insert_element()`` method, called from the ``odf_shape`` object, allows the user to insert a paragraph in a shape. The given paragraph may have its own style, whose properties override those of the shape
+Optionally, regular text paragraphs may be embedded in a shape. Unlike the name, the title and the description, this paragraph will be visible. There is no shape-specific method for that; the generic ``insert_element()`` method, called from the ``odf_shape`` object, allows the user to insert a paragraph in a shape. The given paragraph may have its own style, whose properties override those of the shape
 ``text style``.
 
 Rectangles and Ellipses
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 Rectangles and ellipses are created with ``odf_create_rectangle()`` and ``odf_create_ellipse()``, respectively, using the common properties described above, including ``size`` and ``position``.
+
+The following example, supposed to work with a text document, creates a rectangle
+anchored to the first page with given position, size, title, description. Then
+a text paragraph is written in it::
+
+   context = document.get_part(CONTENT).get_body
+   rectangle = odf_create_rectangle(name="Rectangle1", id="R1", page=1)
+   rectangle.set_title("The rectangle"),
+   rectangle.set_description("The description of the rectangle")
+   context.append_element(rectangle)
+   paragraph = odf_create_paragraph
+      (text='The text in the shape', style='Standard')
+   rectangle.append_element(paragraph)
 
 Lines and Connectors
 ~~~~~~~~~~~~~~~~~~~~
