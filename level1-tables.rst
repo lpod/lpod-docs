@@ -188,10 +188,6 @@ at the 26th one) in a previously selected row::
    cells = r.get_cells('B:Z')
    cells = r.get_cells(1, 25)
 
-If the user needs to select a range of cells as a list instead of a 2D array,
-the ``get_cell_list()`` method should preferred. This method requires the same
-arguments as ``get_cells()`` exists in table- and row-based versions.
-
 **Note**: The range selection feature provided by the level 1 API is a
 building block for the lpOD level 2 business-oriented cell range objects.
 
