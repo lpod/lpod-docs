@@ -234,7 +234,9 @@ A connector is created using ``odf_create-connector()``. It may be defined with 
 
 - ``connected shapes``: the name of the start and end shapes that are linked
   through the connector (as a pair of strings);
-- ``glue points``: the numbers of the glue points in the start and end shapes, respectively (glue points are designated points on the area of a drawing object to which a connector shape can connect, see ODF 1.1 §9.2.19).
+- ``glue points``: the numbers of the glue points in the start and end shapes, respectively (glue points are designated points on the area of a drawing object to which a connector shape can connect, see ODF 1.1 §9.2.19);
+- ``type``: the connector type, knowing that allowed values are ``standard``,
+  ``lines``, ``line``, and ``curve``.
 
 
 Animations [todo]
