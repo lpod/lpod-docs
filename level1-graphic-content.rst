@@ -172,12 +172,15 @@ The common properties that may be set through shape constructor named parameters
 - ``transform``: a list of transformations that can be applied to a shape,
   provided as a string where the transform definitions are separated by commas
   or spaces (ex.: ``rotate(45), scale(10, 12)``); see ODF 1.1 §9.2.15 for the
-  supported transformations.
+  supported transformations;
+- ``title`` and ``description``: see below.
 
 Note that, while the ``name`` property is not specified as unique in the standard, OpenOffice.org prevents the end-user from providing non-unique names to drawing shapes. On the other hand, OpenOffice.org currently neither uses nor preserves the ``id`` property in text documents, but needs it to implement the connectors in presentation documents. So, we presently recommend the use of ``name``, with unique values, as soon as the applications need persistent shape identifiers.
 
 A shape may be provided with a title and a description (which are non-displayed but persistent metadata), through the ``set_title()`` and ``set_description()`` methods. These informative data may be retrieved using ``get_title()`` and ``get_description()``.
 
+A shape may be attached to a text element using ``insert_element()`` or
+``append_element()``.
 When ``insert_element()`` is called from a paragraph, an optional ``offset``
 parameter, specifying the position in the text where the shape will be inserted,
 may be provided (the default position is the beginning of the paragraph).
