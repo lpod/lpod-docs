@@ -108,13 +108,13 @@ Once set somewhere in a document, a note may be retrieved the context-based
 ``get_note()`` method, with the note identifier as argument.
 
 It's possible to extract a list of notes using the context-based
-``get_note_list()``. Without argument, this method returns all the notes of the
+``get_notes()``. Without argument, this method returns all the notes of the
 context. However, it's possible to provide the ``note_class`` and/or
 ``citation`` parameter in order to select the notes that match them. The
 following example extract the endnotes whose citation mark is "5" in a given
 section::
 
-  end_notes = $section->get_note_list(
+  end_notes = $section->get_notes(
     note_class = "endnote",
     citation = "1"
     )
