@@ -90,7 +90,7 @@ the current content of a document. Beware, this method is far less rich than the
 TOC generation feature of a typical interactive text processor, so it should be
 use if an automatic TOC generation is required only.
 
-As long as the ``odf_toc`` object is free (i.e. not attached to a document),
+As long as the ``odf_toc`` object is not attached to a ``odf_document``,
 the ``fill`` method requires an ODF document as argument. If the object belongs
 to a document and if the argument is omitted, the content of the TOC is
 generated from the content of the host document. However, it's possible to
