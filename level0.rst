@@ -266,7 +266,11 @@ odf_create_element(data)
     If the given argument is valid XML, its parsed and the new element is
     created accordingly, possibly with a complex structure. If the argument
     is a non-XML string, its regarded as a tag (possibly with a namespace
-    prefix), and the new element is created internally without XML parsing. 
+    prefix), and the new element is created internally without XML parsing.
+    This constructor fails if the given data is neither well-formed XML nor
+    a legal XML tag. There is no default namespace prefix, so the given tag,
+    or every element tag or attribute name in the given XML fragment must
+    include the appropriate namespace prefix, if needed.
 
 Methods
 ~~~~~~~
@@ -276,7 +280,7 @@ get_tag()
 
 set_tag(new_tag)
     Changes the XML tag according to the given string (which must include the
-    namespace prefix).
+    namespace prefix, if needed).
 
 get_attributes()
     Returns the mapping (dictionary) of attributes carried by the element.
