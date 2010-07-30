@@ -358,8 +358,8 @@ serialize(pretty={true, false})
 delete()
     Removes the calling odf_element.
 
-delete_element(child)
-    Removes the given child element.
+delete()
+    Removes the element and all its descendants.
 
 get_parent()
     Returns the parent of the calling element, or null if the calling element
