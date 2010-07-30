@@ -192,6 +192,10 @@ place, through context-based methods whose name is ``set_xxx()``. Beware, every
 ``set_xxx()`` method creates or replaces something in the calling element, but
 some of them don't create new elements.
 
+A ``get_document()`` method, called from any element, allows the user to get
+the ``odf_document`` object to which it belongs. This method returns a null
+value if, for any reason, the element doesn't belong to a document.
+
 According to the ODF 1.1 specification, some elements may own an identifier
 attribute (whose XML name is "text:id"). The lpOD API provides a generic
 ``get_id()`` element accessor, that returns the value of the identifier, if any,
