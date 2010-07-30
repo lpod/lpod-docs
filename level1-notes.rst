@@ -51,8 +51,11 @@ and the following note-specific parameters:
 - ``class`` or ``note_class``: the class option, whose default is ``footnote``
   (``note_class`` is used with programming languages that don't allow ``class``
   as a parameter name);
-- ``citation``: the citation mark (i.e. the text string that should be displayed
-  by editing/viewing applications at the place where the note is referred to);
+- ``citation``: the citation mark (i.e. a formatted string representing the
+  sequence number, see "Note citation" in ODF 1.1 §5.3.1);
+- ``label``: the optional text label that should be displayed at the insertion
+  point of the note; if this parameter is omitted, the displayed note label will
+  be an automatic sequence number;
 - ``body``: the content of the note, provided either as a list of one or more
   previously created ODF content elements (preferently paragraphs), or as an
   already available note body element (produced, for example, by cloning the
@@ -93,7 +96,7 @@ in a paragraph::
     "note0004",
     note_class = "footnote",
     after = "xyz",
-    citation = "*",
+    label="*",
     text = "The footnote content",
     style = "Note body"
     )
@@ -109,8 +112,8 @@ Once set somewhere in a document, a note may be retrieved the context-based
 
 It's possible to extract a list of notes using the context-based
 ``get_notes()``. Without argument, this method returns all the notes of the
-context. However, it's possible to provide the ``note_class`` and/or
-``citation`` parameter in order to select the notes that match them. The
+context. However, it's possible to provide the ``note_class``, ``citation``,
+and/or ``label`` parameters in order to select the notes that match them. The
 following example extract the endnotes whose citation mark is "5" in a given
 section::
 
@@ -137,6 +140,9 @@ get_class()
 get_citation()
     the note citation.
 
+get_label()
+    the note label.
+
 get_body()
     the root of the note body, as a single container; this object may be used
     as a context element for appending or removing any object in the note body;
@@ -157,6 +163,9 @@ set_class(footnote|endnote)
 
 set_citation()
     changes the note citation mark.
+
+set_label(new_label)
+    changes the note label.
 
 set_body()
     takes the same kinds of content as the ``body`` parameter of ``set_note()``;
