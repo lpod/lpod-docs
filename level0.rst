@@ -232,7 +232,7 @@ get_element(xpath_expr)
   Returns the first odf_element matching the given XPath expression in the
   whole part. Null is returned if no element matches.
 
-get_element_list(xpath_expr)
+get_elements(xpath_expr)
   Returns the list of odf_element matching the given XPath expression in the
   whole part. An empty list is returned if no element matches.
 
@@ -277,14 +277,6 @@ get_tag()
 set_tag(new_tag)
     Changes the XML tag according to the given string (which must include the
     namespace prefix).
-
-get_element_list(xpath_query)
-    Get a list of odf_element children matching the given query. An empty list
-    is returned if no element matches.
-
-get_element(xpath_query)
-    Returns the first odf_element child matching the given XPath query in the
-    whole part. Null is returned if no element matches.
 
 get_attributes()
     Returns the mapping (dictionary) of attributes carried by the element.
