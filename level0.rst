@@ -375,5 +375,5 @@ get_parent()
 
 get_root()
     Returns the root element (i.e. the top ancestor) of the document that
-    contains the calling element. Returns a null value if the calling element
-    is a root, or a free element.
+    contains the calling element. Returns the calling element itself if it's
+    a root, or a free element.
