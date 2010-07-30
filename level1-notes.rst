@@ -96,7 +96,7 @@ in a paragraph::
     "note0004",
     note_class = "footnote",
     after = "xyz",
-    label="*",
+    label ="*",
     text = "The footnote content",
     style = "Note body"
     )
