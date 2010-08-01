@@ -76,10 +76,10 @@ almost any content object; neither the OpenDocument schema nor the lpOD level 1
 API prevents the user from including notes into a note body; however the lpOD
 team doesn't recommend such a practice.
 
-It's possible to create a note as a free element, so it can be later inserted
-in place (and replicated for reuse in several locations in one or more
-documents), using general purpose insertion methods such as
-``insert_element()``.
+It's possible to create a note as a free element with the ``odf_create_note``
+constructor, so it can be later inserted in place (and replicated for reuse in
+several locations in one or more documents), using general purpose insertion
+methods such as ``insert_element()``.
 
 By default, ``set_note()`` inserts the new note at the beginning (i.e. as the
 first child element) of the calling element. However, it's possible to specify
