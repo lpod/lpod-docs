@@ -92,7 +92,7 @@ As an example, the following instruction inserts a footnote whose citation mark
 is an asterisk, with a given text content, immediately after the "xyz" substring
 in a paragraph::
 
-  $paragraph.set_note(
+  paragraph.set_note(
     "note0004",
     note_class = "footnote",
     after = "xyz",
@@ -117,7 +117,7 @@ and/or ``label`` parameters in order to select the notes that match them. The
 following example extract the endnotes whose citation mark is "5" in a given
 section::
 
-  end_notes = $section->get_notes(
+  end_notes = section.get_notes(
     note_class = "endnote",
     citation = "1"
     )
