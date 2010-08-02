@@ -106,7 +106,7 @@ List items also have their factory::
 
     >>> from lpod.list import odf_create_list_item
     >>> item = odf_create_list_item(u"thé")
-    >>> my_list.append_item(item)
+    >>> my_list.add_item(item)
 
 Adding Sublist
 ==============
