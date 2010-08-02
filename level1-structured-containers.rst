@@ -58,8 +58,8 @@ Regular list items are created in place (like the optional list header) using
 position which depends on optional parameters, according to the same kind
 of logic than the tabble-based ``add_row()`` method. Without any argument, a
 single item is appended at end of the list. An optional ``before`` named
-parameter may be provided; if defined, the value of this parameter must be a
-row number (in numeric, zero-based form) in the range of the list; the new
+parameter may be provided; if defined, the value of this parameter must be an
+item number (in numeric, zero-based form) in the range of the list; the new
 items are inserted *before* the original item that existed at the given
 position. Alternatively, a ``after`` parameter may be provided instead of
 ``before``; it produces a similar result, but the new items are inserted
