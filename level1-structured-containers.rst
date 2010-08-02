@@ -56,7 +56,7 @@ that every use of ``set_header()`` replaces any existing header by a new one.
 Regular list items are created in place (like the optional list header) using
 ``add_item()`` wich creates one or more new items and inserts them at a
 position which depends on optional parameters, according to the same kind
-of logic than the tabble-based ``add_row()`` method. Without any argument, a
+of logic than the table-based ``add_row()`` method. Without any argument, a
 single item is appended at end of the list. An optional ``before`` named
 parameter may be provided; if defined, the value of this parameter must be an
 item number (in numeric, zero-based form) in the range of the list; the new
