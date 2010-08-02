@@ -194,10 +194,10 @@ following other parameters:
   information is not available in the runtime environment, the annotation
   is created with an empty string as the author name (not recommended);
 
-- ``body``: a list of one or more regular text paragraphs that will become the
-  content of the annotation (beware, unlike ``set_note()``, ``set_annotation()``
-  requires a list of paragraphs and doesn't accept a previously existing note
-  body or other non-paragraphs ODF objects);
+- ``content``: a list of one or more regular text paragraphs that will become
+  the content of the annotation (beware, unlike ``set_note()``,
+  ``set_annotation()`` requires a list of paragraphs and doesn't accept a
+  previously existing note body or other non-paragraphs ODF objects);
 
 - ``text``: like with ``set_note()`` (ignored if ``body`` is provided);
 
@@ -248,6 +248,10 @@ set_date(new_date)
 set_author()
     changes the stored author's name; without argument, the process owner
     applies.
+
+set_content()
+    replaces the current content using the argument, that is a list of one
+    or more paragraphs.
 
 An annotation object may be used as a regular context element in order to
 change its content through generic context-based element insertion, deletion of
