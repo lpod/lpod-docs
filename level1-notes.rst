@@ -178,7 +178,7 @@ Annotation creation
 -------------------
 
 An annotation is particular note that has neither identifier nor citation
-mark, but which may be put like a footnote or e endnote at a given offset in a
+mark, but which may be put like a footnote or a endnote at a given offset in a
 given text container. On the other hand, it stores a date and an author's name.
 
 Annotations are created using ``set_annotation()``, that takes the same
