@@ -75,6 +75,7 @@ and ``set_style()``.
 
 Retrieval
 ~~~~~~~~~
+
 Like any element, a paragraph can be retrieved in a given context using
 ``get_paragraph()`` with the appropriate ``content`` and/or ``position``
 parameters, while ``get_paragraph_list()`` returns all the paragraphs
@@ -83,8 +84,38 @@ in the context.
 ``get_paragraph_list()`` with a ``style`` named parameter restricts the
 search in order to get the paragraphs using a given style.
 
+Text content accessors
+~~~~~~~~~~~~~~~~~~~~~~
+
+The text content of a text element may be retrieved or using the common
+``get_text()`` method.
+
+Like the common ``get_text()`` method , the paragraph-based version of
+``get_text()`` returns the text content of the paragraph. However,
+in a paragraph (or heading), ``get_text()`` processes the tabs, line breaks,
+and multiple space elements in a ODF-compliant way.
+
+The ``recursive`` option (set to ``true``) is generally recommended (while not
+mandatory), knowing that the text of a paragraph is often split in various
+text spans (i.e. paragraph sub-elements), in order to get the text as it's
+seen by the end-user.
+
+The paragraph/heading version of ``set_text()`` produces the same effects as the
+common ``set_text()`` method, with additional features.
+
+The tabulation marks ("\t") and line breaks ("\n") are allowed in the given
+texts. Multiple contiguous spaces are allowed, too, and silently replaced by
+the corresponding ODF-compliant constructs. For example, the instruction
+below stores a multi-line content in a paragraph::
+
+   paragraph.set_text("First line\nSecond line\nThird line")
+
+Caution: Remember that ``set_text()`` deletes any previous content in the
+calling element.
+
 Text processing
 ~~~~~~~~~~~~~~~
+
 The traditional string editing methods (i.e. regex-based search & replace
 functions) are available against the text content of a paragraph.
 
@@ -118,7 +149,7 @@ ODF element. In the same way, tabulation marks and line breaks can't be
 directly included in the text content, and must be replaced by appropriate
 ODF elements. This API transparently does the job: it allows the user to put
 in a paragraph a text strings containing multiple spaces, tab stops ("\t")
-and/or line breaks ("\n").
+and/or line breaks ("\n"). See ``get_text()`` and ``set_text()`` above.
 
 Headings
 ---------
