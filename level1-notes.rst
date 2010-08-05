@@ -267,8 +267,8 @@ stored in the documents by ODF-compliant editors. On the other hand, lpOD
 doesn't provide any automatic tracking of the changes made by lpOD-based
 applications.
 
-The retrieval is made through the context-based ``get_change()`` and
-``get_changes()`` methods.
+An tracked change may be retrieved in a document using the ``get_change()`` and
+``get_changes()`` document-based methods.
 
 Every tracked change is stored as a ODF change object that owns the following
 attributes:
