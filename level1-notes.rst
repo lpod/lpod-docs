@@ -288,7 +288,8 @@ If a single date is provided as the ``date`` parameter, then the result set
 contains only tracked change elements that exactly match it, if any. However
 the user may specify a time interval by providing a list of two dates as the
 ``date`` parameter; so any tracked change whose date belongs to the given
-interval is candidate.
+interval is candidate. An empty string, or a 0 value, is allowed as start or
+end date, meaning that there is no inferior or superior limit.
 
 ``get_changes()`` returns only the tracked changes whose author exactly matches
 the given ``author`` parameter, if this parameter is set.
