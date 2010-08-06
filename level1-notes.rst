@@ -281,8 +281,17 @@ An change may be individually retrieved using ``get_change()`` with a change
 identifier as argument.
 
 The ``get_changes()`` method, without argument, returns the full list of
-tracked changes. The list may be filtered using the ``date`` and/or ``author``
+tracked changes. The list may be filtered according ``date`` and/or ``author``
 optional parameters.
+
+If a single date is provided as the ``date`` parameter, then the result set
+contains only tracked change elements that exactly match it, if any. However
+the user may specify a time interval by providing a list of two dates as the
+``date`` parameter; so any tracked change whose date belongs to the given
+interval is candidate.
+
+``get_changes()`` returns only the tracked changes whose author exactly matches
+the given ``author`` parameter, if this parameter is set.
 
 In the ODF data structure, any tracked change object is stored at the document
 level. The lpOD API provides ``get_change()`` and ``get_changes()`` as context
