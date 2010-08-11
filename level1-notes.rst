@@ -263,11 +263,11 @@ Tracked change retrieval
 ------------------------
 
 lpOD applications can retrieve all the change tracking data which may have been
-stored in the documents by ODF-compliant editors. On the other hand, lpOD
+stored in text documents by ODF-compliant editors. On the other hand, lpOD
 doesn't provide any automatic tracking of the changes made by lpOD-based
 applications.
 
-An tracked change may be retrieved in a document using the ``get_change()`` and
+A tracked change may be retrieved in a document using the ``get_change()`` and
 ``get_changes()`` document-based methods.
 
 Every tracked change is stored as a ODF change object that owns the following
