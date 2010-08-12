@@ -328,7 +328,8 @@ get_author()
     returns the author's name.
   
 get_type()
-    returns the type of change, that is either ``insertion`` or ``deletion``.
+    returns the type of change, that should be ``insertion``, ``deletion``, or
+    ``format-change``.
 
 get_deleted_content()
     returns the content of the deleted content as a list of ODF elements, if
@@ -337,15 +338,15 @@ get_deleted_content()
 get_change_mark()
     returns the position mark of the change; if the change type is ``deletion``,
     this object is located at the place of the deleted content; if the change
-    type is ``insertion``, it's located at the beginning of the inserted
-    content.
+    type is ``insertion`` or ``format-change``, it's located at the beginning
+    of the affected content.
 
 get_insertion_marks()
-    if the change type is ``insertion``, returns a pair of position mark
-    elements, respectively located at the beginning and at the end of the
-    inserted content (this pair of elements may be used in a similar way as
-    the start and end elements of a range bookmark, in order to determine the
-    limits of the inserted content); it returns nothing if the change type is
+    if the change type is ``insertion`` or ``format-change``, returns a pair of
+    position mark elements, respectively located at the beginning and at the end
+    of the affected content (this pair of elements may be used in a similar way
+    as the start and end elements of a range bookmark, in order to determine the
+    limits of the affected content); it returns nothing if the change type is
     ``deletion``.
 
 
