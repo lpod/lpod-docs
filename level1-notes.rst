@@ -340,11 +340,6 @@ get_change_mark()
     type is ``insertion``, it's located at the beginning of the inserted
     content.
 
-get_deletion_mark()
-    if the change type is ``deletion``, returns the position mark element that
-    indicates the place of the deleted content; returns nothing if the change
-    type is not ``deletion``.
-
 get_insertion_marks()
     if the change type is ``insertion``, returns a pair of position mark
     elements, respectively located at the beginning and at the end of the
