@@ -281,8 +281,8 @@ An change may be individually retrieved using ``get_change()`` with a change
 identifier as argument.
 
 The ``get_changes()`` method, without argument, returns the full list of
-tracked changes. The list may be filtered according ``date`` and/or ``author``
-optional parameters.
+tracked changes. The list may be filtered according to ``date`` and/or
+``author`` optional parameters.
 
 If a single date is provided as the ``date`` parameter, then the result set
 contains only tracked change elements that exactly match it, if any. However
