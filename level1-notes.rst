@@ -294,14 +294,19 @@ end date, meaning that there is no inferior or superior limit.
 ``get_changes()`` returns only the tracked changes whose author exactly matches
 the given ``author`` parameter, if this parameter is set.
 
-In the ODF data structure, any tracked change object is stored at the document
-level. The lpOD API provides ``get_change()`` and ``get_changes()`` as context
-methods, allowing the applications to restrict the search to a particular
-container. If the calling object is a restricted context instead of the
-document, the returned elements (if any) are either deletion tracked changes, or
-insertion tracked changes that begin and/or end in the context. An insertion
-tracked change can't be retrieved from a context that is fully included in the
-inserted region. 
+The document-based ``get_change()`` and ``get_changes()`` methods look for
+tracked changes in the document ``content`` part only, and works with text
+documents only.
+
+In addition, lpOD provides ``get_change()`` and ``get_changes()`` as context
+methods, allowing the applications to call them from any arbitrary element, so
+the search is directed and restricted to a particular context. If the calling
+element is not able to track the changes, these methods always return nothing
+but they are neutral. If the calling element contains tracked changes, they
+work like their document-based versions in the given context. This feature
+allows the users to retrieve tracked changes in page headers and footers,
+knowing that these changes are registered in the contexts of the corresponding
+page style definitions, and not in the document content. 
 
 Tracked change methods
 ----------------------
