@@ -67,11 +67,13 @@ text styles whose properties are the same as "MyTextStyleName", but the first
 one will be affected by later changes of the base style while the second one
 is independant::
 
-   odf_create_style('text', 'NewStyle1', parent='MyTextStyleName')
-   odf_create_style('text', 'NewStyle2', clone='MyTextStyleName')
+   odf_create_style('text', name='NewStyle1', parent='MyTextStyleName')
+   proto = doc.get_style('text', 'MyTextStyleName')
+   odf_create_style('text', name='NewStyle2', clone=proto)
 
 An effective  style name, unique for the family, is required as soon as the
 style is attached to a document, unless it's inserted as a *default style*.
+This name may be set or changed with ``set_name()`` after the style creation.
 When a style is used as a default style, its name and display name are
 meaningless and ignored. The family and the name constitute the absolute
 identifier of a style in a document.
@@ -210,7 +212,8 @@ The example hereafter creates a text style, so called "My Colored Text",
 using Times New Roman, 14-sized navy blue bold italic characters with
 a yellow background::
 
-   s = odf_create_style('text', 'MyColoredText',
+   s = odf_create_style('text',
+                        name='MyColoredText',
                         'display name'='My Colored Text',
                         font='Times New Roman',
                         size='14pt',
@@ -298,14 +301,15 @@ a black, continuous, half-millimiter border line with a bottom-right, one
 millimeter grey shadow, with other possible properties inherited from a
 "Standard" style::
 
-   ps = odf_create_style('paragraph', 'BorderedShadowed',
-                           'display name'='Strange Boxed Paragraph',
-                           parent='Standard',
-                           align='justify',
-                           indent='5mm',
-                           border='0.5mm solid #000000',
-                           shadow='#808080 1mm 1mm'
-                           )
+   ps = odf_create_style('paragraph',
+                        name='BorderedShadowed',
+                        'display name'='Strange Boxed Paragraph',
+                        parent='Standard',
+                        align='justify',
+                        indent='5mm',
+                        border='0.5mm solid #000000',
+                        shadow='#808080 1mm 1mm'
+                        )
    ts = document.get_style('text', 'MyColoredText')
    ps.set_properties(area='text', ts.clone())
 
@@ -391,7 +395,7 @@ after the number. Other optional parameters are:
 The following example shows the way to create a new list style then
 to set some properties for levels 1 to 3, each one with a different type::
 
-   ls = odf_create_style('list', 'ListStyle1')
+   ls = odf_create_style('list', name='ListStyle1')
    ls.set_level_style(1, type='number', prefix=' ', suffix='. ')
    ls.set_level_style(2, type='bullet', character='-')
    ls.set_level_style(3, type='image', url='bullet.jpg')
@@ -559,7 +563,7 @@ the family. It may be customized using ``set_properties()``.
 
 The most necessary property is ``width``, wich may be an absolute width (i.e.
 a string containing the number and the length unit), a relative length (i.e.
-a string containing a number followed by a "*"), or both (space-separated).
+a string containing a number followed by a star), or both (space-separated).
 See §15.9.1 in the ODF specification for details about the relative widths.
 
 The ``break xxx`` parameters (where ``xxx`` is ``before`` or ``after``), are
@@ -693,7 +697,7 @@ these methods returns an ODF element that can be used later as a context to
 append content elements. The following example creates a page style with a
 header and a footer, each one containing a single paragraph::
 
-   mp = odf_create_style('master page', 'MyNewPageStyle')
+   mp = odf_create_style('master page', name='MyNewPageStyle')
    h = mp.set_header()
    h.append_element(odf_create_paragraph(text='Header text', style='Standard')
    f = mp.set_footer()
@@ -820,15 +824,16 @@ using it will appear with a slow cross-fade transition, then will be displayed
 during 12 seconds each; these pages will have a monochrome background filled
 with a green color::
 
-   dps = odf_create_style('drawing page', 'MyDrawPageStyle',
-                        'presentation:transition-type'='automatic',
-                        'presentation:transition-speed'='slow',
-                        'presentation:duration'='PT00H00M12S',
-                        'smil:type'='fade',
-                        'smil:subtype'='crossfade'
-                        'draw:fill'='solid',
-                        'draw:fill-color'='#00ff00'
-                        )
+   dps = odf_create_style('drawing page',
+                name='MyDrawPageStyle',
+                'presentation:transition-type'='automatic',
+                'presentation:transition-speed'='slow',
+                'presentation:duration'='PT00H00M12S',
+                'smil:type'='fade',
+                'smil:subtype'='crossfade'
+                'draw:fill'='solid',
+                'draw:fill-color'='#00ff00'
+                )
 
 
 Presentation page layouts
@@ -875,5 +880,3 @@ of course, it works from presentation page layout objects only. On the other
 hand, when called with an string (the object class) as its first argument, and
 the position and size named parameters, ``set_placeholder()`` creates and
 directly appends the placeholder. It always returns the new placeholder element.
-
-
