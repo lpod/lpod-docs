@@ -26,8 +26,10 @@
 
 # Import from Standard Library
 from datetime import date
+from os.path import normpath, join
 
 # Import from lpod
+import lpod
 from lpod.document import odf_get_document, odf_new_document_from_type
 from lpod.paragraph import odf_create_paragraph
 from lpod.style import odf_create_style, odf_create_default_date_style
@@ -40,7 +42,8 @@ body = document.get_body()
 #
 # use merge_styles_from to copy default style from some document
 #
-doc_style = odf_get_document('../../python/templates/lpod_styles.odt')
+path = normpath(join(lpod.__file__, '../templates/lpod_styles.odt'))
+doc_style = odf_get_document(path)
 document.merge_styles_from(doc_style)
 
 #
@@ -54,7 +57,7 @@ document.insert_style(style, automatic=True)
 # The first paragraph will set the page::
 paragraph = odf_create_paragraph(text=u"lpOD generated Document "
         u"with styled pages", style=style.get_style_name())
-body.append_element(paragraph)
+body.append(paragraph)
 
 # To modify the footer and header we get the style
 first_page_style = document.get_style('master-page', u"First_20_Page")
@@ -64,7 +67,7 @@ first_page_style.set_footer(u'lpOD project')
 
 # Complement the header
 header = first_page_style.get_header()
-header.append_element(odf_create_paragraph(u"Final Version"))
+header.append(odf_create_paragraph(u"Final Version"))
 
 # Example of default style: a date
 date_style = odf_create_default_date_style()
@@ -73,8 +76,8 @@ today = odf_create_date_variable(date.today(),
                                  data_style=date_style.get_style_name())
 paragraph = odf_create_paragraph(
                 text=u"The current date with the default lpOD date style: ")
-paragraph.append_element(today)
-body.append_element(paragraph)
+paragraph.append(today)
+body.append(paragraph)
 
 
 # Save
