@@ -318,6 +318,11 @@ Note that "MyColoredText" is reused by copy, not by reference; so the new
 paragraph style will not be affected if "MyColoredText" is changed or deleted
 later.
 
+The value of the ``clone`` parameter, if any, may be a *paragraph* style
+element instead of a *text* style element, provided that the given paragraph
+style contains a *text* part; so the text part of the given paragraph style (and
+this part only) is used as the prototype.
+
 The API allows the user to set any attribute using its official name according
 to the ODF specification related to the paragraph formatting properties (§15.5).
 However, the API allows the use of mnemonic shortcuts for a few, frequently
