@@ -317,8 +317,10 @@ set_text(text)
     string. Any previous content is deleted and replaced by the given text.
 
 get_text_content()
-    Shortcut to get the text of paragraphs inside the element. An empty string
-    is returned by default.
+    Shortcut to get the text of paragraphs inside the element. The return value
+    is a string containing the concatenated text contents of the children
+    paragraphs. If the calling element contains no paragraph, or empty
+    paragraphs only, the return value is an empty string.
 
 set_text_content(text)
     Shortcut to set text content inside a paragraph inside the element. Any
