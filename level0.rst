@@ -326,10 +326,9 @@ set_text_content(text)
     Shortcut to set text content inside a paragraph inside the element. Any
     previous child element is deleted.
 
-insert_element(element, position=pos_flag)
-insert_element(element, position=WITHIN, offset=value)
-    Insert the given odf_element at a given position, that is defined according
-    to the position parameter, whose possible values are:
+insert_element(element, position=pos_flag [, offset=value])
+    Insert the given ``odf_element`` at a given position, that is defined
+    according to the position parameter, whose possible values are:
 
     FIRST_CHILD: the odf_element will be the first child (default).
     LAST_CHILD: the odf_element will be the last child.
