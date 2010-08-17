@@ -288,10 +288,11 @@ is a regular ``odf_create_style()`` instruction, with ``paragraph`` as the value
 of the family mandatory argument, a name parameter (unless the user just wants
 to create a default style) and any number of named paragraph properties. The
 second (optional) step consists of appending a *text* part to the new paragraph
-style; it can be accomplished, at the user's choice, either by cloning a
-previously defined text style, or by explicitly defining new text properties,
-through the ``set_properties()`` method with the ``area`` option set to
-``text``.
+style; it can be accomplished, at the user's choice, either by specifying a
+previously defined text style element, or by explicitly defining new text
+properties, through the ``set_properties()`` method with the ``area`` option set
+to ``text``. In the second case, the prototype text style is provided through
+the ``clone`` parameter.
 
 Assuming that a "MyColoredText" text style has been defined according to the
 text style creation example above, the following sequence creates a new
@@ -311,7 +312,7 @@ millimeter grey shadow, with other possible properties inherited from a
                         shadow='#808080 1mm 1mm'
                         )
    ts = document.get_style('text', 'MyColoredText')
-   ps.set_properties(area='text', ts.clone())
+   ps.set_properties(area='text', clone=ts)
 
 Note that "MyColoredText" is reused by copy, not by reference; so the new
 paragraph style will not be affected if "MyColoredText" is changed or deleted
