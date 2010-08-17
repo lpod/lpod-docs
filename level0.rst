@@ -328,13 +328,13 @@ insert_element(element, position=pos_flag)
 insert_element(element, position=WITHIN, offset=value)
     Insert the given odf_element at a given position, that is defined according
     to the position parameter, whose possible values are:
-    
+
     FIRST_CHILD: the odf_element will be the first child (default).
     LAST_CHILD: the odf_element will be the last child.
     NEXT_SIBLING: the odf_element will be inserted just after.
     PREV_SIBLING: the odf_element will be inserted just before.
     WITHIN: the odf_element will be inserted as a child within the text content.
-    
+
     The WITHIN option splits the text content of the container in two parts
     and inserts the elements between them, at a given offset. So if position is
     WITHIN, the offset optional parameter is used.
@@ -366,10 +366,11 @@ delete()
     Removes the element and all its descendants.
 
 get_parent()
-    Returns the parent of the calling element, or null if the calling element
-    doesn't belong to a document or is the top element of the document.
+    Returns the element that is the parent of the calling element, if any.
+    Returns null if the calling element is not contained in another element
+    (i.e. if it's itself a root element or a free element).
 
 get_root()
-    Returns the root element (i.e. the top ancestor) of the document that
-    contains the calling element. Returns the calling element itself if it's
-    a root, or a free element.
+    Returns the root element (i.e. the top ancestor element) of the calling
+    element. Returns the calling element itself if it's a root, or a free
+    element.
