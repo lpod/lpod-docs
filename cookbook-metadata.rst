@@ -32,8 +32,10 @@ Metadata Cookbook
 
 To illustrate metadata introspection, let's open an existing document::
 
+    >>> from urllib2 import urlopen
+    >>> f = urlopen('http://ftp.lpod-project.org/example.odt')
     >>> from lpod.document import odf_get_document
-    >>> document = odf_get_document('http://example.com/odf/cookbook')
+    >>> document = odf_get_document(f)
 
 Metadata are accessible through the `meta` part::
 

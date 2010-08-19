@@ -35,8 +35,10 @@ document and find the element we are looking for.
 
 Let's first open a document::
 
+    >>> from urllib2 import urlopen
+    >>> f = urlopen('http://ftp.lpod-project.org/example.odt')
     >>> from lpod.document import odf_get_document
-    >>> document = odf_get_document('http://example.com/odf/cookbook')
+    >>> document = odf_get_document(f)
 
 As lpOD is built upon a Virtual File System, we can transparently open
 documents through different URIs.
