@@ -86,7 +86,7 @@ The ``insert_style()`` method requires a style object as its only one mandatory
 argument. An optional boolean parameter whose name is ``default`` is allowed;
 if provided and set to ``true``, this parameter means that the style is inserted
 as a *default style*. A default style is a style that automatically apply to
-content elements whose style is not explicitly specified. A document can contain
+elements whose style is not explicitly specified. A document can contain
 at most one default style for a style family, so any attachment of a default
 style replaces any existing default style of the same family.
 
@@ -166,6 +166,14 @@ user of a typical office application) or *automatic*, according to a boolean
 a secondary unique name which is its *display name*, which can be set through
 an additional option. With the exception of this optional property, and a
 few other ones, there is no difference between automatic and common styles.
+
+Defaults styles and common styles are automatically inserted in the ``STYLES``
+document part. But automatic styles may be inserted, at the user's choice, in
+``CONTENT`` or ``STYLES``. The default is ``CONTENT`` but ``STYLES`` may be
+specified through a ``part`` optional parameter of ``insert_style()``. The user
+must check that any automatic style is inserted in the same document part as
+the element that uses it (so, an automatic style must be inserted in ``STYLES``
+if it's used by another style defined in this part).
 
 Of course, a style is really in use when one or more content objects
 explicitly reference it through its style property.
