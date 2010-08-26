@@ -49,12 +49,12 @@ the family as its mandatory first argument. A name, that is the identifier of
 the style in the given family, is generally required. So, a typical style
 creation instruction looks like::
 
-   s = odf_create_style('text', 'MyTextStyleName')
+   s = odf_create_style('text', name='MyTextStyleName')
 
 The example above creates a named text style without any property. The
 properties are optionally passed as named parameters.
 
-Additional arguments can be required according to the family. An optional
+Additional named parameters can be required according to the family. An optional
 ``parent`` argument, whose value is the name of another common style of
 the same family (existing or to be created), can be provided, knowing that a
 style inherits (but can override) all the properties of its parent. A
