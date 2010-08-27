@@ -95,6 +95,11 @@ for the following families: ``paragraph``, ``text``, ``section``, ``table``,
 ``table column``, ``table row``, ``table cell``, ``table page``, ``chart``,
 ``drawing page``, ``graphic``, ``presentation``, ``control`` and ``ruby``.
 
+Some styles may have a *class* property, that is an informative attribute, and
+that should not be confused with the *family*. A family is an application-
+defined property, used in order to identify a set of styles belonging to various
+families, for retrieval needs.
+
 An existing style may be retrieved in a document using the ``get_style()``
 document-based method. This method requires a family as its first argument and
 allows a style name as a second, optional argument. If the name is missing,
@@ -352,7 +357,7 @@ required properties, namely:
 - ``keep with next``: to specify whether or not to keep the paragraph and the next paragraph together on a page or in a column, possible values are ``always`` or ``auto``;
 - ``break xxx`` (where ``xxx`` is ``before`` or ``after``): to specify if a page or column break must be inserted before or after any paragraph using the style, legal values are ``page``, ``column``, ``auto``.
 
-A pararaph style may have a background color or image.
+A pararaph style may have a background color or imaghe.
 
 List styles
 ------------
