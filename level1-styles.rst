@@ -154,7 +154,7 @@ To remove the background color or image (i.e. to set the background to the
 default, that is transparent), the user just have to call ``set_background()``
 with ``color`` and ``url`` set to null.
 
-A style that apply in some way to a rectangular area (ex: shape, frame,
+A style that applies in some way to a rectangular area (ex: shape, frame,
 paragraph) other than a page may have visible borders and a shadow. Borders are
 specified using ``border xxx`` attributes where ``xxx`` is either ``left``,
 ``right``, ``top`` or ``bottom``; if all the borders are the same, a single
@@ -203,7 +203,7 @@ Text family
 ~~~~~~~~~~~
 
 A text style (i.e. a style whose family is ``text``, whatever its optional
-class) is a style which directly apply to characters (whatever the layout
+class) is a style which directly applies to characters (whatever the layout
 of the containing paragraph). So, it can bear any property directly
 related to the font and its representation. The most used properties are
 the font name, the font size, the font style (ex: normal, oblique, etc),
