@@ -236,10 +236,10 @@ a yellow background::
                         )
    s.set_background(color='#ffff00')
 
-This new style could be retrieved and changed later using ``get_style()``
-then the ``set_properties()`` method of the style object. For example, the
-following code modifies an existing text style definition so the font
-size is increased to 16pt and the color turns green::
+This new style could be inserted using ``insert_style()`` then retrieved and
+changed later using ``get_style()`` then the ``set_properties()`` method of the
+style object. For example, the following code modifies an existing text style
+definition so the font size is increased to 16pt and the color turns green::
 
    s = document.get_style('text', 'MyColoredText')
    s.set_properties(size='16pt', color='#00ff00')
