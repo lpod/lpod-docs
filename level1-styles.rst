@@ -475,11 +475,12 @@ style structure; to do so, ``outline`` must be provided in place of the family
 argument. The returned object is a nameless list style; it may be
 cloned in order to be reused as the outline style for another document, or as
 an ordinary list style (provided that it's later named). If the outline style
-is not initialized yet, ``get_outline_style()`` returns a null value.
+is not initialized yet, ``get_style()`` returns a null value for the ``outline``
+family.
 
 If needed, the outline style can be created through ``odf_create_style()``
 with ``outline`` as the style family and without name, then attached using
-``insert_style()``. The style for each individual level may be set, retreived
+``insert_style()``. The style for each individual level may be set, retrieved
 and changed at any time using the object-based ``set_level_style()`` and
 ``get_level_style()`` methods.
 
