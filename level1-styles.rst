@@ -509,7 +509,7 @@ numbering starting from 5 and the use of capital letters between parentheses
 as numbers::
 
    os = document.get_style('outline')
-   os.set_level_style(1, start-value=5, prefix='(', suffix=')', format='A')
+   os.set_level_style(1, start_value=5, prefix='(', suffix=')', format='A')
 
 According to the example above, the default numbering scheme for level 1
 headings will be (E), (F), (G), and so on.
