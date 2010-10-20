@@ -382,10 +382,11 @@ display name should be unique as well.
 An existing list style object provides a set_level_style() method,
 allowing the applications to set or change the list style properties for a
 given level. This method requires the level number as its first argument,
-then a ``type`` named parameter. The level is a positive (non zero) integer
-value that identifies the hierarchical position. The type indicates what kind
-of item mark is should be selected for the level; the possible types are
-``number``, ``bullet`` or ``image``.
+then a ``type`` named parameter may be provided. The level is a positive (non
+zero) integer value that identifies the hierarchical position. The ``type``
+specifies what kind of item mark is should be selected for the level; the
+possible types are ``number``, ``bullet`` or ``image``. The default is
+``number``.
 
 If the ``bullet`` type is selected, the affected items will be displayed after
 a special character (the "bullet"), which must be provided as a "character"
@@ -483,6 +484,10 @@ with ``outline`` as the style family and without name, then attached using
 ``insert_style()``. The style for each individual level may be set, retrieved
 and changed at any time using the object-based ``set_level_style()`` and
 ``get_level_style()`` methods.
+
+Unlike with regular list styles, the ``type`` option of ``set_level_style()``
+is ignored with the outline style; the type is automatically ``number`` (i.e.
+the outline style is always a numbered list style).
 
 The API allows the user to set style attributes for any level, knowing that a
 level is identified by a positive integer starting from 1. With the current
