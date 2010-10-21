@@ -536,7 +536,8 @@ Table styles
 ~~~~~~~~~~~~
 
 A table style specifies the external size, borders and background of a table.
-It may be created through ``odf_create_style()`` with the following parameters:
+It may be created through ``odf_create_style()`` with ``table`` as style family,
+the usual ``name`` parameter, and the following parameters:
 
 - ``width``: the table width (in length, not in columns), provided either in
    absolute values or as a percentage of the page width; both absolute and
