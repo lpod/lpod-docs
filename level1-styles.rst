@@ -567,7 +567,7 @@ Cell styles
 ~~~~~~~~~~~
 
 A cell style is created using ``odf_create_style()`` with ``table cell`` as the
-family. A ``data style`` may provided as an optional parameter, which is
+family. A ``data style`` may be provided as an optional parameter, which is
 recommended as soon as the style is about to be used for numeric cells.
 
 Once created, a cell style may be customized using ``set_properties()``. See
