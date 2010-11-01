@@ -579,7 +579,7 @@ following shortcuts for the most used attributes:
    ``border bottom``, in the same way as other rectangular area styles;
 - ``shadow``: idem.
 
-The ``set_background()`` method is allowed (with ``color`` or ``uri``).
+The ``set_background()`` method is allowed (with ``color`` or ``url``).
 
 Column styles
 ~~~~~~~~~~~~~
