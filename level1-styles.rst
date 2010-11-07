@@ -816,7 +816,7 @@ may have different margins and borders than the page body, ``set_header()`` and
 ``set_footer()`` accept the same margin- and border-related named parameters
 as ``odf_create_style()`` when used to create a page layout. On the other hand,
 ``set_header()`` and ``set_footer()`` return ODF elements that support the
-generic ``set_background()`` method; so it's possible to call use this method
+generic ``set_background()`` method; so it's possible to use this method
 separately from the page layout main object and from both its header and
 footer extensions, allowing the user to set specific backgrounds in the 3 parts
 of the affected page.
