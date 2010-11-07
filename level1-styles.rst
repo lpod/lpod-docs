@@ -684,7 +684,11 @@ Master pages
 A master page is created and retrieved the same way as other styles.
 
 To create a master page through the generic ``odf_create_style()`` function,
-the family argument is ``master page`` and it's followed by an arbitrary name.
+the family argument is ``master page`` and it's followed by an arbitrary
+optional ``name`` parameter, that may be provided later, but that is mandatory
+when the style is attached to a document using the odf_document based
+insert_style method.
+
 A master page may, like other styles, have a display name distinct from its
 name. In addition, a full master page definition allows the following named
 parameters:
