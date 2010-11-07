@@ -770,7 +770,7 @@ ODF-compliant text processor regards them as extensions of the main page styles,
 namely master pages. However, a page layout is defined through the lpOD API
 using the same logic as other style objects. It may be created using
 ``odf_create_style()`` with ``page layout`` as the family argument and a
-unique name (mandatory when the object is attached to a document). The
+unique name parameter (mandatory when the object is attached to a document). The
 ``display name`` optional parameter is ignored for this kind of style. On the
 other hand, a specific ``page usage`` parameter, whose legal values are
 ``all``, ``left``, ``right``, ``mirrored`` (default: ``all``) allows the
