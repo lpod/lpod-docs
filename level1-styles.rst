@@ -823,11 +823,12 @@ of the affected page.
 
 A page layout style may specify a columned page. A ``set_columns()`` method,
 called from a page layout object, does the job with the number of columns as
-a first mandatory argument and a ``gap`` optional name parameter that specifies
-the gap between columns. By default, all columns have the same width. It's
-possible to set extra properties in order to specify each column individually
-and to define a separator line between columns, through the low-level (lpOD 1)
-API.
+a first argument and a ``gap`` optional name parameter that specifies the gap
+between columns. By default, all columns have the same width. If the first
+argument is missing or less than 2, then the page layout is no longer columned.
+It's possible to set extra properties in order to specify each column
+individually and to define a separator line between columns, through the
+low-level (lpOD 1) API.
 
 Drawing page styles
 ~~~~~~~~~~~~~~~~~~~
