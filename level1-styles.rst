@@ -121,11 +121,11 @@ as an associative array.
 
 However, some styles have more than one property set.
 
-As an example, a paragraph style owns so-called "paragraph properties"
-and/or "text properties" (see below). In such a situation, an additional
-``area`` parameter, whose value identifies the particular property set, with
-``set_properties()``. Of course, the same ``area`` parameter applies to
-``get_properties()``.
+As an example, a paragraph style owns so-called *paragraph* and/or *text*
+properties, while a graphic style owns *graphic*, *paragraph* and/or *text*
+properties (see below). In such a situation, an additional ``area`` parameter,
+whose value identifies the particular property set, with ``set_properties()``.
+Of course, the same ``area`` parameter applies to ``get_properties()``.
 
 Some styles allow the applications to specify a *background*. Such a background
 is sometimes characterized by the RGB, 3-bytes hexadecimal code of an arbitrary
@@ -616,8 +616,43 @@ default is ``auto``.
 
 The row style supports the common ``set_background()`` method.
 
-Graphic styles [todo]
+Graphic styles [tbc]
 ---------------------
+
+A graphic style apply to frames, i.e. to image or text box containers.
+
+It controls the way the content is displayed. Knowing that a frame may
+include text and/or graphics, a graphic style may own *graphic*, *paragraph*
+and/or *text* properties, so its full definition mya require three distinct
+areas.
+
+A graphic style may be created through the generic ``odf_create_style()``
+constructor, with ``graphic`` as family and the common optional parameters
+(``name``, ``display name``, ``parent``).
+
+If a new graphic style is created through ``odf _create_style()`` with
+additional parameters, these parameters are regarded as properties for the
+*graphic* area.
+
+The user can get or set any property in an existing graphic style through
+``get_properties()`` or ``set_properties()`` with the appropriate ``area``
+option, whose possible values are ``graphic``, ``text``, and ``paragraph``.
+The default area is ``graphic``.
+
+The graphic properties are color adjustment, image opacity, gamma correction,
+luminance and contrast options, as described by the ODF 1.1 standard in §5.17.
+The text and paragraph properties are the same as those of a paragraph style
+(see above). 
+
+The following example creates a graphic style with 50% transparency, 10% green
+color adjustment and 5% luminance adjustment::
+
+   gs = odf_create_style('graphic',
+                        name='MyFilter',
+                        'draw:image-opacity'='50%',
+                        'draw:green'='10%',
+                        'draw:luminance'='5%'
+                        )
 
 Numeric data formatting styles [tbc]
 ------------------------------------
