@@ -628,30 +628,31 @@ areas.
 
 A graphic style may be created through the generic ``odf_create_style()``
 constructor, with ``graphic`` as family and the common optional parameters
-(``name``, ``display name``, ``parent``).
-
-If a new graphic style is created through ``odf _create_style()`` with
-additional parameters, these parameters are regarded as properties for the
-*graphic* area.
+(``name``, ``display name``, ``parent``). Other parameters, if any, are regarded
+as properties for the *graphic* area.
 
 The user can get or set any property in an existing graphic style through
 ``get_properties()`` or ``set_properties()`` with the appropriate ``area``
 option, whose possible values are ``graphic``, ``text``, and ``paragraph``.
 The default area is ``graphic``.
 
-The graphic properties are color adjustment, image opacity, gamma correction,
-luminance and contrast options, as described by the ODF 1.1 standard in §5.17.
-The text and paragraph properties are the same as those of a paragraph style
-(see above). 
+The *text* and *paragraph* properties are the same as those of a paragraph style
+(see above).
+
+The *graphic* properties must be provided according to the ODF specification.
+However, knowing that the most part of them belong to the ODF drawing ("draw")
+namespace, the lpOD API automatically regards any property specified without
+namespace prefix as a "draw" property (i.e. the ``draw:blue`` color correction
+property may be wrote ``blue`` when used as a ``set_properties()`` parameter).
 
 The following example creates a graphic style with 50% transparency, 10% green
 color adjustment and 5% luminance adjustment::
 
    gs = odf_create_style('graphic',
                         name='MyFilter',
-                        'draw:image-opacity'='50%',
-                        'draw:green'='10%',
-                        'draw:luminance'='5%'
+                        'image opacity'='50%',
+                        green='10%',
+                        luminance='5%'
                         )
 
 Numeric data formatting styles [tbc]
