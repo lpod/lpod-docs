@@ -928,22 +928,32 @@ Once created, a presentation page layout is populated using its element-specific
 A placeholder may be created through ``odf_create_placeholder()`` with the
 following parameters:
 
-- ``object``: the class of the shape which should appear at the placeholder's
-   position, knowing that the possible values are those of the §9.6.1 in the
-   ODF specification, namely ``title``, ``outline``, ``subtitle``, ``text``,
-   ``graphic``, ``object``, ``chart``, ``table``, ``orgchart``, ``page``,
-   ``notes``, ``handout``;
+When used for creation, ``set_placeholder()`` must be called with the
+presentation object class (specified as a string) as its first argument.
+The possible values are those of the §9.6.1 in the ODF specification, namely
+``title``, ``outline``, ``subtitle``, ``text``, ``graphic``, ``object``,
+``chart``, ``table``, ``orgchart``, ``page``, ``notes``, ``handout``.
+
+In addition, the following properties must be provided with
+``set_placeholder()``:
+
 - ``position``, the coordinates of the placeholder, as a list of 2 strings
    containing the X and Y positions (each string specifies the number
    and the unit, ex. "1cm", "2pt");
 - ``size``: the absolute size of the placeholder, provided in the same format
    as the position, in length or percentage.
 
-Once created, a placeholder may be integrated with the generic
-``insert_element()`` or  ``append_element()`` called from a presentation page
-layout object. With a placeholder object as its only one argument, the
-``set_placeholder()`` method does the same job as ``append_element()``, but,
-of course, it works from presentation page layout objects only. On the other
-hand, when called with an string (the object class) as its first argument, and
-the position and size named parameters, ``set_placeholder()`` creates and
-directly appends the placeholder. It always returns the new placeholder element.
+The object class argument may be replaced by a valid placeholder element
+(previously cloned from an existing placeholder or by any other mean). If so,
+this element is used as is, and the position/size parameters are ignored.
+
+The ``get_placeholders()`` method allows the user to get all the placeholder
+elements belonging to the calling presentation page layout object as a list.
+Each one may me individually deleted, cloned, or updated. From a given
+placeholder element, ``set_position()``, ``get_position()``, ``set_size()``,
+and ``get_size()`` allow the user to set or get the coordinates and/or the
+size.
+
+The ``set_placeholder()`` method always returns the inserted placeholder
+element.
+
