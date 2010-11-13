@@ -925,9 +925,6 @@ Once created, a presentation page layout is populated using its element-specific
 ``set_placeholder()`` method. This method can either append a previously created
 (and free) placeholder object, or create and append a new placeholder.
 
-A placeholder may be created through ``odf_create_placeholder()`` with the
-following parameters:
-
 When used for creation, ``set_placeholder()`` must be called with the
 presentation object class (specified as a string) as its first argument.
 The possible values are those of the §9.6.1 in the ODF specification, namely
