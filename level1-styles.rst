@@ -139,7 +139,7 @@ optional parameters may be provided, in order to control the way the image is
 displayed in the background, namely:
 
 - ``position``: a string that specifies the horizontal and vertical positions
-  of the image, through one or two space-separated words (in any order) among
+  of the image, through one or two comma-separated words (in any order) among
   ``center``, ``left``, ``right``, ``top``, ``bottom`` (default: ``center``);
 - ``repeat``: specifies whether a background image is repeated or stretched,
   whose possible values are ``no-repeat`` meaning that the image should be
@@ -589,7 +589,7 @@ the family. It may be customized using ``set_properties()``.
 
 The most necessary property is ``width``, wich may be an absolute width (i.e.
 a string containing the number and the length unit), a relative length (i.e.
-a string containing a number followed by a star), or both (space-separated).
+a string containing a number followed by a star), or both (comma-separated).
 See §15.9.1 in the ODF specification for details about the relative widths.
 
 The ``break xxx`` parameters (where ``xxx`` is ``before`` or ``after``), are
