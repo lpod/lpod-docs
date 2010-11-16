@@ -153,8 +153,7 @@ If the element doesn't contain any text, this method returns the value "as is",
 i.e. without formatting.
 
 The generic ``set_text()`` method allows the applications to change the ``text``
-content of the element at any time, while ``set_properties()`` can set or change
-any other parameter.
+content of the element at any time.
 
 Document fields
 ---------------
