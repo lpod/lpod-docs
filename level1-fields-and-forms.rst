@@ -63,14 +63,15 @@ the first character of a paragraph::
   paragraph.set_field(content="title")
 
 A field may be positioned at any place in the text of the host container; to do
-so, an optional ``position`` parameter, whose value is offset of the target,
-may be provided. The value of this parameter is either a positive position,
-zero-based and counted from the beginning, or a negative position counted from
-the end. The following example puts a ``title`` field at the fifth position and
-a ``subject`` field 5 characters before the end::
+so, an optional ``offset`` parameter, whose value is the offset (i.e. character
+sequential position) of the target, may be provided. The value of this parameter
+is either a positive position, zero-based and counted from the beginning, or a
+negative position counted from the end. The following example puts a ``title``
+field at the fifth position and a ``subject`` field 5 characters before the
+end::
 
-  paragraph.set_field(content="title", 4)
-  paragraph.set_field(content="subject", -5)
+  paragraph.set_field(content="title", offset=4)
+  paragraph.set_field(content="subject", offset=-5)
 
 The ``set_field()`` method allows field positioning at a position that depends
 on the content of the target, instead of a position. Thanks to a ``before`` or
@@ -81,12 +82,8 @@ the initial creator of the document after a given string::
 
   paragraph.set_field(content="subject", after="this paper is related to ")
 
-If ``position`` is provided with ``after`` or ``before``, any substring before
-the given position is ignored, even if it matches the string filter, so the
-field is inserted after the position, or not inserted. In addition, it's
-possible to combine ``before`` and ``after``; in such a situation, the field is
-inserted between the two substrings that respectively match the two filters,
-and only if these substrings are contiguous and in the right order.
+More generally, ``set_field()`` allows the same positioning options as
+``set_bookmark()`` for simple position bookmarks.
 
 ``set_field()`` returns the created ODF element in case of success, or null if
 (due to the given parameters and the content of the target container) the field
