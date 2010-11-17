@@ -243,8 +243,8 @@ document. Some of these informations may come from the document metadata.
 
 The general form of the corresponding content keys is ``sender xxx`` or
 ``author yyy``, where "xxx" may be ``firstname``, ``lastname``, ``initials``,
-``title``, ``position``, ``email``, ``private phone``, ``fax``, ``company``,
-``office phone``, ``street``, ``city``, ``postal code``, ``country``,
+``title``, ``position``, ``email``, ``phone private``, ``fax``, ``company``,
+``phone work``, ``street``, ``city``, ``postal code``, ``country``,
 ``state or province``, and "yyy" may be ``name`` or ``initials``.
 
 Every sender and author field is created with the appropriate content key and
