@@ -367,8 +367,6 @@ of variables; the default is ``user``.
 
 A declared variable may be retrieved thanks to its unique name, using the
 ``get_variable()`` document-based method with the name as argument. The returned
-object, if any, supports the generic ``get_properties()`` and
-``set_properties()`` method, that allow to get or change its ``value``, ``type``
-and ``currency`` parameters. In addition, the variable-specific ``get_value()``
-and ``set_value()`` methods are allowed as syntax shortcuts avoiding the use
-of ``get_properties()`` and ``set_properties()`` to access the stored values.
+object, if any, provides ``get_xxx()``- and ``set_xxx()``-like accessors, where
+``xxx`` stands for ``value``, ``type``, or ``currency``, that allow the user to
+change these properties at any time.
