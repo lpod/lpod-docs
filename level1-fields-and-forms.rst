@@ -77,7 +77,7 @@ The ``set_field()`` method allows field positioning at a position that depends
 on the content of the target, instead of a position. Thanks to a ``before`` or
 a ``after`` parameter, it's possible to provide a regexp that tells
 to insert the new field just before of after the first substring that
-matches a given filter ``set_field()``. The next example inserts the name of
+matches a given filter. The next example inserts the name of
 the initial creator of the document after a given string::
 
   paragraph.set_field(content="subject", after="this paper is related to ")
