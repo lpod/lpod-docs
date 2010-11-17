@@ -48,7 +48,7 @@ Field creation and retrieval
 
 A text field is created "in place" using the ``set_field()`` element-based
 method from a text container that may be a paragraph, a heading or a span;
-``set_field()`` requires a ``content`` parameter that specifies the kind of
+``set_field()`` requires a first argument that specifies the kind of
 information to be associated (and possibly displayed) with the field.
 
 Regarding the positioning, this method works in a similar way as
@@ -60,7 +60,7 @@ the content in the calling element. As an example, this instruction creates
 a ``title`` field (whose role is to display the title of the document) before
 the first character of a paragraph::
 
-  paragraph.set_field(content="title")
+  paragraph.set_field("title")
 
 A field may be positioned at any place in the text of the host container; to do
 so, an optional ``offset`` parameter, whose value is the offset (i.e. character
@@ -70,8 +70,8 @@ negative position counted from the end. The following example puts a ``title``
 field at the fifth position and a ``subject`` field 5 characters before the
 end::
 
-  paragraph.set_field(content="title", offset=4)
-  paragraph.set_field(content="subject", offset=-5)
+  paragraph.set_field("title", offset=4)
+  paragraph.set_field("subject", offset=-5)
 
 The ``set_field()`` method allows field positioning at a position that depends
 on the content of the target, instead of a position. Thanks to a ``before`` or
@@ -80,7 +80,7 @@ to insert the new field just before of after the first substring that
 matches a given filter. The next example inserts the document subject after a
 given string::
 
-  paragraph.set_field(content="subject", after="this paper is related to ")
+  paragraph.set_field("subject", after="this paper is related to ")
 
 More generally, ``set_field()`` allows the same positioning options as
 ``set_bookmark()`` for simple position bookmarks.
@@ -93,11 +93,11 @@ A text field can't be identified by a unique name or ID attribute and can't be
 selected by coordinates in the same way as a cell in a table. However, there is
 a context-based ``get_fields()`` method that returns, by default, all the text
 field elements in the calling context. This method, when called with a single
-``content`` parameter, that specifies the associated content, returns the fields
+argument that specifies the associated content type, returns the fields
 that match the given kind of content only, if any. For example, this instruction
 returns all the page number fields in the document body::
 
-  document.get_body.get_fields(content="page number")
+  document.get_body.get_fields("page number")
 
 Field datatypes
 ~~~~~~~~~~~~~~~
@@ -162,7 +162,7 @@ current document".
 This definition could be extended knowing that some so-called document fields
 may host contents that are not really informations about the document.
 
-The kind of document field is selected using the mandatory ``content`` argument.
+The kind of document field is selected using the mandatory content type argument.
 
 The whole set of allowed document fields is described in the section 6.2 of the
 ODF 1.1 specification. Some of them are introduced below with their associated
@@ -186,11 +186,7 @@ This example inserts a field that displays the date of the day before
 yesterday, due to a ``date adjust`` value that specified a negative value of
 48 hours, 0 minutes and 0 seconds::
 
-  paragraph.set_field(
-    content="date",
-    style="DateStyle",
-    adjust="-PT48H00M00S"
-    )
+  paragraph.set_field("date", style="DateStyle", adjust="-PT48H00M00S")
 
 Note that the display format is controlled by the given style (that is, of
 course, a date style), and that a date field may be more precise than the date
@@ -231,10 +227,7 @@ what is the page whose existence must be checked.
 The example below creates a field that displays "See next page" if and only if
 the current page is not the last one::
 
-  paragraph.set_field(
-    content="page continuation",
-    select="next"
-    )
+  paragraph.set_field("page continuation", select="next")
 
 Sender and Author fields
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -259,7 +252,7 @@ The following example tells the editing applications to print the initials
 of the document sender (if such an information is available) immediately after
 a given string::
 
-  paragraph.set_field(content="sender initials", after="Issued by ")
+  paragraph.set_field("sender initials", after="Issued by ")
 
 Of course, every ``sender-`` or ``author-`` field may be ``fixed`` and can
 display a given value provided using the ``text`` optional parameter.
@@ -286,11 +279,7 @@ and ``level``:
 This examples inserts a field that displays the name of the current level 1
 heading::
 
-  paragraph.set_field(
-    content="chapter",
-    level=1,
-    display="name"
-    )
+  paragraph.set_field("chapter", level=1, display="name")
 
 For a sheet name field, no parameter but ``content`` is needed; the field just
 displays the name of the current sheet. Note that this field makes sense for
@@ -298,7 +287,7 @@ spreadsheet documents only but that the calling element for ``set_field()``
 should be a paragraph attached to a cell and not a cell, knowing that a text
 fields belongs to a paragraph. Example::
 
-  paragraph.set_field(content="sheet")
+  paragraph.set_field("sheet")
 
 Declared variable fields
 ------------------------
@@ -323,7 +312,7 @@ the two first categories. While a `simple` variable may have different values
 variable displays the same content everywhere in the document.
 
 In order to associate a field with an existing variable, ``set_field()`` must be
-used with the ``content`` parameter set to ``variable``, and an additional
+used with the first argument set to ``variable``, and an additional
 ``name`` parameter, set to the unique name of the variable, is required. If
 the associated variable is a `user` variable, the ``value`` and ``type``
 parameters are not allowed. If the variable is `simple`, then it's possible to
@@ -332,10 +321,7 @@ set a specific value and/or type, with the effects described hereafter.
 The following example sets a field that displays the content of a declared
 variable whose name is supposed to be "Amount"::
 
-  paragraph.set_field(
-    content="variable",
-    name="Amount"
-    )
+  paragraph.set_field("variable", name="Amount")
 
 When a field associated to a `simple` variable is inserted using
 ``set_field()``, its content is set, by default, to the existing content and
@@ -381,4 +367,3 @@ object, if any, supports the generic ``get_properties()`` and
 and ``currency`` parameters. In addition, the variable-specific ``get_value()``
 and ``set_value()`` methods are allowed as syntax shortcuts avoiding the use
 of ``get_properties()`` and ``set_properties()`` to access the stored values.
-
