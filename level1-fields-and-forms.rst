@@ -315,10 +315,13 @@ variable displays the same content everywhere in the document.
 
 In order to associate a field with an existing variable, ``set_field()`` must be
 used with the first argument set to ``variable``, and an additional
-``name`` parameter, set to the unique name of the variable, is required. If
-the associated variable is a `user` variable, the ``value`` and ``type``
-parameters are not allowed. If the variable is `simple`, then it's possible to
-set a specific value and/or type, with the effects described hereafter.
+``name`` parameter, set to the unique name of the associated variable, is
+required. If the associated variable is a `user` variable, the ``value`` and
+``type`` parameters are not allowed. If the variable is `simple`, then it's
+possible to set a specific value and/or type, with the effects described
+hereafter. The associated variable may not exist when the field is created (it
+may be created later), so it's not automatically checked when the field is
+created through ``set_field()``.
 
 The following example sets a field that displays the content of a declared
 variable whose name is supposed to be "Amount"::
