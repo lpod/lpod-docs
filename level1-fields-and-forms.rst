@@ -162,7 +162,8 @@ current document".
 This definition could be extended knowing that some so-called document fields
 may host contents that are not really informations about the document.
 
-The kind of document field is selected using the mandatory content type argument.
+The kind of document field is selected using the mandatory argument of
+``set_field()`` or ``get_field()``.
 
 The whole set of allowed document fields is described in the section 6.2 of the
 ODF 1.1 specification. Some of them are introduced below with their associated
