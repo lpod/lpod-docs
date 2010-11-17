@@ -91,7 +91,7 @@ can't be created.
 
 A text field can't be identified by a unique name or ID attribute and can't be
 selected by coordinates in the same way as a cell in a table. However, there is
-a context-based ``get_fields()`` that returns, by default, all the text
+a context-based ``get_fields()`` method that returns, by default, all the text
 field elements in the calling context. This method, when called with a single
 ``content`` parameter, that specifies the associated content, returns the fields
 that match the given kind of content only, if any. For example, this instruction
