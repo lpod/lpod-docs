@@ -283,13 +283,13 @@ heading::
 
   paragraph.set_field("chapter", level=1, display="name")
 
-For a sheet name field, no parameter but ``content`` is needed; the field just
-displays the name of the current sheet. Note that this field makes sense for
-spreadsheet documents only but that the calling element for ``set_field()``
-should be a paragraph attached to a cell and not a cell, knowing that a text
-fields belongs to a paragraph. Example::
+For a sheet name field, no parameter but the ``sheet name`` argument is needed;
+the field just displays the name of the current sheet. Note that this field
+makes sense for spreadsheet documents only but that the calling element for
+``set_field()`` should be a paragraph attached to a cell and not a cell,
+knowing that a text fields belongs to a paragraph. Example::
 
-  paragraph.set_field("sheet")
+  paragraph.set_field("sheet name")
 
 Declared variable fields
 ------------------------
