@@ -366,7 +366,15 @@ A ``class`` parameter may be provided to select the ``user`` or ``simple`` kind
 of variables; the default is ``user``.
 
 A declared variable may be retrieved thanks to its unique name, using the
-``get_variable()`` document-based method with the name as argument. The returned
-object, if any, provides ``get_xxx()``- and ``set_xxx()``-like accessors, where
-``xxx`` stands for ``value``, ``type``, or ``currency``, that allow the user to
-change these properties at any time.
+``get_variable()`` document-based method with the name as argument, and a named
+``class`` parameter that restricts the search to the ``user`` or ``simple``
+variables. If ``class`` is not provided, ``get_variable()`` looks among both
+the ``user`` and ``simple`` variables.
+
+The returned object, if any, provides ``get_xxx()``- and ``set_xxx()``-like
+accessors, where ``xxx`` stands for ``value``, ``type``, or ``currency``, that
+allow the user to change these properties at any time.
+
+A document-based ``get_variables()`` method, with a ``class`` named parameter,
+returns all the variables of the given variable class; without parameter, it
+returns the list of the ``user`` and ``simple`` variables.
