@@ -140,7 +140,7 @@ may be persistent if ``fixed`` is true) using the optional ``value`` and/or
 ``text`` parameters. If the data type is ``string``, the ``value`` is the same
 as the ``text``. For a ``date`` or a ``time``, the value is stored in ISO-8601
 date format. For other types, the ``value`` is the numeric computable value
-of the cell. The ``text``, if provided, is a conventional representation of
+of the field. The ``text``, if provided, is a conventional representation of
 the value according to a display format.
 
 Text fields use a particular implementation of the generic ``get_text()``
