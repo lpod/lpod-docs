@@ -97,7 +97,7 @@ field elements in the calling context. This method, when called with a single
 that match the given kind of content only, if any. For example, this instruction
 returns all the page number fields in the document body::
 
-  document.get_fields(content="page number")
+  document.get_body.get_fields(content="page number")
 
 Field datatypes
 ~~~~~~~~~~~~~~~
