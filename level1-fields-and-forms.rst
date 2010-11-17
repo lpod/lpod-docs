@@ -167,7 +167,8 @@ The kind of document field is selected using the mandatory argument of
 
 The whole set of allowed document fields is described in the section 6.2 of the
 ODF 1.1 specification. Some of them are introduced below with their associated
-properties.
+properties  (the so-called `content key` means the field kind selector that must
+be provided when creating a field with ``set_field()``). 
 
 Date fields
 ~~~~~~~~~~~
