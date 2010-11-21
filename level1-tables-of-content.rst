@@ -51,7 +51,7 @@ following parameters:
 - ``use outline``: a boolean flag that specifies if the TOC must be generated
   from headings (default=``true``);
 - ``use index marks``: a boolean flag that specifies if the TOC must be
-  generated from index marks (default=``false).
+  generated from index marks (default=``false``).
 
 A table of contents object, after creation, may be put somewhere in a
 document using a generic method such as ``insert_element()``.
