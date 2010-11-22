@@ -74,6 +74,8 @@ The ``odf_toc`` elements provide the following methods:
 
 - ``get_name()`` and ``set_name()`` to get or set the internal unique name;
 - ``get_title()`` and ``set_title()`` to get or change the display TOC title;
+with ``set_title()``, the first argumentis the text of the title, and a
+``style`` named parameter is allowed to specify a paragraph style for the title;
 - ``get_outline_level()`` and ``set_outline_level()`` to get or change the
   current outline level property;
 - ``get_use_outline()`` and ``set_use_outline()`` to get or set the use outline
