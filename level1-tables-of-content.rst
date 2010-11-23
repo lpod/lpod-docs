@@ -82,6 +82,8 @@ with ``set_title()``, the first argumentis the text of the title, and a
   flag;
 - ``get_use_index_marks()`` and ``set_use_index_marks()`` to get or set the use
   index marks flag;
+- ``get_protected()`` and ``set_protected()`` to get or set the current
+  protection status;
 - ``get_formatted_text()``: returns the plain text content of the TOC, with some
   formatting features;
 - ``fill``: builds the body of the TOC according to the content of a given
