@@ -121,7 +121,7 @@ method requires a zero-based numeric value.
 ODF element.
 
 The full set of row and column objects may be selected using the table-based
-``get_row_list()`` and ``get_column_list()`` methods. By default these methods
+``get_rows()`` and ``get_columns()`` methods. By default these methods
 return repectively the full list of rows or columns. They can be restricted to
 a specified range of rows or columns. The restriction may be expressed through
 two numeric, zero-based arguments indicating the positions of the first and the
@@ -134,14 +134,14 @@ while "A" is the visible number or the column zero. As a consequence, the two
 following instructions are equivalent and return a list including the rows from
 5 to 10 belonging to the table ``t``::
 
-   rows = t.get_row_list(5, 10)
-   rows = t.get_row_list('6:11')
+   rows = t.get_rows(5, 10)
+   rows = t.get_rows('6:11')
 
 According to the same logic, each of the two instruction below returns the
 columns from 8 to 15::
 
-   cols = t.get_column_list(8, 15)
-   cols = t.get_column_list('I:P')
+   cols = t.get_columns(8, 15)
+   cols = t.get_columns('I:P')
 
 Once selected, knowing that cells are contained in rows, a row-based
 ``get_cell()`` method is provided. When called from a row object,
