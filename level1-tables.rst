@@ -177,7 +177,7 @@ If ``get_cells()`` is called without argument, the selection covers the whole
 table.
 
 A row object has its own ``get_cell()`` method. The row based version of
-``get_cells()`` returns, of course, a one-column table of cell objects. When
+``get_cells()`` returns, of course, a one-row table of cell objects. When
 used without argument, it selects all the cells of the row. It may be called
 with either a pair of numeric arguments that represent the start and the end
 positions of the cell range, or an alphanumeric argument (whose the numeric
