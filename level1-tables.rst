@@ -145,7 +145,7 @@ columns from 8 to 15::
 
 Once selected, knowing that cells are contained in rows, a row-based
 ``get_cell()`` method is provided. When called from a row object,
-``get_cell()`` requires the same parameters as the table-based ``get_column()``
+``get_cell()`` requires the same parameter as the table-based ``get_column()``
 method. For example, the following sequence returns the same cell as in the
 previous example::
 
