@@ -108,7 +108,7 @@ Possible datatypes are ``float``, ``date``, ``time``, ``boolean`` and ``string``
 
 When used from language with typed values, the data type is just the type of the value in the host language, so the stored datatype may be safely ignored. For non-typed languages, the record structure of the returned array is: ``name``, ``value`` and ``type``.
 
-The ``set_user_fields()`` allows the applications to set or change all the user-defined items. Its argument is an array with the same structure as the result of ``get_user_fields()``.
+The ``set_user_fields()`` method allows the applications to set or change all the user-defined items. Its argument is an array with the same structure as the result of ``get_user_fields()``.
 
 In order to individually process user defined metadata, ``get_user_field()`` and ``set_user_field()`` are provided, too. ``get_user_field()`` requires the name as its argument; it returns the value and (optionnally and according to the host language) the datatype. Symmetrically, ``set_user_field()``, which requires a name and a value (and optionnally a datatype), creates or replaces user-defined individal item. When used without value, or with a null value, ``set_user_field()`` just removes the field (if any) corresponding to the given key. If the optional style argument is not provided and if the host language is not typed, the ``string`` style applies by default. Example::
 
