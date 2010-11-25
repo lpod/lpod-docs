@@ -89,6 +89,7 @@ which is regarded as a regular expression.
 
 Table content retrieval
 -----------------------
+
 A table object provides methods that allow to retrieve any column, row or cell
 using its logical position. A position may be expressed using either zero-based
 numeric coordinates, or alphanumeric, spreadsheet-like coordinates. For example
