@@ -156,7 +156,7 @@ previous example::
 Cell range selection
 --------------------
 
-The API can extract rectangular ranges of cells in order to allow the
+``get_cells()`` can extract rectangular ranges of cells in order to allow the
 applications to store and process them out of the document tree, through
 regular 2D tables. The range selection is defined by the coordinates of the
 top left and the bottom right cells of the target area. The selection is
