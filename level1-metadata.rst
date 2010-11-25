@@ -106,7 +106,7 @@ The ``odf_meta`` API provides a ``get_user_fields()`` method that returns a hash
 
 Possible datatypes are ``float``, ``date``, ``time``, ``boolean`` and ``string``.
 
-When used from language with typed values, the data type is just the type of the value in the host language, so the stored datatype may be safely ignored. For non-typed languages, the record structure of the returned array is: ``name``, ``value`` and ``type``.
+When used from a language with typed values, the data type is just the type of the value in the host language, so the stored datatype may be safely ignored. For non-typed languages, the record structure of the returned array is: ``name``, ``value`` and ``type``.
 
 The ``set_user_fields()`` method allows the applications to set or change all the user-defined items. Its argument is an array with the same structure as the result of ``get_user_fields()``.
 
