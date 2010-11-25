@@ -39,7 +39,7 @@ Access to the metadata
 
 Prior to any access to the metadata, the application have to instantiate an ``odf_meta`` object through the ``get_meta()`` method of an existing ``odf_document``::
 
-  meta = document.get_meta()
+  meta = document.get_part(META)
 
 All the methods related to global metadata belong to the ``odf_meta`` object.
 
@@ -48,7 +48,7 @@ Single-item pre-defined metadata
 
 For each pre-defined elementary piece of metadata, lpOD provides both a read accessor and a write accessor, whose name are respectively ``get_xxx()`` and ``set_xxx()``, where `xxx` is the mnemonic name of the target. For example, the title of the document may be got, then changed, through the following sequence::
 
-  meta = document.get_meta()
+  meta = document.get_part(META)
   old_title = meta.get_title()
   meta.set_title("The new title")
 
