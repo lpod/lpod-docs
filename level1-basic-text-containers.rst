@@ -119,7 +119,7 @@ Text processing
 The traditional string editing methods (i.e. regex-based search & replace
 functions) are available against the text content of a paragraph.
 
-``search()`` in a element-based method which takes a search string (or a
+``search()`` is a element-based method which takes a search string (or a
 regular expression) as argument and returns the offset of the first substring
 matching the argument in the text content of the element. A null return value
 means no match. In case of success, the method returns a data structure whose
