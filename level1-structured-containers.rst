@@ -92,8 +92,8 @@ structural list imbrication, not by item attributes.
 A list may be retrieved using the context-based ``get_list()`` method, whose
 optional parameters are the same as ``get_element()``. A ``get_list_by_id()``
 method selects a list according to its (optional) identifier. In addition,
-``get_list_list()`` selects the item lists contained in the context according
-to the same rules as ``get_element_list()``.
+``get_lists()`` selects the item lists contained in the context according
+to the same rules as ``get_elements()``.
 
 
 Sections
@@ -129,7 +129,7 @@ or ``append_element()``. (Of course, an existing section may be copied and
 pasted thanks to the common ``clone()`` method.)
 
 A section may be retrieved using ``get_section()`` with the unique name of the
-needed section as argument, while ``get_section_list()`` returns all the
+needed section as argument, while ``get_sections()`` returns all the
 sections (if any) of the context.
 
 Draw pages
@@ -193,7 +193,7 @@ the argument, then, in case of failure, it looks for a draw page whose name
 matches. Alternatively, the user can explicitly select a draw page by name
 using ``get_draw_page_by_name()`` or according to its zero-based position in
 the document using ``get_draw_page_by_position()``. The whole list of draw
-pages may be returned by ``get_draw_page_list()``.
+pages may be returned by ``get_draw_pages()``.
 
 Populating a draw page doesn't require element-specific methods, knowing that:
 
