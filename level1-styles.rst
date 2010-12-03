@@ -357,7 +357,45 @@ required properties, namely:
 - ``keep with next``: to specify whether or not to keep the paragraph and the next paragraph together on a page or in a column, possible values are ``always`` or ``auto``;
 - ``break xxx`` (where ``xxx`` is ``before`` or ``after``): to specify if a page or column break must be inserted before or after any paragraph using the style, legal values are ``page``, ``column``, ``auto``.
 
-A pararaph style may have a background color or imaghe.
+A pararaph style may have a background color or image.
+
+Font declarations
+-----------------
+
+Every font name that is used in a text style (or in a paragraph text property)
+must be *declared* in the document, either in the ``CONTENT`` part or in the
+``STYLES`` part. The basic rule is that a font declaration must appear in the
+part where the corresponding font name appears in a style definition.
+
+So, both the ``STYLES`` and ``CONTENT`` ODF XML part objects provide methods
+for dealing with font declarations.
+
+``set_font_declaration()`` allows the user to put a font declaration in the
+calling ``odf_xmlpart`` object. This method requires a font name (unique for
+the part) as its first argument. Some additional named parameters may be
+provided:
+
+- ``family``: the font family, whose default is the font name itself;
+- ``family generic``: the generic font family name (ex: "roman");
+- ``pitch``: specifies whether a font has a fixed or variable width;
+- ``adornments``: adornments, like "bold" or "italic" that can be used to
+  locate a font in addition to the family name;
+- ``charset``: the character set of the font.
+
+For details about these options, see ODF 1.1 §14.6 and §15.4, knowing that
+each ``set_font_declaration()`` each option correspond to a "style:font-xxx"
+ODF attribute where "xxx" is the option name.
+
+The ``set_font_declaration()`` deletes and replaces any previously existing
+font corresponding to the given name. It returns the font declaration object,
+that is a ``odf_element``.
+
+``set_font_declaration()`` may be used as a ``odf_document()`` method; in this
+context, it inserts the same font declaration in ``CONTENT`` and ``STYLES``.
+
+``get_font_declaration()`` is a ``odf_xmlpart`` method allowing to select an
+existing font declaration by name (if any). The returned object may be deleted
+or cloned as any other ``odf_element``.
 
 List styles
 ------------
