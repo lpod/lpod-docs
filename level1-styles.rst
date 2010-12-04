@@ -383,10 +383,10 @@ provided:
 - ``charset``: the character set of the font.
 
 For details about these options, see ODF 1.1 §14.6 and §15.4, knowing that
-each ``set_font_declaration()`` each option correspond to a "style:font-xxx"
-ODF attribute where "xxx" is the option name.
+each option corresponds to a "style:font-xxx" ODF attribute where "xxx" is the
+option name.
 
-The ``set_font_declaration()`` deletes and replaces any previously existing
+``set_font_declaration()`` deletes and replaces any previously existing
 font corresponding to the given name. It returns the font declaration object,
 that is a ``odf_element``.
 
