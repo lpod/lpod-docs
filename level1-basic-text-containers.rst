@@ -301,8 +301,8 @@ properties, namely:
 
 - ``name``: a significant name, distinct from the URL;
 - ``title``: a link title;
-- ``style name``: a text style, corresponding to the "unvisited" state;
-- ``visited style name``: a text style, to apply when the state is "visited".
+- ``style``: a text style, corresponding to the "unvisited" state;
+- ``visited style``: a text style, to apply when the state is "visited".
 
-Note that the two style options, if set, override the default styling for the
-"visited" and "unvisited" states.
+Note that the two style-related options, if set, override the default styling
+for the "visited" and "unvisited" states.
