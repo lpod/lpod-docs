@@ -296,3 +296,13 @@ context to create a hyperlink span that spreads over its whole content::
    s = p.set_span(filter='The lpOD Project', style='Outstanding')
    s.set_hyperlink(offset=0, url='http://www.lpod-project.org')
 
+The ``set_hyperlink()`` method allows additional options regarding the link
+properties, namely:
+
+- ``name``: a significant name, distinct from the URL;
+- ``title``: a link title;
+- ``style name``: a text style, corresponding to the "unvisited" state;
+- ``visited style name``: a text style, to apply when the state is "visited".
+
+Note that the two style options, if set, override the default styling for the
+"visited" and "unvisited" states.
