@@ -47,6 +47,11 @@ A list is created using ``odf_create_list()``, then inserted using
 ``insert_element()`` as usual. An optional ``style`` parameter, specifying
 the name of a list style, may be provided to ``odf_create_list()``; however,
 the style of an existing list may be set or changed using ``set_style()``.
+Another option, ``continue numbering``, is a boolean value that, if
+true, means that "if the numbering style of the preceding list is the same as
+the current list, the number of the first list item in the current list is the
+number of the last item in the preceding list incremented by one"
+(default=false).
 
 A list header is created "in place" with ``set_header()``, called from a list
 element; this method returns an ODF element that can be used later as a context
