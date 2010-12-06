@@ -44,7 +44,9 @@ true, means that *if the numbering style of the preceding list is the same as th
      :align: center
 
 A list is created using ``odf_create_list()``, then inserted using
-``insert_element()`` as usual.
+``insert_element()`` as usual. An optional ``style`` parameter, specifying
+the name of a list style, may be provided to ``odf_create_list()``; however,
+the style of an existing list may be set or changed using ``set_style()``.
 
 A list header is created "in place" with ``set_header()``, called from a list
 element; this method returns an ODF element that can be used later as a context
