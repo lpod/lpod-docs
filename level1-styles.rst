@@ -471,8 +471,8 @@ method, allowing the user to set properties that can't be covered by the
 - ``min label width``: the minimum width of the item labels at this level;
 - ``min label distance``: the minimum distance between the number and the text
   of the item;
-- ``aligment``: the alignment of the item label relatively to the width as set
-  through ``min label width``; may be 'center', 'left', 'right';
+- ``align``: the alignment of the item label relatively to the width as set
+  through ``min label width``; may be 'center', 'start', 'end';
 - ``font``: the name of a font that is used to display a bullet character (for
   bullet list level styles);
 - ``height`` and ``width``: the height and width of the image (for image list
