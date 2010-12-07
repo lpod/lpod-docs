@@ -454,13 +454,35 @@ The following example shows the way to create a new list style then
 to set some properties for levels 1 to 3, each one with a different type::
 
    ls = odf_create_style('list', name='ListStyle1')
-   ls.set_level_style(1, type='number', prefix=' ', suffix='. ')
+   ls.set_level_style(1, type='number', format='1', prefix=' ', suffix='. ')
    ls.set_level_style(2, type='bullet', character='-')
    ls.set_level_style(3, type='image', url='bullet.jpg')
 
 The ``set_level_style()`` method returns an ODF element, representing the list
 level style definition, and which could be processed later through any element-
 or style-oriented function.
+
+A list level style definition may be extended using its own ``set_properties()``
+method, allowing the user to set properties that can't be covered by the
+``set_level_style()`` parameters. These properties are:
+
+- ``space before``: the ident level, i.e. the space before the number for all
+  paragraphs at this level;
+- ``min label width``: the minimum width of the item labels at this level;
+- ``min label distance``: the minimum distance between the number and the text
+  of the item;
+- ``aligment``: the alignment of the item label relatively to the width as set
+  through ``min label width``; may be 'center', 'left', 'right';
+- ``font``: the name of a font that is used to display a bullet character (for
+  bullet list level styles);
+- ``height`` and ``width``: the height and width of the image (for image list
+  level styles).
+
+The next example shows the way to set a level 1 number list level style with
+a 1cm indent and a 5mm minimal space between the label and the item::
+
+   lls = ls.set_level_style(1, format='1')
+   lls.set_properties(space_before='1cm', min_label_distance='5mm')
 
 An individual list level style may be reloaded through ``get_level_style()``,
 with the level number as its only one argument; it returns a regular ODF element
