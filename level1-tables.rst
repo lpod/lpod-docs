@@ -78,14 +78,19 @@ as its first argument and the following optional parameters:
 Once created, a table may be incorporated somewhere using ``insert_element()``.
 
 A table may be retrieved in a document according to its unique name using
-the context-based ``get_table_by_name()`` with the name as argument. It may
-be selected by its sequential position in the list of the table belonging
-to the context, using ``get_table_by_position()``, with a zero-based numeric
-argument (possibly counted back from the end if the argument is negative).
-In addition, it's possible to retrieve a table according to its content,
-through ``get_table_by_content()``; this method returns the first table (in
-the order of the document) whose text content matches the given argument,
-which is regarded as a regular expression.
+the context-based ``get_table_by_name()`` method with the name as argument.
+It may be selected by its sequential position in the list of the table
+belonging to the context, using ``get_table_by_position()``, with a zero-based
+numeric argument (possibly counted back from the end if the argument is
+negative). A ``get_table()`` method is provided, that works like
+``get_table_by_position()`` if the argument is numeric or like
+``get_table_by_name()`` otherwise (of course, if the name of the desired table
+looks like a number, there is no choice but ``get_table_by_name()`` to retrieve
+it by name). Without argument, ``get_table()`` returns the first table in the
+context (if any). In addition, it's possible to retrieve a table according to
+its content, through ``get_table_by_content()``; this method returns the first
+table (in the order of the document) whose text content matches the given
+argument, which is regarded as a regular expression.
 
 Table content retrieval
 -----------------------
