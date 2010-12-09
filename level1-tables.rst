@@ -67,7 +67,6 @@ as its first argument and the following optional parameters:
   a end-user interactive application should ask for a password that matches
   this string before removing the write-protection (beware, such a protection
   is *not* a security feature);
-- ``display``: boolean, tells that the table should be visible; default is true;
 - ``print``: boolean, tells that the table should be printable; however, the
   table is not printable if ``display`` is false, whatever the value of
   ``print``; default is true;
