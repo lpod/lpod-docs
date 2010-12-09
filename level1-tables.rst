@@ -67,9 +67,7 @@ as its first argument and the following optional parameters:
   a end-user interactive application should ask for a password that matches
   this string before removing the write-protection (beware, such a protection
   is *not* a security feature);
-- ``print``: boolean, tells that the table should be printable; however, the
-  table is not printable if ``display`` is false, whatever the value of
-  ``print``; default is true;
+- ``print``: boolean, tells that the table should be printable; default is true;
 - ``print ranges``: the cell ranges to be printed, if some areas are not to
   be printed; the value of this parameter is a space-separated list of cell
   ranges expressed in spreadsheet-style format (ex: "E6:K12").
