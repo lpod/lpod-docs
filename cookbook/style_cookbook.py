@@ -55,8 +55,8 @@ style = odf_create_style('paragraph', master_page=u"First_20_Page")
 document.insert_style(style, automatic=True)
 
 # The first paragraph will set the page::
-paragraph = odf_create_paragraph(text=u"lpOD generated Document "
-        u"with styled pages", style=style.get_style_name())
+paragraph = odf_create_paragraph(u"lpOD generated Document with styled pages",
+                                 style.get_style_name())
 body.append(paragraph)
 
 # To modify the footer and header we get the style
@@ -74,8 +74,8 @@ date_style = odf_create_default_date_style()
 document.insert_style(date_style, automatic=True)
 today = odf_create_date_variable(date.today(),
                                  data_style=date_style.get_style_name())
-paragraph = odf_create_paragraph(
-                text=u"The current date with the default lpOD date style: ")
+paragraph = odf_create_paragraph(u"The current date with the default lpOD "
+                                 u"date style: ")
 paragraph.append(today)
 body.append(paragraph)
 
