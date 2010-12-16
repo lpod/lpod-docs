@@ -601,7 +601,7 @@ the usual ``name`` parameter, and the following parameters:
 
 - ``width``: the table width (in length, not in columns), provided either in
    absolute values or as a percentage of the page width; both absolute and
-   relative values may be provided as a string, separated by a space, if needed;
+   relative values may be provided as a string, separated by a comma, if needed;
 - ``margin``: to control all the margins of the table;
 - ``margin xxx`` (where xxx is ``left``, ``right``, ``top`` or ``bottom``): to
    control the margins of the table separately;
