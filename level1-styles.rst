@@ -652,6 +652,10 @@ a string containing the number and the length unit), a relative length (i.e.
 a string containing a number followed by a star), or both (comma-separated).
 See §15.9.1 in the ODF specification for details about the relative widths.
 
+Optionally, a ``optimal width`` boolean property may be provided, to specify
+that the column width should be recalculated automatically if some content in
+the column changes.
+
 The ``break xxx`` parameters (where ``xxx`` is ``before`` or ``after``), are
 allowed to specify if a page or column break must be inserted before or after
 any column using the style, legal values are ``page``, ``column``, ``auto``;
