@@ -888,6 +888,9 @@ some of these properties may be set using the following lpOD mnemonics:
 
 - ``height`` and ``width``: the page size values, in regular ODF-compliant
   notation (ex: '21cm');
+- ``size``: the page size, as two comma-separated values in a single string,
+  the width coming first; this option is a shortcut that may replace ``width``
+  and ``height`` (ex: '21cm, 29.7cm');
 - ``number format``, ``number prefix``, and ``number suffix``: the format,
   prefix and suffix which define the default number representation for page
   styles, which is used to display page numbers within headers and footers
