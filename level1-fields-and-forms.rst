@@ -360,7 +360,7 @@ order to set the initial content of the variable.
 The example below "declares" the variable that is used by a text field in the
 previous example::
 
-  document.set_variable("Count", name="Amount", type="float", value=123)
+  document.set_variable("Amount", type="float", value=123)
 
 A ``class`` parameter may be provided to select the ``user`` or ``simple`` kind
 of variables; the default is ``user``.
