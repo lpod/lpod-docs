@@ -55,6 +55,8 @@ as its first argument and the following optional parameters:
   (rows then columns), knowing that it's zero-sized by default
   (beware: because cells are contained in rows, no cell in created if
   as long as ``width`` is less than 1);
+- ``size``: specifies a length and a width (in this order) as a single string
+  (the two values are comma-separated); may replace ``length`` and ``width``;
 - ``style``: the name of a table style, already existing or to be
   defined;
 - ``cell style``: the style to use by default for every cell in the table;
