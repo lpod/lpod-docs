@@ -904,6 +904,7 @@ some of these properties may be set using the following lpOD mnemonics:
   ``portrait`` or ``landscape`` (default: ``portrait``);
 - ``margin xxx`` (where xxx is ``left``, ``right``, ``top`` or ``bottom``):
   to control the margins of the page;
+- ``margin``: to specify the same width for all the margins;
 - ``border xxx`` (where ``xxx`` is ``left``, ``right``, ``top`` or ``bottom``):
   a 3-part string to specify the thickness, the line style and the line color
   (according to the XSL/FO grammar);
