@@ -89,12 +89,15 @@ document. This element (or a clone of it) is available to be attached later
 to a document through a generic, document-based ``insert_style()`` method.
 
 The ``insert_style()`` method requires a style object as its only one mandatory
-argument. An optional boolean parameter whose name is ``default`` is allowed;
-if provided and set to ``true``, this parameter means that the style is inserted
-as a *default style*. A default style is a style that automatically apply to
-elements whose style is not explicitly specified. A document can contain
-at most one default style for a style family, so any attachment of a default
-style replaces any existing default style of the same family.
+argument. It's return value is the style itself.
+
+An optional boolean parameter whose name is ``default`` is allowed with
+``insert_style()``; if provided and set to ``true``, this parameter means that
+the style is registered as a *default style*. A default style is a style that
+automatically applies to elements whose style is not explicitly specified. A
+document can contain at most one default style for a style family, so any
+registration of a default style replaces any existing default style of the same
+family.
 
 All styles can't be used as default styles. Default styles are allowed
 for the following families: ``paragraph``, ``text``, ``section``, ``table``,
