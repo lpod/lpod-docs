@@ -352,10 +352,10 @@ element instead of a *text* style element, provided that the given paragraph
 style contains a *text* part; so the text part of the given paragraph style (and
 this part only) is used as the prototype.
 
-Among the creation option for style paragraphs, a ``master page`` parameter
+Among the creation option for a paragraph style, a ``master page`` parameter
 may be set in order to specify the style of the page where the paragraphs
-using the style will appear. A paragraph whose style has a master page is the
-first of a new page.
+using the style will appear. A paragraph whose style has a master page option
+is the first of a new page.
 
 The API allows the user to set any attribute using its official name according
 to the ODF specification related to the paragraph formatting properties (§15.5).
