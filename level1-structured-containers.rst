@@ -77,7 +77,7 @@ inserted in place.
 By default, a new item is created empty. However, as a shortcut for the most
 common case, it's possible to directly create it with a text content. To do
 so, the text content must be provided through a ``text`` parameter; an
-optional ``style`` parameter, whose value is a regular paragraph style, may
+optional ``style`` parameter, whose value is a regular paragraph style, may be
 provided too. The new item is then created with a single paragraph as content
 (that is the most typical situation).
 
