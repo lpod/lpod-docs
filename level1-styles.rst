@@ -55,7 +55,7 @@ The example above creates a named text style without any property. The
 properties are optionally passed as named parameters.
 
 Note that in order to be really available in a document, a style, once created,
-must be registered in this document using the ``insert_style()``, that is a
+must be registered in this document using ``insert_style()``, that is a
 ``odf_document`` method::
 
   doc.insert_style(s)
