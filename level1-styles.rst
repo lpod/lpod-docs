@@ -101,6 +101,13 @@ for the following families: ``paragraph``, ``text``, ``section``, ``table``,
 ``table column``, ``table row``, ``table cell``, ``table page``, ``chart``,
 ``drawing page``, ``graphic``, ``presentation``, ``control`` and ``ruby``.
 
+The following example creates a paragraph style with a C<align> property, then
+registers it as the default paragraph style of a document (meaning that, in
+this document, every paragraph without specified style will be justified):
+
+   ps = odf_create_style('paragraph', align='justify')
+   doc.insert_style(ps, default=true)
+
 Some styles may have a *class* property, that is an informative attribute, and
 that should not be confused with the *family*. A family is an application-
 defined property, used in order to identify a set of styles belonging to various
