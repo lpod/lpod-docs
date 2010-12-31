@@ -54,6 +54,12 @@ creation instruction looks like::
 The example above creates a named text style without any property. The
 properties are optionally passed as named parameters.
 
+Note that in order to be really available in a document, a style, once created,
+must be registered in this document using the ``insert_style()``, that is a
+``odf_document`` method::
+
+  doc.insert_style(s)
+
 Additional named parameters can be required according to the family. An optional
 ``parent`` argument, whose value is the name of another common style of
 the same family (existing or to be created), can be provided, knowing that a
