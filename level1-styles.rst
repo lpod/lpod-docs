@@ -292,7 +292,11 @@ mnemonic shortcuts for a few, frequently required properties, namely:
 - ``display``: to specify if the text should by displayed or hidden;
   possible values are ``true`` (meaning visible) ``none`` (meaning hidden)
   or ``condition`` (meaning that the text is to be visible or hidden
-  according to a condition defined elsewhere).
+  according to a condition defined elsewhere);
+- ``language``: to specify a language code (ex: 'de' for German, 'fr' for
+  French);
+- ``country``: to specify a country code (ex: 'DE' for Germany, 'FR' for
+  France).
 
 A text style may have a background color, but not a background image.
 
