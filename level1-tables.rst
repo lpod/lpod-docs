@@ -76,6 +76,9 @@ as its first argument and the following optional parameters:
 
 Once created, a table may be incorporated somewhere using ``insert_element()``.
 
+The style of a table may be retrieved or changed at any time using the generic
+``get_style()`` and ``set_style()`` accessors.
+
 A table may be retrieved in a document according to its unique name using
 the context-based ``get_table_by_name()`` method with the name as argument.
 It may be selected by its sequential position in the list of the table
