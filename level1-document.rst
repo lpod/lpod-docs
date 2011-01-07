@@ -267,7 +267,7 @@ it just instructs the ``odf_document`` that this part needs to be updated.
 
 The explicit use of ``store()`` to commit the changes made in an individual
 part is not mandatory. When the whole document is made persistent through the
-document-based ``save()``, each part is automatically stored by default.
+document-based ``save()`` method, each part is automatically stored by default.
 However, this automatic storage may be deactivated using ``needs_update()``.
 
 needs_update(true/false)
@@ -387,6 +387,10 @@ in the ``META`` and ``CONTENT`` parts::
    # content updates are made here
    content.store
    document.save
+
+However, the explicit call of ``store`` for each individual part is generally
+not required knowing that ``store`` is automatically triggered by ``save``
+for every used part whose update flag is on.
 
 An optional ``target`` parameter may be provided to ``save()``. If set, this
 parameter specifies an alternative destination for the file (it produces the
