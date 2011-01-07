@@ -213,8 +213,11 @@ attributes are:
 - ``visibility``: specifies the visibility of the row or column; legal values
   are ``visible``, ``collapse`` and ``filter``.
 
-Table expansion
----------------
+Table expansion and shrinking
+-----------------------------
+
+Row and column insertion
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 A table may be expanded vertically and horizontally, using its ``add_row()`` and
 ``add_column()`` methods.
@@ -255,6 +258,14 @@ of the first row of ``t1``after the 5th row of ``t2``::
 
    to_be_inserted = t1.get_row(0).clone();
    t2.insert_element(to_be_inserted, after=t2.get_row(5))
+
+Row and column deletion
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Rows and columns may be individually deleted using ``delete_row()`` and
+``delete_column()``, respectively. The required argument for these methods is
+the row or column position in the table, i.e. the same as ``get_row()`` or
+``get_column()``.
 
 Row and column group handling
 -----------------------------
