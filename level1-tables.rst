@@ -357,6 +357,9 @@ whatever the number and the type of the content elements.
 The cell properties may be read or changes using ``get_xxx()`` and ``set_xxx()``
 methods, where ``xxx`` stands for one of the following:
 
+- ``value``: the internal value of the cell, if the cell has a value type other
+than string (for a string cell, ``get_value`` and ``set_value`` are equivalents
+of ``get_text`` and ``set_text``);
 - ``style``: the name of the cell style;
 - ``type``: the cell value type, which may be one of the ODF supported data
    types, used when the cell have to contain a computable value (omitted with
